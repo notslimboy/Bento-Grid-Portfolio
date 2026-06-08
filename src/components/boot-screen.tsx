@@ -7,15 +7,15 @@ interface BootScreenProps {
 }
 
 const bootLogs = [
-  "SYS: STANDBY",
-  "SYS: BOOTING_PORTFOLIO_OS_v4.2",
-  "DECK: CONNECTING TO SPACE_NET...",
-  "DECK: ESTABLISHING SECURE_LINK...",
-  "DECK: DECRYPTING SECTOR_4_TELEMETRY...",
-  "DECK: DOWNLOADING ORBITAL_COORDINATES...",
-  "DECK: SYNCHRONIZING CORE_DRIVES...",
-  "DECK: SYSTEMS ONLINE. DECK STABLE.",
-  "SYS: ACTIVE"
+  "HUD: STANDBY // INIT DATA_STREAM",
+  "SYS: BOOTING TACTICAL_INTERFACE v9.04",
+  "RADAR: CONNECTING TO DEEP_SPACE_TRANSCEIVER...",
+  "TELEMETRY: DECRYPTING STAR_MAP_SECTOR_7...",
+  "ORBIT: RESOLVING FLIGHT_PATHWAY_VECTORS...",
+  "HUD: ESTABLISHING SECURE_LINK TO TARGET_DECK...",
+  "COGNITIVE: SYNCHRONIZING PILOT_CORE_LOGS...",
+  "HUD: TACTICAL HUD ONLINE. SYSTEM READY.",
+  "SYS: ACTIVE // SYSTEM STABLE"
 ];
 
 export function BootScreen({ onComplete }: BootScreenProps) {
@@ -68,8 +68,11 @@ export function BootScreen({ onComplete }: BootScreenProps) {
         filter: "blur(8px)",
         transition: { duration: 0.4, ease: "easeInOut" }
       }}
-      className="fixed inset-0 z-[100] bg-midnight flex flex-col items-center justify-center p-6 select-none"
+      className="fixed inset-0 z-[100] bg-[#070913] flex flex-col items-center justify-center p-6 select-none"
     >
+      {/* Global Grain/Noise Overlay */}
+      <div className="grain-overlay" />
+      
       {/* Space grid background pattern */}
       <div className="absolute inset-0 opacity-[0.03] bg-[linear-gradient(to_right,#6366f1_1px,transparent_1px),linear-gradient(to_bottom,#6366f1_1px,transparent_1px)] bg-[size:30px_30px]" />
       
@@ -79,39 +82,39 @@ export function BootScreen({ onComplete }: BootScreenProps) {
       </div>
 
       <div className="w-full max-w-sm flex flex-col items-stretch relative z-10 space-y-6">
-        {/* Radar Icon & System Title */}
+        {/* Terminal Icon & System Title */}
         <div className="flex items-center gap-3 justify-center">
-          <div className="w-9 h-9 rounded-lg bg-slate-indigo border border-vibrant-indigo/20 flex items-center justify-center animate-pulse">
-            <Terminal className="w-4 h-4 text-cyan-400" />
+          <div className="w-9 h-9 rounded-sm bg-[#0e1122] border border-vibrant-indigo/30 flex items-center justify-center animate-pulse">
+            <Terminal className="w-4 h-4 text-accent" />
           </div>
-          <span className="font-heading font-bold text-sm tracking-wider text-frost-white uppercase">
-            Raka Arya Pratama // Deck OS
+          <span className="font-valorant font-bold text-sm tracking-widest text-vibrant-indigo uppercase">
+            RAKA // ARYA // OS
           </span>
         </div>
 
         {/* Telemetry Output Log Window */}
-        <div className="h-16 rounded-xl border border-vibrant-indigo/10 bg-slate-indigo/30 backdrop-blur-sm p-4 flex flex-col justify-center items-start overflow-hidden font-mono text-[10px] text-muted-slate select-none">
-          <div className="flex items-center gap-1.5 text-cyan-400 font-bold tracking-wide">
-            <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping" />
+        <div className="h-16 rounded-sm border border-vibrant-indigo/20 bg-[#0e1122]/70 backdrop-blur-sm p-4 flex flex-col justify-center items-start overflow-hidden font-mono text-[10px] text-muted-slate select-none">
+          <div className="flex items-center gap-1.5 text-accent font-bold tracking-wide">
+            <span className="w-1.5 h-1.5 rounded-full bg-accent animate-ping" />
             <span>{bootLogs[logIndex]}</span>
           </div>
           <span className="text-muted-slate/50 mt-1 uppercase tracking-widest text-[8px]">
-            Sector: 0b976a19 // Telemetry active
+            Sector: SPACE_HUD_SYS // Telemetry active
           </span>
         </div>
 
         {/* Glowing Loading Bar Container */}
         <div className="space-y-2">
-          <div className="w-full h-1.5 rounded-full bg-slate-indigo/40 border border-vibrant-indigo/10 overflow-hidden relative p-[1px]">
+          <div className="w-full h-1.5 rounded-none bg-[#0e1122] border border-vibrant-indigo/20 overflow-hidden relative p-[1px]">
             {/* Glowing progress element */}
             <div 
-              className="h-full rounded-full bg-gradient-to-r from-vibrant-indigo to-cyan-400 transition-all duration-75 ease-out shadow-[0_0_8px_rgba(6,182,212,0.8)]"
+              className="h-full rounded-none bg-gradient-to-r from-vibrant-indigo to-accent transition-all duration-75 ease-out shadow-[0_0_8px_rgba(6,182,212,0.8)]"
               style={{ width: `${progress}%` }}
             />
           </div>
           <div className="flex justify-between items-center text-[9px] font-mono text-muted-slate/70 px-1">
-            <span>SYS_READY_CHECK</span>
-            <span className="text-cyan-400 font-semibold">{Math.round(progress)}%</span>
+            <span>HUD_TELEMETRY_READY</span>
+            <span className="text-accent font-semibold">{Math.round(progress)}%</span>
           </div>
         </div>
       </div>

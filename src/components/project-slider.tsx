@@ -104,18 +104,18 @@ export function ProjectSlider({ slides, className }: ProjectSliderProps) {
 
               {/* Slide Content Header (Z-indexed) */}
               <div className="relative z-10 flex items-center justify-between">
-                <span className="text-[9px] font-mono font-bold tracking-widest text-vibrant-indigo uppercase bg-midnight/60 px-2 py-0.5 rounded border border-vibrant-indigo/15 backdrop-blur-sm">
+                <span className="text-[10px] font-mono font-bold tracking-widest text-accent uppercase bg-[#070913]/70 px-2 py-0.5 rounded-none border border-accent/20 backdrop-blur-sm">
                   Slide {index + 1} of {slides.length}
                 </span>
-                <Sparkles className="w-3.5 h-3.5 text-electric-purple opacity-40 group-hover:opacity-100 transition-opacity" />
+                <Sparkles className="w-3.5 h-3.5 text-accent opacity-45 group-hover:opacity-100 transition-opacity" />
               </div>
 
               {/* Slide Content Footer (Z-indexed) */}
-              <div className="relative z-10 space-y-0.5">
-                <span className="text-[10px] font-semibold text-electric-purple/95 font-heading block tracking-wider uppercase">
+              <div className="relative z-10 space-y-1">
+                <span className="text-xs md:text-sm font-semibold text-accent font-bebas block tracking-widest uppercase">
                   {slide.subtitle}
                 </span>
-                <h4 className="text-sm font-heading font-bold text-frost-white filter drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+                <h4 className="text-base md:text-lg font-bebas font-bold text-frost-white tracking-wide uppercase filter drop-shadow-[0_2px_4px_rgba(7,9,19,0.95)]">
                   {slide.title}
                 </h4>
               </div>

@@ -2,52 +2,52 @@ import type { SlideItem } from "@/components/project-slider";
 
 /**
  * =========================================================================
- * PANDUAN EDIT MANUAL DATA PROYEK (FOR USER)
+ * MANUAL EDIT GUIDE FOR PROJECT DATA
  * =========================================================================
  * 
- * File ini berisi semua data proyek yang ditampilkan di Bento Grid sebelah kanan.
- * Kamu bisa mengedit, menambah, atau menghapus proyek secara manual di sini tanpa
- * perlu menyentuh kode program UI.
+ * This file contains all the project data displayed on the right side of the Bento Grid.
+ * You can edit, add, or delete projects manually here without needing to touch
+ * the UI program code.
  * 
  * -------------------------------------------------------------------------
- * CARA MENGEDIT DATA PROYEK YANG SUDAH ADA:
+ * HOW TO EDIT EXISTING PROJECT DATA:
  * -------------------------------------------------------------------------
- * Cari proyek yang ingin kamu ubah di dalam array `projectsData` di bawah.
- * Setiap proyek dibungkus dalam objek `{ ... }` dengan field berikut:
+ * Look for the project you want to change inside the `projectsData` array below.
+ * Each project is wrapped in an object `{ ... }` with the following fields:
  * 
- * 1. `id`: ID unik proyek (misal: "meowquest"). Jangan diubah kecuali perlu.
- * 2. `title`: Judul proyek yang tampil di kartu dan detail modal.
- * 3. `category`: Label kategori (misal: "Adventure Game", "Brand Campaign").
- * 4. `timeline`: Durasi pengerjaan (misal: "4 Months (2024)").
- * 5. `roles`: Peran kamu di proyek (array, misal: ["Game Designer", "Programmer"]).
- * 6. `detailedDescription`: Deskripsi lengkap proyek saat modal dibuka.
- * 7. `features`: Mission Objectives atau fitur-fitur (array teks checklist).
- * 8. `techStack`: Teknologi yang dipakai (array, misal: ["Unity", "C#"]).
- *    -> Note: Gaya warna badge tech-stack akan menyesuaikan otomatis berdasarkan nama teksnya!
- * 9. `slides`: Daftar slide gambar/video/warna untuk slideshow di kartu & modal detail.
- *    -> Format slide:
- *       - Memakai GRADIENT warna saja:
- *         `{ id: 1, title: "Judul Slide", subtitle: "Sub", color: "from-slate-indigo to-midnight/80" }`
- *       - Memakai GAMBAR lokal/web:
- *         `{ id: 1, title: "Judul Slide", subtitle: "Sub", imageUrl: "https://link-gambar.com/foto.jpg" }`
- *       - Memakai VIDEO lokal/web (akan auto-play & loop):
- *         `{ id: 1, title: "Judul Slide", subtitle: "Sub", videoUrl: "https://link-video.com/klip.mp4" }`
- * 10. `links`: Tombol aksi/tautan eksternal di bagian bawah detail modal.
- *     -> Format link:
- *        `{ label: "Teks Tombol", url: "https://alamat.com", icon: "game" | "play" | "book" | "external" }`
- *        -> Pilihan `icon`:
- *           - "game": ikon controller game (misal untuk Play Game / Itch.io)
- *           - "play": ikon play (misal untuk nonton video YouTube)
- *           - "book": ikon buku (misal untuk baca artikel)
- *           - "external": ikon panah atas-kanan (misal untuk kunjungi web)
+ * 1. `id`: Unique project ID (e.g., "meowquest"). Do not change unless necessary.
+ * 2. `title`: The title of the project displayed on the card and detail modal.
+ * 3. `category`: Category label (e.g., "Adventure Game", "Brand Campaign").
+ * 4. `timeline`: Work duration (e.g., "4 Months (2024)").
+ * 5. `roles`: Your roles in the project (array of strings, e.g., ["Game Designer", "Programmer"]).
+ * 6. `detailedDescription`: Full detailed description of the project shown when the modal is opened.
+ * 7. `features`: Mission Objectives or features (array of checklist text strings).
+ * 8. `techStack`: Technology used (array of strings, e.g., ["Unity", "C#"]).
+ *    -> Note: Tech-stack badge color styles adjust automatically based on the text name!
+ * 9. `slides`: List of slides (color gradients, images, or videos) for the slideshow.
+ *    -> Slide format:
+ *       - Using color GRADIENT only:
+ *         `{ id: 1, title: "Slide Title", subtitle: "Sub", color: "from-slate-indigo to-midnight/80" }`
+ *       - Using local/web IMAGE:
+ *         `{ id: 1, title: "Slide Title", subtitle: "Sub", imageUrl: "https://link-to-image.com/photo.jpg" }`
+ *       - Using local/web VIDEO (will auto-play & loop):
+ *         `{ id: 1, title: "Slide Title", subtitle: "Sub", videoUrl: "https://link-to-video.com/clip.mp4" }`
+ * 10. `links`: Call to action buttons / external links at the bottom of the detail modal.
+ *     -> Link format:
+ *        `{ label: "Button Text", url: "https://address.com", icon: "game" | "play" | "book" | "external" }`
+ *        -> `icon` options:
+ *           - "game": game controller icon (e.g., for Play Game / Itch.io)
+ *           - "play": play icon (e.g., to watch a YouTube video)
+ *           - "book": book icon (e.g., to read an article/design doc)
+ *           - "external": top-right arrow icon (e.g., to visit a website)
  * 
  * -------------------------------------------------------------------------
- * CARA MENAMBAH PROYEK BARU:
+ * HOW TO ADD A NEW PROJECT:
  * -------------------------------------------------------------------------
- * 1. Copy salah satu blok proyek di bawah (misalnya blok Meowquest).
- * 2. Paste di dalam array `projectsData` (pisahkan antar blok dengan tanda koma `,`).
- * 3. Ubah isi data sesuai proyek barumu.
- * 4. Proyek baru akan langsung muncul otomatis di kolom kanan Bento Grid!
+ * 1. Copy one of the project blocks below (for example, the Meowquest block).
+ * 2. Paste it inside the `projectsData` array (separate blocks with a comma `,`).
+ * 3. Change the data fields to match your new project.
+ * 4. The new project will automatically appear on the right side of the Bento Grid!
  */
 
 export interface Project {
@@ -77,12 +77,12 @@ export const projectsData: Project[] = [
     category: "Adventure Game",
     timeline: "4 Months (2024)",
     roles: ["Game Designer", "Systems Designer"],
-    detailedDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+    detailedDescription: "Meowquest is an engaging adventure game designed with rich platforming elements and interactive mechanics. Players navigate a beautifully stylized world, solving dynamic environmental puzzles and engaging with unique gameplay loops centered around cat companions.",
     features: [
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      "Ut enim ad minim veniam, quis nostrud exercitation ullamco.",
-      "Duis aute irure dolor in reprehenderit in voluptate velit."
+      "Designed core gameplay loops and exploration mechanics.",
+      "Implemented a comprehensive quest system for structured player progression.",
+      "Developed interactive companion AI behaviors to assist players.",
+      "Crafted level designs that blend challenges with immersive world storytelling."
     ],
     techStack: ["Unity", "C#", "AI Behavior Tree", "Physics Engine"],
     slides: [
@@ -96,7 +96,34 @@ export const projectsData: Project[] = [
   },
 
   // ==========================================
-  // [2] CHOCOLATOS X-QUEST SUMEDANG
+  // [2] GUN, GIRLS, GLORY
+  // ==========================================
+  {
+    id: "gungirlsglory",
+    title: "Gun, Girls, Glory",
+    category: "Tactical Action",
+    timeline: "3 Months (2025)",
+    roles: ["Game Designer", "Lead Programmer"],
+    detailedDescription: "Gun, Girls, Glory is a high-octane tactical shooter mockup featuring sharp retro-futuristic visuals, customizable weapon platforms, and strategic character progression loops. Players coordinate squad tactics in dense urban environments.",
+    features: [
+      "Designed fast-paced weapon handling and custom recoil mechanics.",
+      "Developed high-fidelity camera feedback systems (shake, hit impact, lean).",
+      "Created modular weapon inventory and customization blueprints.",
+      "Optimized performance rendering pipelines for combat stages."
+    ],
+    techStack: ["Unity", "C#", "FMOD Sound Design", "Post-Processing"],
+    slides: [
+      { id: 1, title: "Tactical Gunplay Simulation", subtitle: "Gun, Girls, Glory Standby", color: "from-[#2b0f15] to-[#070913]" },
+      { id: 2, title: "Weapon Customization HUD", subtitle: "Weapon Upgrades Interface", color: "from-accent/10 to-[#070913]" },
+      { id: 3, title: "Urban Stage Skirmish", subtitle: "Combat Level Layout", color: "from-[#1d1f35] to-[#070913]" }
+    ],
+    links: [
+      { label: "Prototype Link", url: "#", icon: "game" }
+    ]
+  },
+
+  // ==========================================
+  // [3] CHOCOLATOS X-QUEST SUMEDANG
   // ==========================================
   {
     id: "chocolatos",
@@ -104,12 +131,12 @@ export const projectsData: Project[] = [
     category: "Featured Attraction",
     timeline: "3 Months (2023)",
     roles: ["Lead Systems Designer", "Tech Specialist"],
-    detailedDescription: "Chocolatos X-Quest Sumedang merupakan wahana eduwisata industri futuristik yang mengintegrasikan teknologi LED 5D imersif secara langsung di dalam pabrik Garudafood Sumedang. Proyek ini dirancang untuk menstimulasi pembelajaran interaktif bagi pengunjung anak-anak dan keluarga, menggabungkan elemen narasi petualangan antariksa bertema cokelat dengan sistem sensor gerak fisik.",
+    detailedDescription: "Chocolatos X-Quest Sumedang is a futuristic industrial edutourism ride that integrates immersive 5D LED technology directly inside the Garudafood factory in Sumedang. The project is designed to stimulate interactive learning for children and families, combining elements of a chocolate-themed space adventure narrative with physical motion sensor systems.",
     features: [
-      "Merancang core gameplay loops untuk 5D LED interactive projection game.",
-      "Sinkronisasi sistem sensor gerak inframerah dengan visual game di layar LED raksasa.",
-      "Mengembangkan sistem kalibrasi spaceship simulator secara real-time.",
-      "Menulis dokumentasi teknis dan panduan operasional wahana."
+      "Designed core gameplay loops for the 5D LED interactive projection game.",
+      "Synchronized infrared motion sensor systems with game visuals on a giant LED screen.",
+      "Developed real-time calibration systems for the spaceship simulator.",
+      "Wrote technical documentation and ride operational guides."
     ],
     techStack: ["Unity", "C#", "5D LED Systems", "Interactive Sensors"],
     slides: [
@@ -132,12 +159,12 @@ export const projectsData: Project[] = [
     category: "Active Campaigns",
     timeline: "4 Months (2024)",
     roles: ["Game Systems Designer", "Economy Designer"],
-    detailedDescription: "Momogi Roblox: Jelajah Nusantara adalah kampanye game tower defense di platform Roblox yang diintegrasikan langsung dengan produk fisik Momogi. Pemain dapat membeli produk fisik Momogi untuk mendapatkan kode unik, yang kemudian dapat di-redeem di dalam game melalui API verifikasi khusus untuk mengklaim karakter pahlawan nusantara, mengoleksi deck kartu, dan berpartisipasi dalam simulasi ekonomi game.",
+    detailedDescription: "Momogi Roblox: Jelajah Nusantara is a tower defense game campaign on the Roblox platform integrated directly with Momogi physical products. Players can purchase Momogi physical products to receive unique codes, which can then be redeemed in-game through a special verification API to claim Indonesian hero characters, collect card decks, and participate in game economy simulations.",
     features: [
-      "Merancang sistem Tower Defense balancing untuk karakter pahlawan Nusantara.",
-      "Integrasi API kode verifikasi unik dari kemasan produk fisik ke dalam database Roblox.",
-      "Mendesain flow gameplay penukaran kode (Redeem Code Loop) untuk retensi pemain.",
-      "Simulasi model ekonomi game untuk menyeimbangkan reward koin dengan harga deck."
+      "Designed Tower Defense balancing systems for Indonesian hero characters.",
+      "Integrated unique verification code APIs from physical product packaging into the Roblox database.",
+      "Designed code redemption gameplay flows (Redeem Code Loop) for player retention.",
+      "Simulated game economy models to balance coin rewards with card deck prices."
     ],
     techStack: ["Roblox Studio", "Luau", "Web3 API", "Database Systems"],
     slides: [
@@ -159,12 +186,12 @@ export const projectsData: Project[] = [
     category: "Game Project",
     timeline: "2 Months (2023)",
     roles: ["Solo Systems Designer", "Solo Programmer"],
-    detailedDescription: "Colostream adalah sebuah game aksi gladiator PVP di mana pemain bertarung di arena yang megah. Di balik layar, pertarungan tersebut sebenarnya merupakan pertunjukan teatrikal yang telah diskrip dan diorkestrasi oleh sang gladiator puncak demi merebut popularitas dan ketenaran dari audiens yang haus akan clashing aksi.",
+    detailedDescription: "Colostream is a physics-based PVP gladiator action game where players battle in a grand arena. Behind the scenes, the combat is actually a scripted theatrical performance orchestrated by the peak gladiator to capture popularity and fame from an audience hungry for clashing action.",
     features: [
-      "Merancang mekanik pertarungan gladiator berbasis fisika benturan (Bouncing & Slapping).",
-      "Mengembangkan AI audiens dinamis yang memberikan reaksi real-time terhadap performa bertarung.",
-      "Mendesain sistem scripted performance yang menuntut ketepatan koreografi laga.",
-      "Implementasi sistem ekonomi popularitas untuk membuka perlengkapan baru."
+      "Designed gladiator combat mechanics based on impact physics (Bouncing & Slapping).",
+      "Developed dynamic audience AI that reacts in real-time to fighting performance.",
+      "Designed scripted performance systems that demand precise combat choreography.",
+      "Implemented popularity economy systems to unlock new equipment."
     ],
     techStack: ["Unity", "C#", "AI Behavior Tree", "Physics Engine"],
     slides: [
@@ -186,12 +213,12 @@ export const projectsData: Project[] = [
     category: "PVP Arcade Game",
     timeline: "3 Months (2023)",
     roles: ["Lead Systems Designer", "Level Designer"],
-    detailedDescription: "Kocheng: Battle of Boings adalah game aksi multipemain lokal/online yang bertempat di dalam mesin capit raksasa yang terus bertransformasi. Pemain mengontrol karakter kucing (\"Kocheng\") untuk menembak, menampar, dan memantulkan musuh (\"Boings\") ke dinding duri atau bahaya lingkungan dalam pertempuran arena yang seru dan kacau.",
+    detailedDescription: "Kocheng: Battle of Boings is a local/online multiplayer action game set inside a transforming giant claw machine. Players control cat characters (\"Kocheng\") to shoot, slap, and bounce enemies (\"Boings\") into spike walls or environmental hazards in chaotic and exciting arena battles.",
     features: [
-      "Mendesain mekanik physics-based bouncing dan slap yang responsif dan memuaskan.",
-      "Merancang level dinamis di dalam mesin capit yang berubah rintangan secara berkala.",
-      "Integrasi multiplayer networking menggunakan Photon untuk sinkronisasi fisika.",
-      "Implementasi sistem hazard arena (claw drop, laser barrier, wall spikes)."
+      "Designed responsive and satisfying physics-based bouncing and slapping mechanics.",
+      "Designed dynamic levels inside the claw machine with shifting obstacles.",
+      "Integrated multiplayer networking using Photon for physics synchronization.",
+      "Implemented arena hazard systems (claw drop, laser barrier, wall spikes)."
     ],
     techStack: ["Unity", "C#", "Photon Unity Networking", "Physics 2D"],
     slides: [
@@ -213,12 +240,12 @@ export const projectsData: Project[] = [
     category: "Brand Campaign",
     timeline: "3 Months (2024)",
     roles: ["Game Designer", "Systems Designer"],
-    detailedDescription: "Chocolatos TinyTan adalah kampanye koleksi kartu digital eksklusif BTS TinyTAN yang terintegrasi dengan produk Chocolatos. Konsumen membeli produk Chocolatos untuk mendapatkan kode unik, lalu menukarkannya untuk mengoleksi kartu anggota BTS dan berkesempatan memenangkan hadiah trip ke Korea Selatan.",
+    detailedDescription: "Chocolatos TinyTan is an exclusive BTS TinyTAN digital card collection campaign integrated with Chocolatos products. Consumers buy Chocolatos products to get unique codes, then redeem them to collect BTS member cards and stand a chance to win a trip to South Korea.",
     features: [
-      "Merancang sistem koleksi kartu digital dengan mekanik gacha berbasis kode unik.",
-      "Mendesain flow redeem code dari kemasan produk ke platform digital.",
-      "Mengembangkan sistem reward tier untuk mendorong pembelian berulang.",
-      "Integrasi database verifikasi kode unik dengan kampanye marketing."
+      "Designed digital card collection systems with unique code-based gacha mechanics.",
+      "Designed redeem code flows from product packaging to digital platforms.",
+      "Developed tiered reward systems to drive repeat purchases.",
+      "Integrated unique code verification databases with marketing campaigns."
     ],
     techStack: ["Unity", "C#", "Web3 API", "Database Systems"],
     slides: [
@@ -240,12 +267,12 @@ export const projectsData: Project[] = [
     category: "AR Game Campaign",
     timeline: "3 Months (2024)",
     roles: ["Game Designer", "AR Specialist"],
-    detailedDescription: "Gery Pasta Boboiboy adalah game fighting Augmented Reality eksklusif yang terintegrasi dengan kemasan edisi spesial Gery Pasta berlisensi Boboiboy. Pemain membeli produk untuk membuka karakter dan mengumpulkan marker AR pada kemasan untuk meningkatkan gameplay pertarungan.",
+    detailedDescription: "Gery Pasta Boboiboy is an exclusive Augmented Reality fighting game integrated with special edition Gery Pasta packaging licensed by Boboiboy. Players purchase products to unlock characters and gather AR markers on packaging to enhance fighting gameplay.",
     features: [
-      "Merancang mekanik pertarungan AR berbasis marker pada kemasan produk.",
-      "Mengembangkan sistem koleksi karakter Boboiboy yang bisa di-unlock melalui pembelian.",
-      "Implementasi tracking AR menggunakan Vuforia SDK.",
-      "Mendesain flow kampanye dari pembelian produk hingga gameplay engagement."
+      "Designed marker-based AR combat mechanics on product packaging.",
+      "Developed Boboiboy character collection systems unlockable through purchases.",
+      "Implemented AR tracking using Vuforia SDK.",
+      "Designed campaign flows from product purchase to gameplay engagement."
     ],
     techStack: ["Unity", "C#", "Vuforia AR", "Interactive Sensors"],
     slides: [
@@ -267,12 +294,12 @@ export const projectsData: Project[] = [
     category: "LED Interactive Game",
     timeline: "2 Months (2024)",
     roles: ["Game Designer", "Tech Specialist"],
-    detailedDescription: "Tarik Tap-tap adalah game interaktif LED skala besar di mana pemain berkompetisi satu sama lain dalam permainan tarik tambang digital. Pemain mengumpulkan poin sebanyak-banyaknya sebelum waktu habis dan bersaing di leaderboard untuk memenangkan hadiah.",
+    detailedDescription: "Tarik Tap-tap is a large-scale interactive LED game where players compete in a digital tug-of-war. Players collect as many points as possible before time runs out and compete on leaderboards to win prizes.",
     features: [
-      "Merancang mekanik tug-of-war interaktif untuk layar LED raksasa.",
-      "Mengembangkan sistem leaderboard real-time dengan hadiah berjenjang.",
-      "Implementasi sinkronisasi input pemain dengan visual LED.",
-      "Mendesain pengalaman event publik untuk aktivasi brand skala besar."
+      "Designed interactive tug-of-war mechanics for a giant LED screen.",
+      "Developed real-time leaderboard systems with tiered prizes.",
+      "Implemented synchronization of player inputs with LED visuals.",
+      "Designed public event experiences for large-scale brand activations."
     ],
     techStack: ["Unity", "C#", "5D LED Systems", "Interactive Sensors"],
     slides: [
@@ -294,12 +321,12 @@ export const projectsData: Project[] = [
     category: "Physics Simulation",
     timeline: "1 Month (2023)",
     roles: ["Solo Programmer", "Physics Engineer"],
-    detailedDescription: "Proyek simulasi air yang memodelkan dan memvisualisasikan perilaku daya apung (buoyancy) berdasarkan fisika dunia nyata. Dibuat di Unity menggunakan mekanik fisika kustom untuk mensimulasikan interaksi objek dengan permukaan air secara realistis.",
+    detailedDescription: "A water simulation project that models and visualizes buoyancy behavior based on real-world physics. Developed in Unity using custom physics mechanics to realistically simulate object interactions with water surfaces.",
     features: [
-      "Mengimplementasikan algoritma buoyancy berbasis volume displacement.",
-      "Mensimulasikan dinamika fluida dan gelombang permukaan air.",
-      "Mengembangkan sistem interaksi objek dengan fisika air real-time.",
-      "Visualisasi tekanan dan gaya apung pada objek 3D."
+      "Implemented buoyancy algorithms based on volume displacement.",
+      "Simulated fluid dynamics and water surface waves.",
+      "Developed real-time object interaction systems with water physics.",
+      "Visualized pressure and buoyancy forces on 3D objects."
     ],
     techStack: ["Unity", "C#", "Physics Engine", "Hardware Integration"],
     slides: [
@@ -321,12 +348,12 @@ export const projectsData: Project[] = [
     category: "Educational Game",
     timeline: "3 Months (2023)",
     roles: ["Game Designer", "Level Designer"],
-    detailedDescription: "Legend of Learning: Science School adalah game edukasi untuk anak-anak di Amerika Serikat yang mengajarkan konsep fisika dasar menggunakan objek sehari-hari. Game ini mencakup topik-topik seperti gaya (force), suara (sound), dan gravitasi melalui gameplay interaktif yang menyenangkan.",
+    detailedDescription: "Legend of Learning: Science School is an educational game for children in the United States that teaches fundamental physics concepts using everyday objects. The game covers topics such as force, sound, and gravity through fun, interactive gameplay.",
     features: [
-      "Mendesain level-level interaktif yang mengajarkan konsep push & pull.",
-      "Merancang mekanik pembelajaran sains melalui gameplay yang intuitif.",
-      "Mengembangkan sistem progression berbasis kurikulum sains AS.",
-      "Implementasi visual feedback yang membantu pemahaman konsep fisika."
+      "Designed interactive levels teaching push & pull concepts.",
+      "Designed science learning mechanics through intuitive gameplay.",
+      "Developed progression systems based on the US science curriculum.",
+      "Implemented visual feedback to assist in understanding physics concepts."
     ],
     techStack: ["Unity", "C#", "AI Behavior Tree", "Physics Engine"],
     slides: [
@@ -337,37 +364,64 @@ export const projectsData: Project[] = [
     links: [
       { label: "Play Game", url: "#", icon: "game" }
     ]
+  },
+
+  // ==========================================
+  // [12] SHANTI CATERING CASHIER APPS
+  // ==========================================
+  {
+    id: "shanticatering",
+    title: "Shanti Catering Cashier Apps",
+    category: "Web Application",
+    timeline: "2 Months (2025)",
+    roles: ["Fullstack Developer", "UI/UX Designer"],
+    detailedDescription: "Shanti Catering Cashier Apps is a specialized point-of-sale and transaction management system designed for food catering services. The platform features dynamic cart management, automated invoice generation, live stock inventory updates, and analytical dashboard widgets.",
+    features: [
+      "Developed responsive cart mechanics and instant checkout pipelines.",
+      "Integrated automated PDF invoice generators and email notifications.",
+      "Designed real-time stock alert thresholds for ingredient management.",
+      "Created analytical sales summaries and dashboard visualization modules."
+    ],
+    techStack: ["React", "TypeScript", "Tailwind CSS", "Supabase"],
+    slides: [
+      { id: 1, title: "Cashier Transaction Portal", subtitle: "Point-of-Sale System", color: "from-vibrant-indigo/20 to-[#070913]" },
+      { id: 2, title: "Inventory Alerts Dashboard", subtitle: "Stock Management Panel", color: "from-accent/10 to-[#070913]" },
+      { id: 3, title: "Analytical Sales Visuals", subtitle: "Transactions Dashboard", color: "from-[#1a1c38] to-[#070913]" }
+    ],
+    links: [
+      { label: "Visit App", url: "#", icon: "external" }
+    ]
   }
 
   /*
   // ==========================================
-  // TEMPLATE KOSONG UNTUK PROYEK BARU
+  // EMPTY TEMPLATE FOR NEW PROJECTS
   // ==========================================
-  // Copy-paste blok komentar di bawah ini lalu hapus tanda komentar (//) untuk menambahkan proyek baru:
+  // Copy-paste the commented block below and remove comment slashes (//) to add a new project:
   
   ,
   {
-    id: "id-proyek-unik",
-    title: "Nama Proyek Kamu",
-    category: "Kategori Proyek (misal: RPG Game, Web App)",
-    timeline: "Durasi (misal: 3 Months (2025))",
-    roles: ["Peran Kamu 1", "Peran Kamu 2"],
-    detailedDescription: "Deskripsi panjang lengkap mengenai proyek yang akan tampil saat card diklik/dibuka detailnya.",
+    id: "unique-project-id",
+    title: "Your Project Name",
+    category: "Project Category (e.g., RPG Game, Web App)",
+    timeline: "Duration (e.g., 3 Months (2025))",
+    roles: ["Your Role 1", "Your Role 2"],
+    detailedDescription: "Long detailed description of the project that will be shown when the card is clicked/modal details opened.",
     features: [
-      "Fitur atau misi penting ke-1 dari proyek ini.",
-      "Fitur atau misi penting ke-2 dari proyek ini.",
-      "Fitur atau misi penting ke-3 dari proyek ini."
+      "Important feature or mission objective 1 of the project.",
+      "Important feature or mission objective 2 of the project.",
+      "Important feature or mission objective 3 of the project."
     ],
-    techStack: ["Teknologi 1", "Teknologi 2"], // misal: "Unity", "React", "Node.js"
+    techStack: ["Technology 1", "Technology 2"], // e.g., "Unity", "React", "Node.js"
     slides: [
-      // Kamu bisa pilih slide-nya memakai gradasi warna, gambar, atau video:
-      { id: 1, title: "Judul Slide Pertama", subtitle: "Sub-judul pertama", color: "from-slate-indigo to-midnight/80" },
-      { id: 2, title: "Judul Slide Kedua", subtitle: "Sub-judul kedua", color: "from-vibrant-indigo/10 to-electric-purple/10" }
-      // Kalau mau pake gambar: { id: 3, title: "Judul", subtitle: "Sub", imageUrl: "https://web.com/gambar.png" }
-      // Kalau mau pake video: { id: 4, title: "Judul", subtitle: "Sub", videoUrl: "https://web.com/video.mp4" }
+      // You can choose to use color gradients, images, or videos for slides:
+      { id: 1, title: "First Slide Title", subtitle: "First subtitle", color: "from-slate-indigo to-midnight/80" },
+      { id: 2, title: "Second Slide Title", subtitle: "Second subtitle", color: "from-vibrant-indigo/10 to-electric-purple/10" }
+      // To use an image: { id: 3, title: "Title", subtitle: "Sub", imageUrl: "https://web.com/image.png" }
+      // To use a video: { id: 4, title: "Title", subtitle: "Sub", videoUrl: "https://web.com/video.mp4" }
     ],
     links: [
-      { label: "Kunjungi Web", url: "https://link-kamu.com", icon: "external" } // icon: "game" | "play" | "book" | "external"
+      { label: "Visit Web", url: "https://your-link.com", icon: "external" } // icon: "game" | "play" | "book" | "external"
     ]
   }
   */

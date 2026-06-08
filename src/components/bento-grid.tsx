@@ -42,12 +42,13 @@ export function BentoColumn({ className, children, side, id }: BentoColumnProps)
   );
 }
 
-interface BentoCardProps {
+interface BentoCardProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string;
   children?: React.ReactNode;
   onClick?: (e: React.MouseEvent<HTMLDivElement>) => void;
   showStars?: boolean;
   isScanning?: boolean;
+  coordinate?: string;
 }
 
 function StarryBackground() {
@@ -67,9 +68,11 @@ function StarryBackground() {
   ];
 
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none z-0 rounded-[24px]">
+    <div className="absolute inset-0 overflow-hidden pointer-events-none z-0 rounded-sm">
       {/* Nebula Backdrop Layer */}
-      <div className="absolute inset-0 nebula-glow opacity-80" />
+      <div className="absolute inset-0 nebula-glow opacity-60" />
+      {/* HUD dense grid overlay */}
+      <div className="absolute inset-0 hud-grid-overlay-dense opacity-80" />
       {stars.map((star, i) => (
         <div
           key={i}
@@ -89,24 +92,38 @@ function StarryBackground() {
   );
 }
 
-export function BentoCard({ className, children, onClick, showStars, isScanning }: BentoCardProps) {
+export function BentoCard({ className, children, onClick, showStars, isScanning, coordinate, ...props }: BentoCardProps) {
   return (
     <div
       onClick={onClick}
       className={cn(
-        "bento-card rounded-[24px] p-6 flex flex-col justify-between relative group select-none",
+        "bento-card rounded-sm p-6 flex flex-col justify-between relative group select-none border border-vibrant-indigo/25",
         isScanning && "bento-card-scan-active",
         className
       )}
+      {...props}
     >
       {/* Dynamic Starry Background */}
       {showStars && <StarryBackground />}
 
+      {/* Grid overlay for non-star cards */}
+      {!showStars && <div className="absolute inset-0 hud-grid-overlay-dense opacity-30 pointer-events-none z-0" />}
+
       {/* Subtle background glow element */}
-      <div className="absolute inset-0 bg-gradient-to-br from-vibrant-indigo/5 to-electric-purple/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-br from-vibrant-indigo/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-0" />
       
-      {/* Card Border glow wrapper */}
-      <div className="absolute inset-0 rounded-[24px] border border-vibrant-indigo/10 group-hover:border-vibrant-indigo/30 transition-colors duration-300 pointer-events-none" />
+      {/* Corner crosshair markers */}
+      <span className="absolute top-1 left-2 text-[7px] font-mono text-vibrant-indigo/40 pointer-events-none select-none z-20">+</span>
+      <span className="absolute top-1 right-2 text-[7px] font-mono text-vibrant-indigo/40 pointer-events-none select-none z-20">+</span>
+      <span className="absolute bottom-1 left-2 text-[7px] font-mono text-vibrant-indigo/40 pointer-events-none select-none z-20">+</span>
+      <span className="absolute bottom-1 right-2 text-[7px] font-mono text-vibrant-indigo/40 pointer-events-none select-none z-20">+</span>
+      
+      {/* Card coordinate stamp */}
+      {coordinate && (
+        <span className="absolute bottom-1 right-6 text-[7px] font-mono text-vibrant-indigo/35 tracking-widest pointer-events-none select-none z-20">
+          [{coordinate}]
+        </span>
+      )}
       
       {/* Content wrapper */}
       <div className="relative z-10 w-full h-full flex flex-col justify-between">

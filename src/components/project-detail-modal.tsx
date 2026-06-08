@@ -1,7 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { X, BookOpen, Play, Gamepad2, ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { getTechBadgeStyles } from "@/lib/badge-styles";
 import type { Project } from "@/data/projects";
 import { ProjectSlider } from "@/components/project-slider";
 
@@ -69,12 +68,12 @@ export function ProjectDetailModal({ selectedProject, origin, onClose }: Project
               filter: "brightness(1) contrast(1) blur(0px)",
               boxShadow: [
                 "0 0 20px rgba(99, 102, 241, 0.25), inset 0 0 12px rgba(99, 102, 241, 0.15)",
-                "0 0 50px rgba(6, 182, 212, 0.4), inset 0 0 24px rgba(6, 182, 212, 0.25)",
+                "0 0 50px rgba(139, 92, 246, 0.4), inset 0 0 24px rgba(139, 92, 246, 0.25)",
                 "0 0 20px rgba(99, 102, 241, 0.25), inset 0 0 12px rgba(99, 102, 241, 0.15)"
               ],
               borderColor: [
                 "rgba(99, 102, 241, 0.35)",
-                "rgba(6, 182, 212, 0.7)",
+                "rgba(139, 92, 246, 0.7)",
                 "rgba(99, 102, 241, 0.35)"
               ]
             }}
@@ -95,7 +94,7 @@ export function ProjectDetailModal({ selectedProject, origin, onClose }: Project
               boxShadow: { repeat: Infinity, duration: 3, ease: "easeInOut" },
               borderColor: { repeat: Infinity, duration: 3, ease: "easeInOut" }
             }}
-            className="relative max-w-5xl w-full max-h-[90vh] z-10 flex flex-col items-stretch border rounded-2xl bg-slate-indigo/95 hud-grid-overlay overflow-hidden"
+            className="relative max-w-5xl w-full max-h-[90vh] z-10 flex flex-col items-stretch border rounded-sm bg-[#0e1122]/95 hud-grid-overlay overflow-hidden"
           >
             {/* Holographic Projection Scanlines */}
             <div className="hologram-scanlines" />
@@ -120,7 +119,7 @@ export function ProjectDetailModal({ selectedProject, origin, onClose }: Project
             {/* Close Button */}
             <button 
               onClick={onClose} 
-              className="absolute top-4 right-4 p-2 text-muted-slate hover:text-cyan-400 transition-colors cursor-pointer z-50 active:scale-95"
+              className="absolute top-4 right-4 p-2 text-muted-slate hover:text-vibrant-indigo transition-colors cursor-pointer z-50 active:scale-95"
               style={{ touchAction: 'manipulation' }}
               aria-label="Close modal"
             >
@@ -128,7 +127,7 @@ export function ProjectDetailModal({ selectedProject, origin, onClose }: Project
             </button>
 
             {/* Modal Card Panel */}
-            <div className="w-full max-h-[90vh] overflow-y-auto md:overflow-hidden p-5 pt-16 pb-8 md:p-8 md:pt-14 md:pb-14 flex flex-col md:grid md:grid-cols-12 gap-5 md:gap-8 rounded-2xl">
+            <div className="w-full max-h-[90vh] overflow-y-auto md:overflow-hidden p-5 pt-16 pb-8 md:p-8 md:pt-14 md:pb-14 flex flex-col md:grid md:grid-cols-12 gap-5 md:gap-8 rounded-sm">
               
               {/* Left Side: Info */}
               <motion.div 
@@ -140,25 +139,25 @@ export function ProjectDetailModal({ selectedProject, origin, onClose }: Project
                 <div className="space-y-4">
                   {/* Header Tag, Roles, and Timeline */}
                   <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-2">
-                    <span className="px-2.5 py-1 rounded-md bg-cyan-500/10 border border-cyan-500/30 text-[9px] font-mono font-bold tracking-widest text-cyan-400 uppercase">
+                    <span className="px-2.5 py-1 rounded-none bg-accent/15 border border-accent/40 text-[10px] font-mono font-bold tracking-widest text-accent uppercase">
                       {selectedProject.category}
                     </span>
-                    <span className="px-2.5 py-1 rounded-md bg-vibrant-indigo/10 border border-vibrant-indigo/20 text-[9px] font-mono tracking-widest text-vibrant-indigo uppercase">
+                    <span className="px-2.5 py-1 rounded-none bg-vibrant-indigo/10 border border-vibrant-indigo/35 text-[10px] font-mono tracking-widest text-vibrant-indigo uppercase">
                       LOG_ID: {selectedProject.id.toUpperCase()}_PRJ
                     </span>
                     {selectedProject.roles.map((r) => (
-                      <span key={r} className="px-2 py-0.5 rounded-md bg-electric-purple/15 border border-electric-purple/20 text-[9px] font-semibold text-electric-purple uppercase tracking-wider font-mono">
+                      <span key={r} className="px-2 py-0.5 rounded-none bg-vibrant-indigo/10 border border-vibrant-indigo/25 text-[10px] font-semibold text-frost-white uppercase tracking-wider font-mono">
                         {r}
                       </span>
                     ))}
-                    <span className="text-[10px] text-muted-slate font-medium pl-1 font-mono">
+                    <span className="text-xs text-muted-slate font-medium pl-1 font-mono">
                       • {selectedProject.timeline}
                     </span>
                   </motion.div>
-
+ 
                   {/* Title */}
                   <div className="space-y-1">
-                    <motion.h2 variants={itemVariants} className="text-2xl md:text-3xl font-heading font-bold text-frost-white bg-gradient-to-r from-frost-white to-muted-slate bg-clip-text text-transparent animate-in fade-in slide-in-from-left duration-500">
+                    <motion.h2 variants={itemVariants} className="text-3xl md:text-4xl font-bebas font-bold text-frost-white uppercase tracking-widest">
                       {selectedProject.title}
                     </motion.h2>
                   </div>
@@ -174,10 +173,10 @@ export function ProjectDetailModal({ selectedProject, origin, onClose }: Project
                           target="_blank"
                           rel="noreferrer"
                           className={cn(
-                            "px-3.5 py-1.5 rounded-xl text-[11px] font-semibold flex items-center gap-1.5 transition-all border font-mono",
+                            "px-4 py-2 rounded-none text-xs md:text-sm font-bold flex items-center gap-1.5 transition-all border font-bebas tracking-wider uppercase",
                             isPlay 
-                              ? "bg-vibrant-indigo/20 border-vibrant-indigo/30 text-frost-white hover:bg-vibrant-indigo/35 hover:border-vibrant-indigo/50 hover:scale-[1.02]" 
-                              : "bg-slate-indigo border-vibrant-indigo/10 text-muted-slate hover:text-frost-white hover:border-vibrant-indigo/25 hover:scale-[1.02]"
+                              ? "bg-accent/15 border-accent/40 text-accent hover:bg-accent hover:text-[#070913]" 
+                              : "bg-vibrant-indigo/10 border-vibrant-indigo/25 text-frost-white hover:border-vibrant-indigo/50 hover:bg-vibrant-indigo/20"
                           )}
                         >
                           {link.icon === 'book' && <BookOpen className="w-3.5 h-3.5" />}
@@ -191,20 +190,20 @@ export function ProjectDetailModal({ selectedProject, origin, onClose }: Project
                   </motion.div>
 
                   {/* Long Description */}
-                  <motion.p variants={itemVariants} className="text-xs md:text-sm text-muted-slate leading-relaxed font-sans border-l border-vibrant-indigo/20 pl-3">
+                  <motion.p variants={itemVariants} className="text-sm md:text-base text-frost-white/95 leading-relaxed font-sans border-l-2 border-accent/45 pl-3">
                     {selectedProject.detailedDescription}
                   </motion.p>
 
                   {/* Features Checklist */}
-                  <motion.div variants={itemVariants} className="space-y-2.5 pt-2">
-                    <h4 className="text-xs font-bold uppercase tracking-wider text-frost-white font-mono flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 bg-cyan-400 rounded-full animate-ping" />
+                  <motion.div variants={itemVariants} className="space-y-3 pt-2">
+                    <h4 className="text-sm font-bold uppercase tracking-widest text-accent font-bebas flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 bg-accent rounded-none rotate-45 animate-pulse" />
                       <span>Mission Objectives:</span>
                     </h4>
                     <ul className="space-y-2.5">
                       {selectedProject.features.map((feature, idx) => (
-                        <li key={idx} className="flex items-start gap-2.5 text-xs text-muted-slate">
-                          <span className="w-1.5 h-1.5 rounded-full bg-vibrant-indigo mt-1.5 shrink-0 shadow-[0_0_6px_#6366F1]" />
+                        <li key={idx} className="flex items-start gap-2.5 text-xs md:text-sm text-frost-white/90">
+                          <span className="w-1.5 h-1.5 rounded-none rotate-45 bg-accent mt-1.5 shrink-0 shadow-[0_0_6px_#06B6D4]" />
                           <span className="leading-normal">{feature}</span>
                         </li>
                       ))}
@@ -214,15 +213,12 @@ export function ProjectDetailModal({ selectedProject, origin, onClose }: Project
 
                 {/* Tech Stack */}
                 <motion.div variants={itemVariants} className="space-y-2 pt-4 border-t border-vibrant-indigo/10">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-muted-slate block font-mono">SYSTEM INTERFACES:</span>
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-muted-slate block font-mono">SYSTEM INTERFACES:</span>
                   <div className="flex flex-wrap gap-1.5">
                     {selectedProject.techStack.map((tech) => (
                       <span 
                         key={tech} 
-                        className={cn(
-                          "px-2.5 py-1 rounded-lg border text-[10px] font-semibold transition-all duration-300 font-mono",
-                          getTechBadgeStyles(tech)
-                        )}
+                        className="px-3 py-1 border border-vibrant-indigo/25 bg-vibrant-indigo/5 text-frost-white rounded-none text-xs font-semibold font-mono"
                       >
                         {tech}
                       </span>

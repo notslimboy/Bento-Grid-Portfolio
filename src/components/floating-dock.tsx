@@ -1,4 +1,4 @@
-import { User, Gamepad2, Image } from "lucide-react";
+import { Home, Briefcase, Image } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 
@@ -11,14 +11,14 @@ interface FloatingDockProps {
 export function FloatingDock({ className, activeTab, setActiveTab }: FloatingDockProps) {
   const navigationItems = [
     {
-      id: "about",
-      label: "About",
-      icon: User,
+      id: "home",
+      label: "Home",
+      icon: Home,
     },
     {
       id: "projects",
       label: "Projects",
-      icon: Gamepad2,
+      icon: Briefcase,
     },
     {
       id: "gallery",

@@ -27,9 +27,9 @@ const careerData: CareerJob[] = [
     waypointLabel: "Earth Sector",
     waypointType: "earth",
     missions: [
-      "Mengembangkan gameplay sistem inti untuk mobile game menggunakan Unity & C#.",
-      "Implementasi fitur multiplayer dasar dan sinkronisasi state.",
-      "Merancang arsitektur modular untuk kemudahan iterasi rapid prototyping.",
+      "Developed core gameplay systems for mobile games using Unity & C#.",
+      "Implemented basic multiplayer features and state synchronization.",
+      "Designed modular architecture for easy rapid prototyping iteration.",
     ],
   },
   {
@@ -40,9 +40,9 @@ const careerData: CareerJob[] = [
     waypointLabel: "Orbit Waypoint Alpha",
     waypointType: "station",
     missions: [
-      "Mendesain core loop game system dan economia virtual untuk judul-judul indie.",
-      "Menulis narrative design document dan dialog interaktif bercabang.",
-      "Melakukan balancing mekanik pertarungan PVP menggunakan simulasi Machinations.",
+      "Designed core gameplay loops and virtual economies for indie game titles.",
+      "Wrote narrative design documents and branching interactive dialogues.",
+      "Balanced PVP combat mechanics using Machinations simulations.",
     ],
   },
   {
@@ -53,9 +53,9 @@ const careerData: CareerJob[] = [
     waypointLabel: "Orbit Waypoint Beta",
     waypointType: "station",
     missions: [
-      "Merancang konsep game edukasi interaktif untuk brand activation kampanye.",
-      "Mengembangkan game Augmented Reality menggunakan Vuforia SDK.",
-      "Mengelola pipeline asset 3D dan animasi dari konsep hingga implementasi di engine.",
+      "Designed interactive educational game concepts for brand activation campaigns.",
+      "Developed Augmented Reality games using Vuforia SDK.",
+      "Managed 3D asset and animation pipeline from concept to engine implementation.",
     ],
   },
   {
@@ -66,10 +66,10 @@ const careerData: CareerJob[] = [
     waypointLabel: "Moon Destination",
     waypointType: "moon",
     missions: [
-      "Memimpin desain sistem gameplay untuk wahana eduwisata industri Chocolatos X-Quest.",
-      "Merancang kampanye game Roblox Momogi: Jelajah Nusantara terintegrasi produk fisik.",
-      "Mengembangkan ekonomi game, balancing deck kartu, dan integrasi API redeem code.",
-      "Membangun prototipe game PVP fisika-based (Kocheng: Battle of Boings & Colostream).",
+      "Led gameplay system design for the Chocolatos X-Quest industrial edutourism ride.",
+      "Designed the Momogi Roblox: Jelajah Nusantara game campaign integrated with physical products.",
+      "Developed game economies, card deck balancing, and redeem code API integrations.",
+      "Built physics-based PVP game prototypes (Kocheng: Battle of Boings & Colostream).",
     ],
   },
 ];
@@ -126,7 +126,7 @@ function MissionLine({ text, delay, isActive }: { text: string; delay: number; i
       animate={{ opacity: 1, x: 0 }}
       className="flex items-start gap-2.5 text-xs"
     >
-      <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 mt-1.5 shrink-0 shadow-[0_0_6px_rgba(6,182,212,0.8)]" />
+      <span className="w-1.5 h-1.5 rounded-full bg-vibrant-indigo mt-1.5 shrink-0 shadow-[0_0_6px_rgba(99,102,241,0.8)]" />
       <span className="text-muted-slate hud-terminal-typing leading-relaxed">
         {displayedText}
         {!isComplete && <span className="typing-cursor" />}
@@ -188,7 +188,7 @@ function WaypointNode({
         {isActive && (
           <motion.div 
             layoutId="waypoint-ring"
-            className="absolute inset-[-4px] rounded-full border border-cyan-400/50"
+            className="absolute inset-[-4px] rounded-full border border-vibrant-indigo/50"
             transition={{ type: "spring", stiffness: 300, damping: 25 }}
           />
         )}
@@ -197,7 +197,7 @@ function WaypointNode({
       {/* Company label below */}
       <span className={cn(
         "text-[8px] font-mono tracking-wider uppercase whitespace-nowrap transition-colors duration-300 mt-0.5",
-        isActive ? "text-cyan-400 hud-text-glow-cyan" : "text-muted-slate/40"
+        isActive ? "text-vibrant-indigo hud-text-glow" : "text-muted-slate/40"
       )}>
         {job.company}
       </span>
@@ -305,14 +305,14 @@ export function CareerDrawer({ isOpen, onClose }: CareerDrawerProps) {
             {/* Header bar */}
             <div className="relative z-30 flex items-center justify-between px-6 pt-5 pb-3">
               <div className="flex items-center gap-3">
-                <Rocket className="w-4 h-4 text-cyan-400" />
+                <Rocket className="w-4 h-4 text-vibrant-indigo" />
                 <span className="text-sm font-heading font-bold tracking-wide text-frost-white">
                   Career History
                 </span>
               </div>
               <button 
                 onClick={onClose}
-                className="p-1.5 text-muted-slate hover:text-cyan-400 transition-colors cursor-pointer active:scale-95 z-50"
+                className="p-1.5 text-muted-slate hover:text-vibrant-indigo transition-colors cursor-pointer active:scale-95 z-50"
                 aria-label="Close drawer"
               >
                 <X className="w-5 h-5" />
@@ -401,7 +401,7 @@ export function CareerDrawer({ isOpen, onClose }: CareerDrawerProps) {
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
                       <div className="space-y-1">
                         <div className="flex items-center gap-2">
-                          <span className="px-2 py-0.5 rounded-md bg-cyan-500/10 border border-cyan-500/30 text-[9px] font-mono font-bold tracking-widest text-cyan-400 uppercase">
+                          <span className="px-2 py-0.5 rounded-md bg-vibrant-indigo/10 border border-vibrant-indigo/30 text-[9px] font-mono font-bold tracking-widest text-vibrant-indigo uppercase">
                             {activeJob.waypointLabel}
                           </span>
                           <span className="text-[9px] font-mono text-muted-slate">
@@ -420,7 +420,7 @@ export function CareerDrawer({ isOpen, onClose }: CareerDrawerProps) {
                     {/* Missions with typing effect */}
                     <div className="space-y-2.5 pt-2 border-t border-vibrant-indigo/10">
                       <h4 className="text-[10px] font-bold uppercase tracking-wider text-frost-white font-mono flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 bg-cyan-400 rounded-full animate-ping" />
+                        <span className="w-1.5 h-1.5 bg-vibrant-indigo rounded-full animate-ping" />
                         <span>Mission Objectives:</span>
                       </h4>
                       <ul className="space-y-2.5">
