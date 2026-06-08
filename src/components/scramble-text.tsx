@@ -33,7 +33,7 @@ export function ScrambleText({
     });
   });
   const isAnimating = useRef(false);
-  const intervalId = useRef<NodeJS.Timeout | null>(null);
+  const intervalId = useRef<ReturnType<typeof setTimeout> | null>(null);
   const elementRef = useRef<HTMLSpanElement | null>(null);
 
   const startScramble = useCallback(() => {

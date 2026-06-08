@@ -1,4 +1,4 @@
-import React from "react";
+
 import { BentoCard } from "@/components/bento-grid";
 import { VideoOff } from "lucide-react";
 import type { GalleryItem } from "@/data/gallery";
@@ -38,7 +38,7 @@ export function GalleryCard({ item, isScanning, isSkeleton }: GalleryCardProps) 
 
   return (
     <BentoCard
-      coordinate={item.coordinate}
+      coordinate={item?.coordinate}
       isScanning={isScanning}
       className="p-4 aspect-[9/16] w-full flex flex-col justify-between relative overflow-hidden group cursor-pointer border border-vibrant-indigo/20 hover:border-accent/40"
     >
@@ -85,14 +85,14 @@ export function GalleryCard({ item, isScanning, isSkeleton }: GalleryCardProps) 
             {hasVideo ? "LIVE" : "STBY"}
           </span>
           <span className="text-[7px] font-mono text-muted-slate/30">
-            SEC_SYS_V.{item.id.toUpperCase()}
+            SEC_SYS_V.{item?.id?.toUpperCase()}
           </span>
         </div>
 
         {/* Bottom Title details */}
         <div className="space-y-1 mt-auto">
           <span className="text-[9px] font-mono font-bold tracking-widest text-accent uppercase block leading-none">
-            {item.subtitle}
+            {item?.subtitle}
           </span>
           <h4 className="text-sm font-bebas font-bold text-frost-white uppercase tracking-wider leading-none">
             {item && <ScrambleText text={item.title} triggerOn="scroll" delay={150} />}

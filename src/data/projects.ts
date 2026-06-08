@@ -145,8 +145,9 @@ export const projectsData: Project[] = [
       { id: 3, title: "Interactive Factory Tour Game", subtitle: "Gameplay Mechanics", color: "", imageUrl: "/projects/Chocolatos-XQUEST3.jpg" }
     ],
     links: [
+      { label: "Video", url: "https://www.youtube.com/watch?v=OzxL23wIUYA", icon: "play" },
       { label: "Article", url: "https://garudafood.com/gubernur-jabar-dedi-mulyadi-resmikan-chocolatos-x-quest-inovasi-eduwisata-industri-22", icon: "book" },
-      { label: "Video", url: "https://www.youtube.com/watch?v=OzxL23wIUYA", icon: "play" }
+
     ]
   },
 

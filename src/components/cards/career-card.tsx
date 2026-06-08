@@ -29,7 +29,7 @@ export function CareerCard({ isScanning, onOpenDrawer, isSkeleton }: CareerCardP
         </div>
         
         <div className="flex flex-col space-y-4 my-5">
-          {[1, 2, 3, 4].map((item, idx) => (
+          {[1, 2, 3, 4].map((_, idx) => (
             <div key={idx} className="flex items-start gap-3">
               <div className="flex flex-col items-center shrink-0 mt-1">
                 <div className="w-1.5 h-1.5 rotate-45 shrink-0 bg-vibrant-indigo/20 border border-vibrant-indigo/15 shimmer opacity-25" />

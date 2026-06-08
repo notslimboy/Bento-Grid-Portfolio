@@ -2,18 +2,18 @@ import React from "react";
 import { cn } from "@/lib/utils";
 
 interface BentoGridProps {
+  id?: string;
   className?: string;
   children: React.ReactNode;
 }
 
-export function BentoGrid({ className, children }: BentoGridProps) {
+export function BentoGrid({ id, className, children }: BentoGridProps) {
   return (
-    <div
-      className={cn(
-        "flex flex-col lg:flex-row gap-4 md:gap-6 max-w-7xl mx-auto",
-        className
-      )}
-    >
+    <div id={id} className={cn(
+          "flex flex-col lg:flex-row gap-4 md:gap-6 max-w-7xl mx-auto",
+          className
+        )}>
+
       {children}
     </div>
   );
