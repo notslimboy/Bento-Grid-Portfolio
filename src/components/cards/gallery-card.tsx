@@ -52,7 +52,7 @@ export function GalleryCard({ item, isScanning, isSkeleton }: GalleryCardProps) 
               loop
               muted
               playsInline
-              className="w-full h-full object-cover grayscale contrast-125 brightness-95 group-hover:scale-102 group-hover:grayscale-0 transition-all duration-700"
+              className="w-full h-full object-cover brightness-95 group-hover:scale-102 transition-all duration-700"
             />
             {/* Halftone Overlay for print/stipple effect */}
             <div className="halftone-overlay opacity-25 z-10" />

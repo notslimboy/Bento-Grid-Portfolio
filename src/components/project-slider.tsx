@@ -33,9 +33,10 @@ export function ProjectSlider({ slides, className }: ProjectSliderProps) {
 
   return (
     <div
-      onClick={handleNext}
+      onClick={slides.length > 1 ? handleNext : undefined}
       className={cn(
-        "relative w-full h-full overflow-hidden rounded-2xl border border-vibrant-indigo/5 bg-slate-indigo/20 group cursor-pointer select-none",
+        "relative w-full h-full overflow-hidden rounded-2xl border border-vibrant-indigo/5 bg-slate-indigo/20 group select-none",
+        slides.length > 1 ? "cursor-pointer" : "cursor-default",
         className
       )}
     >
@@ -103,10 +104,12 @@ export function ProjectSlider({ slides, className }: ProjectSliderProps) {
               )}
 
               {/* Slide Content Header (Z-indexed) */}
-              <div className="relative z-10 flex items-center justify-between">
-                <span className="text-[10px] font-mono font-bold tracking-widest text-accent uppercase bg-[#070913]/70 px-2 py-0.5 rounded-none border border-accent/20 backdrop-blur-sm">
-                  Slide {index + 1} of {slides.length}
-                </span>
+              <div className={cn("relative z-10 flex items-center", slides.length > 1 ? "justify-between" : "justify-end")}>
+                {slides.length > 1 && (
+                  <span className="text-[10px] font-mono font-bold tracking-widest text-accent uppercase bg-[#070913]/70 px-2 py-0.5 rounded-none border border-accent/20 backdrop-blur-sm">
+                    Slide {index + 1} of {slides.length}
+                  </span>
+                )}
                 <Sparkles className="w-3.5 h-3.5 text-accent opacity-45 group-hover:opacity-100 transition-opacity" />
               </div>
 
@@ -125,35 +128,39 @@ export function ProjectSlider({ slides, className }: ProjectSliderProps) {
       </div>
 
       {/* Tap Hint Overlay (Fade on Hover) */}
-      <div className="absolute inset-0 flex items-center justify-center bg-midnight/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-20 backdrop-blur-[1px]">
-        <div className="px-3.5 py-1.5 rounded-full bg-midnight/80 border border-vibrant-indigo/30 text-[10px] font-semibold tracking-wide flex items-center gap-1 text-frost-white shadow-lg">
-          <span>Tap to Cycle</span>
-          <ArrowRight className="w-3 h-3 text-vibrant-indigo" />
+      {slides.length > 1 && (
+        <div className="absolute inset-0 flex items-center justify-center bg-midnight/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-20 backdrop-blur-[1px]">
+          <div className="px-3.5 py-1.5 rounded-full bg-midnight/80 border border-vibrant-indigo/30 text-[10px] font-semibold tracking-wide flex items-center gap-1 text-frost-white shadow-lg">
+            <span>Tap to Cycle</span>
+            <ArrowRight className="w-3 h-3 text-vibrant-indigo" />
+          </div>
         </div>
-      </div>
+      )}
 
       {/* Pagination Dot Indicators */}
-      <div className="absolute bottom-3.5 left-1/2 -translate-x-1/2 flex items-center gap-1.5 z-30">
-        {slides.map((_, index) => {
-          const isActive = index === activeIndex;
-          return (
-            <button
-              key={index}
-              onClick={(e) => {
-                e.stopPropagation();
-                goToSlide(index);
-              }}
-              className={cn(
-                "slide-dot h-1.5 rounded-full transition-all duration-300",
-                isActive 
-                  ? "w-4 bg-vibrant-indigo" 
-                  : "w-1.5 bg-muted-slate/40 hover:bg-muted-slate/60"
-              )}
-              aria-label={`Go to slide ${index + 1}`}
-            />
-          );
-        })}
-      </div>
+      {slides.length > 1 && (
+        <div className="absolute bottom-3.5 left-1/2 -translate-x-1/2 flex items-center gap-1.5 z-30">
+          {slides.map((_, index) => {
+            const isActive = index === activeIndex;
+            return (
+              <button
+                key={index}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  goToSlide(index);
+                }}
+                className={cn(
+                  "slide-dot h-1.5 rounded-full transition-all duration-300",
+                  isActive 
+                    ? "w-4 bg-vibrant-indigo" 
+                    : "w-1.5 bg-muted-slate/40 hover:bg-muted-slate/60"
+                )}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 }

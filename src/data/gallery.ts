@@ -7,16 +7,16 @@ export interface GalleryItem {
 }
 
 export const galleryData: GalleryItem[] = [
-  { id: "v1", title: "Video Campaign 01", subtitle: "Indomilk SterilPlain Campaign", coordinate: "REC-V01", videoUrl: "" },
-  { id: "v2", title: "Video Campaign 02", subtitle: "BRImo Cardless Cash Campaign", coordinate: "REC-V02", videoUrl: "" },
-  { id: "v3", title: "Video Campaign 03", subtitle: "Factory Edutourism Interactive", coordinate: "REC-V03", videoUrl: "" },
-  { id: "v4", title: "Video Campaign 04", subtitle: "AR Fighting Game Combat", coordinate: "REC-V04", videoUrl: "" },
-  { id: "v5", title: "Video Campaign 05", subtitle: "Tower Defense Balancing Demo", coordinate: "REC-V05", videoUrl: "" },
-  { id: "v6", title: "Video Campaign 06", subtitle: "Local Multiplayer Arena Test", coordinate: "REC-V06", videoUrl: "" },
-  { id: "v7", title: "Video Campaign 07", subtitle: "Tug-of-War Giant LED Gameplay", coordinate: "REC-V07", videoUrl: "" },
-  { id: "v8", title: "Video Campaign 08", subtitle: "Physics Buoyancy Fluid Test", coordinate: "REC-V08", videoUrl: "" },
-  { id: "v9", title: "Video Campaign 09", subtitle: "Hologram sweep UI prototype", coordinate: "REC-V09", videoUrl: "" },
-  { id: "v10", title: "Video Campaign 10", subtitle: "AI Behavior companion test", coordinate: "REC-V10", videoUrl: "" },
-  { id: "v11", title: "Video Campaign 11", subtitle: "Quest progression loop", coordinate: "REC-V11", videoUrl: "" },
-  { id: "v12", title: "Video Campaign 12", subtitle: "Final launch animation OS", coordinate: "REC-V12", videoUrl: "" }
+  { id: "v1", title: "Iger Weather", subtitle: "Interactive Weather Campaign", coordinate: "REC-V01", videoUrl: "/gallery/Iger-Weather.mp4" },
+  { id: "v2", title: "Ariel GetRill", subtitle: "GetRill Activation Campaign", coordinate: "REC-V02", videoUrl: "/gallery/Ariel-GetRill.mp4" },
+  { id: "v3", title: "BRI Hari Menabung", subtitle: "National Saving Day Campaign", coordinate: "REC-V03", videoUrl: "/gallery/hari-menabung.mp4" },
+  { id: "v4", title: "BRI Hari Pahlawan", subtitle: "National Hero Day Campaign", coordinate: "REC-V04", videoUrl: "/gallery/Hari-Pahlawan.mp4" },
+  { id: "v5", title: "BRI LocalFest", subtitle: "LocalFest Event Activation", coordinate: "REC-V05", videoUrl: "/gallery/BRI-LocalFest.mp4" },
+  { id: "v6", title: "HUT BRI", subtitle: "Anniversary Campaign", coordinate: "REC-V06", videoUrl: "/gallery/HUT-BRI.mp4" },
+  { id: "v7", title: "BRI Tahun Baru", subtitle: "New Year Celebration Campaign", coordinate: "REC-V07", videoUrl: "/gallery/TahunBaru.mp4" },
+  { id: "v8", title: "Mutant HI", subtitle: "HI Roundabout Activation", coordinate: "REC-V08", videoUrl: "/gallery/Mutant-HI.mp4" },
+  { id: "v9", title: "Mutant Mandarin", subtitle: "Mandarin Campaign Activation", coordinate: "REC-V09", videoUrl: "/gallery/Mutant-Mandarin.mp4" },
+  { id: "v10", title: "Mutant BLOK M", subtitle: "Blok M Event Campaign", coordinate: "REC-V10", videoUrl: "/gallery/Mutant-BlokM.mp4" },
+  { id: "v11", title: "Lemoo", subtitle: "Lemoo HI Brand Campaign", coordinate: "REC-V11", videoUrl: "/gallery/Lemoo-HI.mp4" },
+  { id: "v12", title: "SO Good", subtitle: "So Good Nugget Commercial", coordinate: "REC-V12", videoUrl: "/gallery/So-Good-Nugget.mp4" }
 ];

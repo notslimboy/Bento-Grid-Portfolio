@@ -140,9 +140,9 @@ export const projectsData: Project[] = [
     ],
     techStack: ["Unity", "C#", "5D LED Systems", "Interactive Sensors"],
     slides: [
-      { id: 1, title: "5D LED Immersive Experience", subtitle: "Chocolatos X-Quest Sumedang", color: "from-slate-indigo to-midnight/80" },
-      { id: 2, title: "Cacao Spaceships Blueprint", subtitle: "Calibration Systems Model", color: "from-vibrant-indigo/10 to-electric-purple/10" },
-      { id: 3, title: "Interactive Factory Tour Game", subtitle: "Gameplay Mechanics", color: "from-slate-indigo/30 to-vibrant-indigo/20" }
+      { id: 1, title: "5D LED Immersive Experience", subtitle: "Chocolatos X-Quest Sumedang", color: "", imageUrl: "/projects/Chocolatos-XQUEST1.jpg" },
+      { id: 2, title: "Cacao Spaceships Blueprint", subtitle: "Calibration Systems Model", color: "", imageUrl: "/projects/Chocolatos-XQUEST2.jpg" },
+      { id: 3, title: "Interactive Factory Tour Game", subtitle: "Gameplay Mechanics", color: "", imageUrl: "/projects/Chocolatos-XQUEST3.jpg" }
     ],
     links: [
       { label: "Article", url: "https://garudafood.com/gubernur-jabar-dedi-mulyadi-resmikan-chocolatos-x-quest-inovasi-eduwisata-industri-22", icon: "book" },
@@ -168,9 +168,7 @@ export const projectsData: Project[] = [
     ],
     techStack: ["Roblox Studio", "Luau", "Web3 API", "Database Systems"],
     slides: [
-      { id: 1, title: "Nusantara Defense Arena", subtitle: "Momogi Roblox Campaign", color: "from-slate-indigo to-midnight/80" },
-      { id: 2, title: "Indonesian Heroes Deck", subtitle: "Balancing & Stats Simulation", color: "from-vibrant-indigo/10 to-electric-purple/10" },
-      { id: 3, title: "Redeem Code API Integration", subtitle: "Economy Simulation Loop", color: "from-slate-indigo/30 to-electric-purple/20" }
+      { id: 1, title: "Nusantara Defense Arena", subtitle: "Momogi Roblox Campaign", color: "", videoUrl: "/projects/Momogi-Roblox.mp4" }
     ],
     links: [
       { label: "Verify Code", url: "https://www.momogijelajahnusantara.com/verify", icon: "external" }
@@ -195,9 +193,9 @@ export const projectsData: Project[] = [
     ],
     techStack: ["Unity", "C#", "AI Behavior Tree", "Physics Engine"],
     slides: [
-      { id: 1, title: "Gladiator PVP Spectacle", subtitle: "Colostream Arena", color: "from-slate-indigo to-midnight/80" },
-      { id: 2, title: "Fame & Popularity Mechanics", subtitle: "Economy Scripted Systems", color: "from-vibrant-indigo/10 to-electric-purple/10" },
-      { id: 3, title: "Audience Clashing Interface", subtitle: "User Interface Design", color: "from-slate-indigo/30 to-vibrant-indigo/20" }
+      { id: 1, title: "Gladiator PVP Spectacle", subtitle: "Colostream Arena", color: "", imageUrl: "/projects/Colostream.gif" },
+      { id: 2, title: "Fame & Popularity Mechanics", subtitle: "Economy Scripted Systems", color: "", imageUrl: "/projects/Colostream-1.jpg" },
+      { id: 3, title: "Audience Clashing Interface", subtitle: "User Interface Design", color: "", imageUrl: "/projects/Colostream-2.jpg" }
     ],
     links: [
       { label: "Play on Itch.io", url: "https://sippit.itch.io/colosstream", icon: "game" }
@@ -222,9 +220,7 @@ export const projectsData: Project[] = [
     ],
     techStack: ["Unity", "C#", "Photon Unity Networking", "Physics 2D"],
     slides: [
-      { id: 1, title: "Claw Machine Arena Showdown", subtitle: "Kocheng: Battle of Boings", color: "from-slate-indigo to-midnight/80" },
-      { id: 2, title: "Slap & Bouncing Mechanics", subtitle: "Physics Simulation Design", color: "from-vibrant-indigo/10 to-electric-purple/10" },
-      { id: 3, title: "Interactive Arena Hazards", subtitle: "Systems Engineering", color: "from-slate-indigo/30 to-electric-purple/20" }
+      { id: 1, title: "Claw Machine Arena Showdown", subtitle: "Kocheng: Battle of Boings", color: "", videoUrl: "/projects/Kocheng.mp4" }
     ],
     links: [
       { label: "Watch Video", url: "https://www.youtube.com/watch?v=PuMKBskZpQQ&ab_channel=Kocheng%3ABattleofBoings", icon: "play" }
@@ -249,9 +245,7 @@ export const projectsData: Project[] = [
     ],
     techStack: ["Unity", "C#", "Web3 API", "Database Systems"],
     slides: [
-      { id: 1, title: "BTS TinyTAN Card Collection", subtitle: "Chocolatos TinyTan", color: "from-slate-indigo to-midnight/80" },
-      { id: 2, title: "Redeem Code System", subtitle: "Collection Mechanics", color: "from-vibrant-indigo/10 to-electric-purple/10" },
-      { id: 3, title: "Prize Campaign Flow", subtitle: "Reward Distribution", color: "from-slate-indigo/30 to-vibrant-indigo/20" }
+      { id: 1, title: "BTS TinyTAN Card Collection", subtitle: "Chocolatos TinyTan", color: "", videoUrl: "/projects/Chocolatos-TinyTan.mp4" }
     ],
     links: [
       { label: "Campaign", url: "#", icon: "external" }
@@ -276,9 +270,7 @@ export const projectsData: Project[] = [
     ],
     techStack: ["Unity", "C#", "Vuforia AR", "Interactive Sensors"],
     slides: [
-      { id: 1, title: "AR Fighting Game", subtitle: "Gery Pasta Boboiboy", color: "from-slate-indigo to-midnight/80" },
-      { id: 2, title: "Marker-Based AR System", subtitle: "Augmented Reality", color: "from-vibrant-indigo/10 to-electric-purple/10" },
-      { id: 3, title: "Character Collection", subtitle: "Boboiboy Universe", color: "from-slate-indigo/30 to-vibrant-indigo/20" }
+      { id: 1, title: "AR Fighting Game", subtitle: "Gery Pasta Boboiboy", color: "", videoUrl: "/projects/Gery Pasta Boboiboy.mp4" }
     ],
     links: [
       { label: "View Campaign", url: "#", icon: "external" }
@@ -303,9 +295,7 @@ export const projectsData: Project[] = [
     ],
     techStack: ["Unity", "C#", "5D LED Systems", "Interactive Sensors"],
     slides: [
-      { id: 1, title: "LED Interactive Tug of War", subtitle: "Imaji Game Spot", color: "from-slate-indigo to-midnight/80" },
-      { id: 2, title: "Leaderboard System", subtitle: "Score & Prizes", color: "from-vibrant-indigo/10 to-electric-purple/10" },
-      { id: 3, title: "Public Event Activation", subtitle: "Large-Scale LED", color: "from-slate-indigo/30 to-vibrant-indigo/20" }
+      { id: 1, title: "LED Interactive Tug of War", subtitle: "Imaji Game Spot", color: "", videoUrl: "/projects/Tap-Tap.mp4" }
     ],
     links: [
       { label: "View Event", url: "#", icon: "external" }
@@ -330,9 +320,7 @@ export const projectsData: Project[] = [
     ],
     techStack: ["Unity", "C#", "Physics Engine", "Hardware Integration"],
     slides: [
-      { id: 1, title: "Water Simulation", subtitle: "Unity Physics Project", color: "from-slate-indigo to-midnight/80" },
-      { id: 2, title: "Buoyancy Mechanics", subtitle: "Real-World Physics", color: "from-vibrant-indigo/10 to-electric-purple/10" },
-      { id: 3, title: "Fluid Dynamics", subtitle: "Physics Visualization", color: "from-slate-indigo/30 to-vibrant-indigo/20" }
+      { id: 1, title: "Water Simulation", subtitle: "Unity Physics Project", color: "", imageUrl: "/projects/Water-Bouyancy.jpg" }
     ],
     links: [
       { label: "View Project", url: "#", icon: "external" }
@@ -357,9 +345,9 @@ export const projectsData: Project[] = [
     ],
     techStack: ["Unity", "C#", "AI Behavior Tree", "Physics Engine"],
     slides: [
-      { id: 1, title: "Science School Adventure", subtitle: "Legend of Learning", color: "from-slate-indigo to-midnight/80" },
-      { id: 2, title: "Physics Concepts", subtitle: "Force, Sound & Gravity", color: "from-vibrant-indigo/10 to-electric-purple/10" },
-      { id: 3, title: "Interactive Lessons", subtitle: "Educational Gameplay", color: "from-slate-indigo/30 to-vibrant-indigo/20" }
+      { id: 1, title: "Science School Adventure", subtitle: "Legend of Learning", color: "", videoUrl: "/projects/Science-School.mp4" },
+      { id: 2, title: "Physics Concepts", subtitle: "Force, Sound & Gravity", color: "", imageUrl: "/projects/ScienceSchool.jpg" },
+      { id: 3, title: "Interactive Lessons", subtitle: "Educational Gameplay", color: "", imageUrl: "/projects/ScienceSchool.png" }
     ],
     links: [
       { label: "Play Game", url: "#", icon: "game" }
