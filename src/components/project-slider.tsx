@@ -35,7 +35,7 @@ export function ProjectSlider({ slides, className }: ProjectSliderProps) {
     <div
       onClick={slides.length > 1 ? handleNext : undefined}
       className={cn(
-        "relative w-full h-full overflow-hidden rounded-2xl border border-vibrant-indigo/5 bg-slate-indigo/20 group select-none",
+        "relative w-full h-full overflow-hidden rounded-none border border-vibrant-indigo/5 bg-slate-indigo/20 group select-none",
         slides.length > 1 ? "cursor-pointer" : "cursor-default",
         className
       )}

@@ -235,8 +235,8 @@ export function ProjectDetailModal({ selectedProject, origin, onClose }: Project
                 className="md:col-span-7 flex flex-col justify-between pb-6 order-1 md:order-2 md:max-h-[calc(90vh-8rem)] md:overflow-y-auto md:pr-3 scrollbar-thin scrollbar-thumb-vibrant-indigo/20 scrollbar-track-transparent"
               >
                 {/* Mobile Slider View (S, M, L screens) */}
-                <div className="block md:hidden w-full aspect-video rounded-2xl overflow-hidden border border-vibrant-indigo/10 bg-slate-indigo/30 relative mb-3 shrink-0">
-                  <ProjectSlider slides={selectedProject.slides} className="h-full w-full" />
+                <div className="block md:hidden w-full aspect-video rounded-none overflow-hidden border border-vibrant-indigo/10 bg-slate-indigo/30 relative mb-3 shrink-0">
+                  <ProjectSlider slides={selectedProject.slides} className="h-full w-full rounded-none" />
                 </div>
 
                 {/* Desktop Stacking View */}
@@ -245,7 +245,7 @@ export function ProjectDetailModal({ selectedProject, origin, onClose }: Project
                     <motion.div 
                       key={slide.id} 
                       variants={itemVariants}
-                      className="aspect-video w-full relative rounded-[20px] overflow-hidden border border-vibrant-indigo/10 bg-slate-indigo/30 group animate-in fade-in slide-in-from-bottom duration-500"
+                      className="aspect-video w-full relative rounded-none overflow-hidden border border-vibrant-indigo/10 bg-slate-indigo/30 group animate-in fade-in slide-in-from-bottom duration-500"
                       style={{ animationDelay: `${idx * 150}ms` }}
                     >
                       {slide.videoUrl ? (
@@ -287,7 +287,7 @@ export function ProjectDetailModal({ selectedProject, origin, onClose }: Project
 
                       {/* Content Overlay on Media Card */}
                       <div className="absolute bottom-4 left-4 right-4 z-20 space-y-0.5 pointer-events-none">
-                        <span className="text-[9px] font-semibold text-electric-purple/95 font-heading tracking-wider uppercase bg-midnight/50 px-2 py-0.5 rounded border border-vibrant-indigo/10 backdrop-blur-sm w-fit inline-block">
+                        <span className="text-[9px] font-semibold text-electric-purple/95 font-heading tracking-wider uppercase bg-midnight/50 px-2 py-0.5 rounded-none border border-vibrant-indigo/10 backdrop-blur-sm w-fit inline-block">
                           {slide.subtitle}
                         </span>
                         <h4 className="text-xs md:text-sm font-heading font-bold text-frost-white filter drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">

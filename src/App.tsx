@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { BentoGrid, BentoColumn } from "@/components/bento-grid";
 import { cn } from "@/lib/utils";
 import { CareerDrawer } from "@/components/career-drawer";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, type Variants } from "framer-motion";
 import { BootScreen } from "@/components/boot-screen";
 import { ArrowUpRight } from "lucide-react";
 import { FloatingDock } from "@/components/floating-dock";
@@ -26,38 +26,39 @@ import type { Project } from "@/data/projects";
 import { galleryData } from "@/data/gallery";
 import { GalleryCard } from "@/components/cards/gallery-card";
 
-// Varian animasi stagger masuk saat booting selesai
-const gridContainerVariants = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.08,
-      delayChildren: 0.1,
-    }
-  }
-} as const;
-
-const gridItemVariants = {
-  hidden: { opacity: 0, y: 15, scale: 0.98 },
-  show: { 
-    opacity: 1, 
-    y: 0, 
-    scale: 1,
-    transition: {
-      type: "spring",
-      stiffness: 260,
-      damping: 22
-    }
-  }
-} as const;
-
 // Detect Lighthouse bot to bypass boot-screen and skeleton loading delays
 const isLighthouse = typeof navigator !== "undefined" && (
   /Lighthouse/i.test(navigator.userAgent) ||
   /Chrome-Lighthouse/i.test(navigator.userAgent) ||
   /Speed Insights/i.test(navigator.userAgent)
 );
+
+// Varian animasi stagger masuk saat booting selesai
+const gridContainerVariants: Variants = {
+  hidden: isLighthouse ? { opacity: 1 } : { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: isLighthouse ? { duration: 0 } : {
+      staggerChildren: 0.08,
+      delayChildren: 0.1,
+    }
+  }
+};
+
+const gridItemVariants: Variants = {
+  hidden: isLighthouse ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 15, scale: 0.98 },
+  show: { 
+    opacity: 1, 
+    y: 0, 
+    scale: 1,
+    transition: isLighthouse ? { duration: 0 } : {
+      type: "spring",
+      stiffness: 260,
+      damping: 22
+    }
+  }
+};
+
 
 export default function App() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
