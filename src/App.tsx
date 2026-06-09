@@ -276,8 +276,8 @@ export default function App() {
 
                       <div className="grid grid-cols-1 gap-4 w-full">
                         {isSkeletonLoading ? (
-                          [1, 2, 3].map((n) => (
-                            <ProjectCard key={n} project={undefined as any} isScanning={isScanning} onClick={() => {}} isSkeleton={true} />
+                          projectsData.map((_, index) => (
+                            <ProjectCard key={index} project={undefined as any} isScanning={isScanning} onClick={() => {}} isSkeleton={true} />
                           ))
                         ) : (
                           projectsData.map((project) => (
@@ -312,8 +312,8 @@ export default function App() {
 
                       <div className="grid grid-cols-1 gap-4 w-full">
                         {isSkeletonLoading ? (
-                          [1, 2, 3].map((n) => (
-                            <GalleryCard key={n} item={undefined as any} isScanning={isScanning} isSkeleton={true} />
+                          galleryData.map((_, index) => (
+                            <GalleryCard key={index} item={undefined as any} isScanning={isScanning} isSkeleton={true} />
                           ))
                         ) : (
                           galleryData.map((item) => (
@@ -340,8 +340,8 @@ export default function App() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6 w-full">
                   {isSkeletonLoading ? (
-                    [1, 2, 3].map((n) => (
-                      <motion.div key={n} variants={gridItemVariants}>
+                    galleryData.map((_, index) => (
+                      <motion.div key={index} variants={gridItemVariants}>
                         <GalleryCard isScanning={isScanning} isSkeleton={true} />
                       </motion.div>
                     ))
@@ -365,8 +365,8 @@ export default function App() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6 w-full">
                   {isSkeletonLoading ? (
-                    [1, 2, 3].map((n) => (
-                      <motion.div key={n} variants={gridItemVariants}>
+                    projectsData.map((_, index) => (
+                      <motion.div key={index} variants={gridItemVariants}>
                         <ProjectCard project={undefined as any} isScanning={isScanning} onClick={() => {}} isSkeleton={true} />
                       </motion.div>
                     ))
@@ -384,7 +384,7 @@ export default function App() {
                 </div>
               </div>
             ) : (
-              <BentoGrid id="home" className="w-full">
+              <BentoGrid id="home" className="w-full lg:items-start">
                 {/* ==================== LEFT COLUMN (Bento Cards Info) ==================== */}
                 <BentoColumn side="left">
                   {/* Profile Card */}
@@ -424,11 +424,10 @@ export default function App() {
                 {/* ==================== RIGHT COLUMN (Modular Projects) ==================== */}
                 <BentoColumn side="right">
                   {isSkeletonLoading ? (
-                    [1, 2, 3, 4].map((n) => (
+                    projectsData.map((_, index) => (
                       <motion.div 
-                        key={n} 
-                        variants={gridItemVariants} 
-                        className="h-full"
+                        key={index} 
+                        variants={gridItemVariants}
                       >
                         <ProjectCard project={undefined as any} isScanning={isScanning} onClick={() => {}} isSkeleton={true} />
                       </motion.div>

@@ -74,7 +74,7 @@ export function ProjectCard({ project, isScanning, onClick, isSkeleton }: Projec
       <BentoCard 
         isScanning={isScanning}
         coordinate="LOG-PXX"
-        className="p-4 flex flex-col justify-between h-full gap-4 border border-vibrant-indigo/25"
+        className="p-4 flex flex-col justify-between gap-4 border border-vibrant-indigo/25"
       >
         {/* Slideshow Media Box */}
         <div className="aspect-video w-full shrink-0 relative rounded-none overflow-hidden bg-vibrant-indigo/10 border border-vibrant-indigo/15 shimmer opacity-25" />
