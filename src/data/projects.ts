@@ -131,23 +131,24 @@ export const projectsData: Project[] = [
     id: "chocolatos",
     title: "Chocolatos X-Quest Sumedang",
     category: "Featured Attraction",
-    timeline: "3 Months (2023)",
-    roles: ["Lead Systems Designer", "Tech Specialist"],
-    detailedDescription: "Chocolatos X-Quest Sumedang is a futuristic industrial edutourism ride that integrates immersive 5D LED technology directly inside the Garudafood factory in Sumedang. The project is designed to stimulate interactive learning for children and families, combining elements of a chocolate-themed space adventure narrative with physical motion sensor systems.",
+    timeline: "2 Years",
+    roles: ["Game Designer", "Creative"],
+    detailedDescription: "Chocolatos X-Quest is a futuristic, educational tourism attraction featuring 5D immersive LED technology, integrated directly into the Garudafood factory in Sumedang. It offers a lively, real-world learning experience designed to stimulate curiosity among the younger generation.",
     features: [
       "Designed core gameplay loops for the 5D LED interactive projection game.",
       "Synchronized infrared motion sensor systems with game visuals on a giant LED screen.",
       "Developed real-time calibration systems for the spaceship simulator.",
       "Wrote technical documentation and ride operational guides."
     ],
-    techStack: ["Unity", "C#", "5D LED Systems", "Interactive Sensors"],
+    techStack: ["Unreal", "5D LED Systems", "Interactive Sensors"],
     slides: [
       { id: 1, title: "5D LED Immersive Experience", subtitle: "Chocolatos X-Quest Sumedang", color: "", imageUrl: `${base}projects/Chocolatos-XQUEST1.jpg` },
-      { id: 2, title: "Cacao Spaceships Blueprint", subtitle: "Calibration Systems Model", color: "", imageUrl: `${base}projects/Chocolatos-XQUEST2.jpg` },
-      { id: 3, title: "Interactive Factory Tour Game", subtitle: "Gameplay Mechanics", color: "", imageUrl: `${base}projects/Chocolatos-XQUEST3.jpg` }
+      { id: 2, title: "Chocolatos Immersive Gondola", subtitle: "Chocolatos X-Quest Sumedang", color: "", imageUrl: `${base}projects/Chocolatos-XQUEST2.jpg` },
+      { id: 3, title: "Interactive Factory Tour Game", subtitle: "Chocolatos X-Quest Sumedang", color: "", imageUrl: `${base}projects/Chocolatos-XQUEST3.jpg` }
     ],
     links: [
       { label: "Video", url: "https://www.youtube.com/watch?v=OzxL23wIUYA", icon: "play" },
+      { label: "Shorts", url: "https://youtube.com/shorts/ob0qwhyYo_o?si=KMIP2SK7dWlgM34_", icon: "play" },
       { label: "Article", url: "https://garudafood.com/gubernur-jabar-dedi-mulyadi-resmikan-chocolatos-x-quest-inovasi-eduwisata-industri-22", icon: "book" },
 
     ]
@@ -159,17 +160,17 @@ export const projectsData: Project[] = [
   {
     id: "momogi",
     title: "Momogi Roblox: Jelajah Nusantara",
-    category: "Active Campaigns",
-    timeline: "4 Months (2024)",
+    category: "Brand Campaigns",
+    timeline: "5 Months",
     roles: ["Game Systems Designer", "Economy Designer"],
-    detailedDescription: "Momogi Roblox: Jelajah Nusantara is a tower defense game campaign on the Roblox platform integrated directly with Momogi physical products. Players can purchase Momogi physical products to receive unique codes, which can then be redeemed in-game through a special verification API to claim Indonesian hero characters, collect card decks, and participate in game economy simulations.",
+    detailedDescription: "Momogi Roblox is an engaging tower defense game on the Roblox platform, created as part of a promotional campaign. Players purchase Momogi 'Jelajah Nusantara' products to discover unique redeemable codes. Entering these codes in-game unlocks exclusive characters and resources. Play, collect all the unique codes to complete your collection deck, and win exciting prizes!",
     features: [
       "Designed Tower Defense balancing systems for Indonesian hero characters.",
       "Integrated unique verification code APIs from physical product packaging into the Roblox database.",
       "Designed code redemption gameplay flows (Redeem Code Loop) for player retention.",
       "Simulated game economy models to balance coin rewards with card deck prices."
     ],
-    techStack: ["Roblox Studio", "Luau", "Web3 API", "Database Systems"],
+    techStack: ["Roblox Studio", "Luau", "Game Balancing"],
     slides: [
       { id: 1, title: "Nusantara Defense Arena", subtitle: "Momogi Roblox Campaign", color: "", videoUrl: `${base}projects/Momogi-Roblox.mp4` }
     ],
@@ -184,17 +185,20 @@ export const projectsData: Project[] = [
   {
     id: "colostream",
     title: "Colostream",
-    category: "Game Project",
-    timeline: "2 Months (2023)",
-    roles: ["Solo Systems Designer", "Solo Programmer"],
-    detailedDescription: "Colostream is a physics-based PVP gladiator action game where players battle in a grand arena. Behind the scenes, the combat is actually a scripted theatrical performance orchestrated by the peak gladiator to capture popularity and fame from an audience hungry for clashing action.",
+    category: "Game Jam",
+    timeline: "1 Week",
+    roles: ["Game Designer", "Game Programmer"],
+    detailedDescription: "Every week, the citizens of Rome gather to watch their idols clash as gladiators in the greatest entertainment spectacle in the universe: ColosStream.\n\nBut behind the scenes, the show is nothing more than a scripted performance — orchestrated by the top gladiator himself in a quest for ultimate fame and popularity.",
     features: [
-      "Designed gladiator combat mechanics based on impact physics (Bouncing & Slapping).",
-      "Developed dynamic audience AI that reacts in real-time to fighting performance.",
-      "Designed scripted performance systems that demand precise combat choreography.",
-      "Implemented popularity economy systems to unlock new equipment."
+      "Control: Use mouse to interact with objects and buttons, press ESC to open pause menu",
+      "Each turn random objects will appear on the arena",
+      "Attack and defeat the appearing enemies",
+      "Equip weapons to increase attack power",
+      "Use items and tools with all kinds of effects to help you",
+      "Unlock new objects by winning the game",
+      "Build your own challenge with increasing difficulty level to unlock better rewards"
     ],
-    techStack: ["Unity", "C#", "AI Behavior Tree", "Physics Engine"],
+    techStack: ["Unity", "C#"],
     slides: [
       { id: 1, title: "Gladiator PVP Spectacle", subtitle: "Colostream Arena", color: "", imageUrl: `${base}projects/Colostream.gif` },
       { id: 2, title: "Fame & Popularity Mechanics", subtitle: "Economy Scripted Systems", color: "", imageUrl: `${base}projects/Colostream-1.jpg` },
@@ -212,8 +216,8 @@ export const projectsData: Project[] = [
     id: "kocheng",
     title: "Kocheng: Battle of Boings",
     category: "PVP Arcade Game",
-    timeline: "3 Months (2023)",
-    roles: ["Lead Systems Designer", "Level Designer"],
+    timeline: "2 Years",
+    roles: ["Game Designer", "Level Designer", "Character Designer"],
     detailedDescription: "Kocheng: Battle of Boings is a local/online multiplayer action game set inside a transforming giant claw machine. Players control cat characters (\"Kocheng\") to shoot, slap, and bounce enemies (\"Boings\") into spike walls or environmental hazards in chaotic and exciting arena battles.",
     features: [
       "Designed responsive and satisfying physics-based bouncing and slapping mechanics.",
@@ -223,7 +227,7 @@ export const projectsData: Project[] = [
     ],
     techStack: ["Unity", "C#", "Photon Unity Networking", "Physics 2D"],
     slides: [
-      { id: 1, title: "Claw Machine Arena Showdown", subtitle: "Kocheng: Battle of Boings", color: "", videoUrl: `${base}projects/Kocheng.mp4` }
+      { id: 1, title: "Claw Machine Characters Arena Showdown", subtitle: "Kocheng: Battle of Boings", color: "", videoUrl: `${base}projects/Kocheng.mp4` }
     ],
     links: [
       { label: "Watch Video", url: "https://www.youtube.com/watch?v=PuMKBskZpQQ&ab_channel=Kocheng%3ABattleofBoings", icon: "play" }
@@ -246,12 +250,12 @@ export const projectsData: Project[] = [
       "Developed tiered reward systems to drive repeat purchases.",
       "Integrated unique code verification databases with marketing campaigns."
     ],
-    techStack: ["Unity", "C#", "Web3 API", "Database Systems"],
+    techStack: ["Unity", "C#", "Database Systems"],
     slides: [
       { id: 1, title: "BTS TinyTAN Card Collection", subtitle: "Chocolatos TinyTan", color: "", videoUrl: `${base}projects/Chocolatos-TinyTan.mp4` }
     ],
     links: [
-      { label: "Campaign", url: "#", icon: "external" }
+      { label: "Campaign", url: "https://www.youtube.com/watch?v=Y1qFVVFVn6M&t=2s", icon: "external" }
     ]
   },
 
@@ -273,7 +277,7 @@ export const projectsData: Project[] = [
     ],
     techStack: ["Unity", "C#", "Vuforia AR", "Interactive Sensors"],
     slides: [
-      { id: 1, title: "AR Fighting Game", subtitle: "Gery Pasta Boboiboy", color: "", videoUrl: `${base}projects/Gery Pasta Boboiboy.mp4` }
+      { id: 1, title: "AR Fighting Game", subtitle: "Gery Pasta Boboiboy", color: "", videoUrl: `${base}projects/Gery-Pasta-Boboiboy.mp4` }
     ],
     links: [
       { label: "View Campaign", url: "#", icon: "external" }
@@ -301,7 +305,6 @@ export const projectsData: Project[] = [
       { id: 1, title: "LED Interactive Tug of War", subtitle: "Imaji Game Spot", color: "", videoUrl: `${base}projects/Tap-Tap.mp4` }
     ],
     links: [
-      { label: "View Event", url: "#", icon: "external" }
     ]
   },
 
@@ -350,10 +353,9 @@ export const projectsData: Project[] = [
     slides: [
       { id: 1, title: "Science School Adventure", subtitle: "Legend of Learning", color: "", videoUrl: `${base}projects/Science-School.mp4` },
       { id: 2, title: "Physics Concepts", subtitle: "Force, Sound & Gravity", color: "", imageUrl: `${base}projects/ScienceSchool.jpg` },
-      { id: 3, title: "Interactive Lessons", subtitle: "Educational Gameplay", color: "", imageUrl: `${base}projects/ScienceSchool.png` }
     ],
     links: [
-      { label: "Play Game", url: "#", icon: "game" }
+      { label: "Play Game", url: "https://teachers.legendsoflearning.com/assignments/399f968b/science-school-assignment", icon: "game" }
     ]
   },
 

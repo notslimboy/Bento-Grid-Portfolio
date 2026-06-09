@@ -108,7 +108,7 @@ export function ProfileCard({ isScanning, isSkeleton, customHeight }: ProfileCar
       <div className="flex items-center gap-3 mt-6 pt-4 border-t border-vibrant-indigo/10">
         <a 
           href="mailto:raka.arya34@gmail.com" 
-          className="px-5 py-2 border border-accent/40 bg-accent/5 text-accent text-xs font-bold tracking-widest font-bebas hover:bg-accent hover:text-[#070913] transition-all duration-300 rounded-none uppercase flex items-center gap-2"
+          className="px-5 py-2 border border-accent/40 bg-accent/5 text-accent text-xs font-bold tracking-widest font-bebas hover:text-[#070913] rounded-none uppercase flex items-center gap-2 btn-tactical btn-tactical-cyan"
         >
           <span className="chevron-marker" style={{ borderLeftColor: 'currentColor' }} />
           <span>Get in Touch</span>
@@ -116,7 +116,7 @@ export function ProfileCard({ isScanning, isSkeleton, customHeight }: ProfileCar
         <a 
           href="/CV-Raka-Arya-Pratama-ATS.pdf" 
           download="CV Raka Arya Pratama ATS.pdf"
-          className="px-5 py-2 border border-vibrant-indigo/40 bg-vibrant-indigo/5 text-vibrant-indigo text-xs font-bold tracking-widest font-bebas hover:bg-vibrant-indigo hover:text-[#070913] transition-all duration-300 rounded-none uppercase flex items-center gap-2"
+          className="px-5 py-2 border border-vibrant-indigo/40 bg-vibrant-indigo/5 text-vibrant-indigo text-xs font-bold tracking-widest font-bebas hover:text-[#070913] rounded-none uppercase flex items-center gap-2 btn-tactical btn-tactical-indigo"
         >
           <Download className="w-3.5 h-3.5" />
           <span>Resume</span>

@@ -43,7 +43,7 @@ export function ProfilesCard({ isScanning, isSkeleton }: ProfilesCardProps) {
         <div className="w-1.5 h-1.5 bg-accent shadow-[0_0_6px_#06B6D4]" />
       </div>
       
-      <div className="grid grid-cols-5 gap-2 my-auto justify-items-center items-center">
+      <div className="grid grid-cols-5 gap-2 mt-4 justify-items-center items-center">
         {/* LinkedIn */}
         <a 
           href="https://linkedin.com/in/raka-arya-pratama/" 
@@ -109,7 +109,7 @@ export function ProfilesCard({ isScanning, isSkeleton }: ProfilesCardProps) {
         </a>
       </div>
       
-      <div className="text-[8px] text-muted-slate/50 font-mono tracking-widest uppercase mt-auto">
+      <div className="text-[8px] text-muted-slate/50 font-mono tracking-widest uppercase mt-4">
         CONNECTED SYSTEMS: LINKEDIN, ITCH, DISCORD & STEAM
       </div>
     </BentoCard>

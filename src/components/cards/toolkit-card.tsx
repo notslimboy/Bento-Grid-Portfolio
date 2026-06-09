@@ -10,8 +10,10 @@ export function ToolkitCard({ isScanning, isSkeleton }: ToolkitCardProps) {
   const tools = [
     { name: "Unity (C#)", search: "Unity" },
     { name: "Roblox Studio", search: "Roblox Studio" },
-    { name: "Vuforia (AR)", search: "Vuforia" },
-    { name: "Machinations", search: "Machinations" }
+    { name: "Machinations", search: "Machinations" },
+    { name: "Figma", search: "Figma" },
+    { name: "Spreadsheet", search: "Spreadsheet" },
+    { name: "AI Engineering", search: "AI Engineering" },
   ];
 
   if (isSkeleton) {
@@ -63,7 +65,7 @@ export function ToolkitCard({ isScanning, isSkeleton }: ToolkitCardProps) {
       </div>
       
       <div className="text-[8px] text-muted-slate/50 mt-auto font-mono tracking-widest uppercase">
-        SPEC: AR/VR, WEB3, & SYSTEM DESIGN
+        SPEC: GAME DESIGN, GAME BALANCING, AI ENGINEERING
       </div>
     </BentoCard>
   );

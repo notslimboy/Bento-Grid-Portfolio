@@ -168,7 +168,7 @@ export function ProjectCard({ project, isScanning, onClick, isSkeleton }: Projec
               target="_blank"
               rel="noreferrer"
               onClick={(e) => e.stopPropagation()} 
-              className="px-4 py-1.5 border border-accent/40 bg-accent/5 text-xs font-bold text-accent hover:bg-accent hover:text-[#070913] transition-all rounded-none uppercase flex items-center gap-1.5 font-bebas tracking-widest group/btn"
+              className="px-4 py-1.5 border border-accent/40 bg-accent/5 text-xs font-bold text-accent hover:text-[#070913] rounded-none uppercase flex items-center gap-1.5 font-bebas tracking-widest group/btn btn-tactical btn-tactical-cyan"
             >
               {primaryLink.icon === 'game' && <Gamepad2 className="w-3 h-3 text-accent group-hover/btn:text-[#070913] transition-colors" />}
               {primaryLink.icon === 'play' && <Play className="w-3 h-3 text-accent group-hover/btn:text-[#070913] transition-colors" />}

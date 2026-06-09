@@ -173,10 +173,10 @@ export function ProjectDetailModal({ selectedProject, origin, onClose }: Project
                           target="_blank"
                           rel="noreferrer"
                           className={cn(
-                            "px-4 py-2 rounded-none text-xs md:text-sm font-bold flex items-center gap-1.5 transition-all border font-bebas tracking-wider uppercase",
+                            "px-4 py-2 rounded-none text-xs md:text-sm font-bold flex items-center gap-1.5 border font-bebas tracking-wider uppercase btn-tactical",
                             isPlay 
-                              ? "bg-accent/15 border-accent/40 text-accent hover:bg-accent hover:text-[#070913]" 
-                              : "bg-vibrant-indigo/10 border-vibrant-indigo/25 text-frost-white hover:border-vibrant-indigo/50 hover:bg-vibrant-indigo/20"
+                              ? "bg-accent/15 border-accent/40 text-accent hover:text-[#070913] btn-tactical-cyan" 
+                              : "bg-vibrant-indigo/10 border-vibrant-indigo/25 text-frost-white hover:text-[#070913] btn-tactical-indigo"
                           )}
                         >
                           {link.icon === 'book' && <BookOpen className="w-3.5 h-3.5" />}
@@ -190,7 +190,7 @@ export function ProjectDetailModal({ selectedProject, origin, onClose }: Project
                   </motion.div>
 
                   {/* Long Description */}
-                  <motion.p variants={itemVariants} className="text-sm md:text-base text-frost-white/95 leading-relaxed font-sans border-l-2 border-accent/45 pl-3">
+                  <motion.p variants={itemVariants} className="text-sm md:text-base text-frost-white/95 leading-relaxed font-sans border-l-2 border-accent/45 pl-3 whitespace-pre-line">
                     {selectedProject.detailedDescription}
                   </motion.p>
 
