@@ -142,9 +142,10 @@ export const projectsData: Project[] = [
     ],
     techStack: ["Unreal", "5D LED Systems", "Interactive Sensors"],
     slides: [
-      { id: 1, title: "5D LED Immersive Experience", subtitle: "Chocolatos X-Quest Sumedang", color: "", imageUrl: `${base}projects/Chocolatos-XQUEST1.jpg` },
-      { id: 2, title: "Chocolatos Immersive Gondola", subtitle: "Chocolatos X-Quest Sumedang", color: "", imageUrl: `${base}projects/Chocolatos-XQUEST2.jpg` },
-      { id: 3, title: "Interactive Factory Tour Game", subtitle: "Chocolatos X-Quest Sumedang", color: "", imageUrl: `${base}projects/Chocolatos-XQUEST3.jpg` }
+      { id: 1, title: "Chocolatos X-Quest Sumedang", subtitle: "Interactive Factory Visit", color: "", imageUrl: `${base}projects/XQuest-Logo.png` },
+      { id: 2, title: "5D LED Immersive Experience", subtitle: "Chocolatos X-Quest Sumedang", color: "", imageUrl: `${base}projects/Chocolatos-XQUEST1.jpg` },
+      { id: 3, title: "Chocolatos Immersive Gondola", subtitle: "Chocolatos X-Quest Sumedang", color: "", imageUrl: `${base}projects/Chocolatos-XQUEST2.jpg` },
+      { id: 4, title: "Interactive Factory Tour Game", subtitle: "Chocolatos X-Quest Sumedang", color: "", imageUrl: `${base}projects/Chocolatos-XQUEST3.jpg` }
     ],
     links: [
       { label: "Video", url: "https://www.youtube.com/watch?v=OzxL23wIUYA", icon: "play" },

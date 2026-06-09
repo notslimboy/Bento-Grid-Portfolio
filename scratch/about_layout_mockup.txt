@@ -1,0 +1,253 @@
+================================================================================
+ABOUT PAGE LAYOUT MOCKUPS (DESKTOP, TABLET, MOBILE SML)
+================================================================================
+
+Note: Halaman About tidak memiliki header/navbar internal tersendiri.
+Navigasi diatur secara terpusat oleh navbar global di App.tsx yang sudah ada.
+Seluruh poin misi karir di timeline disalin persis (copy-paste) dari data drawer karir.
+Seluruh lencana/chips menggunakan model kotak (rectangular) FUI yang konsisten.
+
+--------------------------------------------------------------------------------
+1. DESKTOP VIEW (Width >= 1024px)
+--------------------------------------------------------------------------------
+
++------------------------------------------------------------------------------+
+| [Header Navbar Global (dari App.tsx): Home  [About]  Projects  Gallery ]      |
++------------------------------------------------------------------------------+
+|                                                                              |
+|  SECTION 1: PROFILEKU (Hero Layout)                                          |
+|  +------------------------------------------------------------------------+  |
+|  |  [Avatar: 3D/Photo]         Hi, I'm Raka Arya Pratama                  |  |
+|  |                             =========================                  |  |
+|  |                             [● AVAILABLE FOR HIRE]                     |  |
+|  |                             [█ GAME DESIGNER // CREATIVE]              |  |
+|  |                                                                        |  |
+|  |                             A Game Designer who crafts engaging       |  |
+|  |                             gameplay systems & creative campaigns.     |  |
+|  |                                                                        |  |
+|  |  [LinkedIn] [Itch.io] [Discord] [Steam] [Email]    [Download Resume]   |  |
+|  +------------------------------------------------------------------------+  |
+|                                                                              |
+|  SECTION 2: CAREER HISTORY (Aceternity Timeline - Scroll Animated)           |
+|  +------------------------------------------------------------------------+  |
+|  |  Title: Career Odyssey //                                              |  |
+|  |                                                                        |  |
+|  |  2023 - Present   O  [Imaji DigiStudio - Game Designer & Creative]     |  |
+|  |  (Current)        |  - Led gameplay system design and interactive      |  |
+|  |                   |    installation flows for Chocolatos X-Quest.      |  |
+|  |                   |  - Designed Roblox game systems, economy simulation,|  |
+|  |                   |    and verification code API integrations for      |  |
+|  |                   |    Momogi Roblox: Jelajah Nusantara.               |  |
+|  |                   |  - Created AR market-based fighting game campaigns |  |
+|  |                   |    for Gery Boboiboy and card collection           |  |
+|  |                   |    mechanics for BTS TinyTan.                      |  |
+|  |                   |  - Developed interactive tug-of-war mechanics for |  |
+|  |                   |    large-scale LED screens at Imaji Game Spot.     |  |
+|  |                   |  +-------------------+  +-------------------+      |  |
+|  |                   |  | [Img: X-Quest Tour] |  | [Img: Momogi RBLX] |      |  |
+|  |                   |  +-------------------+  +-------------------+      |  |
+|  |                   |                                                    |  |
+|  |  Early 2023       O  [Miraimimpi - Creative Game Designer]             |  |
+|  |                   |  - Designed core gameplay loops, physics-based     |  |
+|  |                   |    bouncing mechanics, and level layout for        |  |
+|  |                   |    Kocheng: Battle of Boings (BoB).                |  |
+|  |                   |  - Implemented interactive arena hazards and       |  |
+|  |                   |    optimized multiplayer gameplay feedback.        |  |
+|  |                   |  +-------------------+                             |  |
+|  |                   |  | [Img: BoB Gameplay] |                             |  |
+|  |                   |  +-------------------+                             |  |
+|  |                   |                                                    |  |
+|  |  Late 2022        O  [Monster Group - System & Narrative Designer]     |  |
+|  |                   |  - Balanced gameplay systems, progression models,  |  |
+|  |                   |    and combat calculators for Mahabrats.           |  |
+|  |                   |  - Wrote narrative design documents and balanced   |  |
+|  |                   |    virtual economy flows.                          |  |
+|  |                   |                                                    |  |
+|  |  Early 2022       O  [Maulidan Games - Game Programmer]                |  |
+|  |                      - Programmed gameplay mechanics and systems for   |  |
+|  |                        Legends of Learning educational game.           |  |
+|  |                      - Developed simulations and object interactions   |  |
+|  |                        for the Water Physics project in Unity.         |  |
+|  +------------------------------------------------------------------------+  |
+|                                                                              |
+|  SECTION 3: LOADOUT / SKILLS                                                 |
+|  +------------------------------------------------------------------------+  |
+|  |  Title: Systems & Tools Loadout //                                     |  |
+|  |                                                                        |  |
+|  |  [GAME DESIGN]           [PROGRAMMING]          [PRODUCTION/TOOLS]     |  |
+|  |  +--------------------+  +--------------------+  +--------------------+ |  |
+|  |  | - System Design    |  | - Unity (C#)       |  | - Machinations     | |  |
+|  |  | - Core Loop Model  |  | - Luau (Roblox)    |  | - Agile PM         | |  |
+|  |  | - Narrative Flow   |  | - Version Control  |  | - Level Design     | |  |
+|  |  +--------------------+  +--------------------+  +--------------------+ |  |
+|  +------------------------------------------------------------------------+  |
+|                                                                              |
+|  SECTION 4: TESTIMONIALS (Interactive Showcase Layout)                       |
+|  +------------------------------------------------------------------------+  |
+|  |  Title: Client Endorsements //                                         |  |
+|  |                                                                        |  |
+|  |  +------------------------------------------------------------------+  |  |
+|  |  | "Raka delivers outstanding systems design. Highly recommended!"  |  |  |
+|  |  | - Lead PM @ Monster Group                     ***** [Prev] [Next]  |  |  |
+|  |  +------------------------------------------------------------------+  |  |
+|  +------------------------------------------------------------------------+  |
+|                                                                              |
+|  SECTION 5: CTA (Connect Terminal)                                           |
+|  +------------------------------------------------------------------------+  |
+|  |  [ Send Signal ] INITIATE CONNECTION? //                               |  |
+|  |  Ready to start a new project or talk game systems?   [ SAY HELLO ]    |  |
+|  +------------------------------------------------------------------------+  |
+|                                                                              |
+|  [Footer Global: © 2026 Raka Arya Pratama]                                   |
++------------------------------------------------------------------------------+
+
+
+--------------------------------------------------------------------------------
+2. TABLET VIEW (Width >= 768px and < 1024px)
+--------------------------------------------------------------------------------
+
++------------------------------------------------------------------------------+
+| [Header Navbar Global (dari App.tsx): Home  [About]  Projects  Gallery ]      |
++------------------------------------------------------------------------------+
+|                                                                              |
+|  SECTION 1: PROFILEKU (Stacked Layout)                                       |
+|  +------------------------------------------------------------------------+  |
+|  |  [Avatar: 3D/Photo]                                                    |  |
+|  |  Hi, I'm Raka Arya Pratama                                             |  |
+|  |  [● AVAILABLE FOR HIRE]          [█ GAME DESIGNER // CREATIVE]          |  |
+|  |  A Game Designer crafting engaging gameplay loops and systems.        |  |
+|  |  [LI] [Itch] [Disc] [Steam] [Mail]               [Download Resume]      |  |
+|  +------------------------------------------------------------------------+  |
+|                                                                              |
+|  SECTION 2: CAREER HISTORY (Timeline)                                        |
+|  +------------------------------------------------------------------------+  |
+|  |  Title: Career Odyssey //                                              |  |
+|  |                                                                        |  |
+|  |  2023-Present  O  [Imaji DigiStudio] Game Designer & Creative          |  |
+|  |                |  - Led gameplay system design and interactive          |  |
+|  |                |    installation flows for Chocolatos X-Quest.          |  |
+|  |                |  - Designed Roblox game systems, economy simulation,   |  |
+|  |                |    and verification code API integrations.             |  |
+|  |                |  - Created AR market-based fighting game campaigns.    |  |
+|  |                |  - Developed interactive tug-of-war mechanics.         |  |
+|  |                |  [Img: X-Quest Tour] [Img: Momogi RBLX]               |  |
+|  |                |                                                       |  |
+|  |  Early 2023    O  [Miraimimpi] Creative Game Designer                  |  |
+|  |                |  - Designed core gameplay loops, physics-based         |  |
+|  |                |    bouncing mechanics, and level layouts for BoB.     |  |
+|  |                |  - Implemented interactive arena hazards.             |  |
+|  |                |                                                       |  |
+|  |  Late 2022     O  [Monster Group] System & Narrative Designer          |  |
+|  |                |  - Balanced systems, progression, and calculators.     |  |
+|  |                |  - Wrote narrative design documents.                  |  |
+|  |                |                                                       |  |
+|  |  Early 2022    O  [Maulidan Games] Game Programmer                     |  |
+|  |                   - Programmed mechanics for Legends of Learning.      |  |
+|  |                   - Developed simulations for Water Physics project.   |  |
+|  +------------------------------------------------------------------------+  |
+|                                                                              |
+|  SECTION 3: LOADOUT / SKILLS                                                 |
+|  +------------------------------------------------------------------------+  |
+|  |  Title: Systems & Tools Loadout //                                     |  |
+|  |                                                                        |  |
+|  |  [GAME DESIGN]           [PROGRAMMING]          [PRODUCTION/TOOLS]     |  |
+|  |  - System Design         - Unity (C#)           - Machinations         |  |
+|  |  - Core Loop Model       - Luau (Roblox)        - Agile PM             |  |
+|  |  - Narrative Flow        - Version Control      - Level Design         |  |
+|  +------------------------------------------------------------------------+  |
+|                                                                              |
+|  SECTION 4: TESTIMONIALS (Slider Layout)                                     |
+|  +------------------------------------------------------------------------+  |
+|  |  Title: Client Endorsements //                                         |  |
+|  |  +------------------------------------------------------------------+  |  |
+|  |  | "Outstanding systems design." - Lead PM @ Monster Group   *****  |  |  |
+|  |  +------------------------------------------------------------------+  |  |
+|  |  [Index: 1/3]                                           [Prev] [Next]  |  |
+|  +------------------------------------------------------------------------+  |
+|                                                                              |
+|  SECTION 5: CTA                                                              |
+|  +------------------------------------------------------------------------+  |
+|  |  INITIATE CONNECTION? //                              [ SAY HELLO ]    |  |
+|  +------------------------------------------------------------------------+  |
+|                                                                              |
+|  [Footer Global: © 2026 Raka Arya Pratama]                                   |
++------------------------------------------------------------------------------+
+
+
+--------------------------------------------------------------------------------
+3. MOBILE SML VIEW (Width < 768px)
+--------------------------------------------------------------------------------
+
++---------------------------------------------------------+
+| [Header Global (dari App.tsx): RAKA ARYA PRATAMA]       |  <-- Link Nav hidden,
++---------------------------------------------------------+      diganti Floating Dock
+|                                                         |
+|  SECTION 1: PROFILEKU (Stacked Column)                  |
+|  +---------------------------------------------------+  |
+|  |  [Avatar: 3D/Photo]                                |  |
+|  |  Raka Arya Pratama                                 |  |
+|  |  [● AVAILABLE FOR HIRE]                            |  |
+|  |  [█ GAME DESIGNER // CREATIVE]                     |  |
+|  |  A Game Designer crafting engaging systems.        |  |
+|  |  [LI] [Itch] [Disc] [Steam] [Mail]                 |  |
+|  |  [Download Resume]                                 |  |
+|  +---------------------------------------------------+  |
+|                                                         |
+|  SECTION 2: CAREER HISTORY (Timeline Left-aligned)      |
+|  +---------------------------------------------------+  |
+|  |  Title: Career Odyssey //                           |  |
+|  |                                                      |  |
+|  |  2023-Present                                        |  |
+|  |  |  O [Imaji DigiStudio]                             |  |
+|  |  |  - Led gameplay system design for Chocolatos.     |  |
+|  |  |  - Designed Roblox game systems for Momogi.       |  |
+|  |  |  - Created AR campaigns for Boboiboy.             |  |
+|  |  |  - Developed tug-of-war for Imaji Gamespot.       |  |
+|  |  |  [Img: X-Quest Tour]                              |  |
+|  |  |                                                   |  |
+|  |  Early 2023                                          |  |
+|  |  |  O [Miraimimpi]                                   |  |
+|  |  |  - Designed Kocheng: Battle of Boings (BoB).      |  |
+|  |  |  - Implemented interactive arena hazards.         |  |
+|  |  |                                                   |  |
+|  |  Late 2022                                           |  |
+|  |  |  O [Monster Group]                                |  |
+|  |  |  - Balanced gameplay systems for Mahabrats.       |  |
+|  |  |  - Wrote narrative design documents.              |  |
+|  |  |                                                   |  |
+|  |  Early 2022                                          |  |
+|  |     O [Maulidan Games]                               |  |
+|  |     - Programmed for Legends of Learning.            |  |
+|  |     - Developed for Water Physics project.           |  |
+|  +---------------------------------------------------+  |
+|                                                         |
+|  SECTION 3: LOADOUT / SKILLS (Accordion/Simplified List)|
+|  +---------------------------------------------------+  |
+|  |  Title: Skills Loadout //                            |  |
+|  |  - System Design                                     |  |
+|  |  - Core Loop Model                                   |  |
+|  |  - Unity (C#)                                        |  |
+|  |  - Roblox Studio                                     |  |
+|  |  - Machinations                                      |  |
+|  +---------------------------------------------------+  |
+|                                                         |
+|  SECTION 4: TESTIMONIALS (Swipe/Tap Slider)             |
+|  +---------------------------------------------------+  |
+|  |  Title: Endorsements //                              |  |
+|  |  +---------------------------------------------+  |  |
+|  |  | "Outstanding systems design." - Monster G.  |  |  |
+|  +---------------------------------------------------+  |
+|                                                         |
+|  SECTION 5: CTA (Full Width)                            |
+|  +---------------------------------------------------+  |
+|  |  INITIATE CONNECTION? //                           |  |
+|  |  [ SAY HELLO ]                                     |  |
+|  +---------------------------------------------------+  |
+|                                                         |
+|  [Footer Global: © 2026 Raka Arya Pratama]               |
+|                                                         |
+|     +-----------------------------------------+         |
+|     |  (Home)  ([About])  (Projects)  (Gallery)|         |  <-- Floating Navigation
+|     +-----------------------------------------+         |      Dock Melayang (4 Ikon)
++---------------------------------------------------------+
+================================================================================

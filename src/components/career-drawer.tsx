@@ -27,8 +27,8 @@ const careerData: CareerJob[] = [
     waypointLabel: "Earth Sector",
     waypointType: "earth",
     missions: [
-      "Developed educational physics-based games for 4th–6th grade students in the U.S. market, covering buoyancy, basic motion, and momentum.",
-      "Designed and implemented multiple core gameplay mechanics tailored to learning objectives.",
+      "Programmed gameplay mechanics and systems for Legends of Learning educational game.",
+      "Developed simulations and object interactions for the Water Physics project in Unity.",
       "Refactored existing game codebases for improved readability, scalability, and maintainability.",
     ],
   },
@@ -41,8 +41,8 @@ const careerData: CareerJob[] = [
     waypointType: "station",
     missions: [
       "Refined existing game concepts and authored Game Design Documents (GDD) to align with updated vision and mechanics.",
-      "Conducted gameplay balancing to ensure fair and engaging player progression.",
-      "Performed internal playtesting to evaluate mechanics, pacing, and user feedback for iteration.",
+      "Balanced gameplay systems, progression models, and combat calculators for Mahabrats.",
+      "Wrote narrative design documents and balanced virtual economy flows.",
     ],
   },
   {
@@ -53,7 +53,7 @@ const careerData: CareerJob[] = [
     waypointLabel: "Orbit Waypoint Beta",
     waypointType: "station",
     missions: [
-      "Designed gameplay mechanics, character abilities, and skill sets, followed by hands-on playtesting and iteration.",
+      "Designed gameplay loops, mechanics, character abilities, and level layouts for Kocheng: Battle of Boings (BoB), followed by hands-on playtesting and iteration.",
       "Balanced core gameplay systems and authored comprehensive Game Design Documents (GDD) to guide development.",
       "Developed in-game economy projections, including currency flow and in-app purchase (IAP) structures.",
       "Built scalable design systems to support feature expansion and maintain gameplay consistency.",
@@ -67,7 +67,7 @@ const careerData: CareerJob[] = [
     waypointLabel: "Moon Destination",
     waypointType: "moon",
     missions: [
-      "Created Game Design Documents (GDD), balanced gameplay systems, and developed pitch decks for both internal and client-facing game projects.",
+      "Created Game Design Documents (GDD), balanced gameplay systems, and developed pitch decks for projects including Chocolatos X-Quest, Momogi Roblox: Jelajah Nusantara, Gery Boboiboy, BTS TinyTan, and Imaji Gamespot.",
       "Designed UI/UX for games and apps, focusing on clarity, engagement, and smooth user experience.",
       "Designed system architecture and conducted testing for game features and app functionality to ensure performance and usability.",
       "Developed creative game concepts and interactive ideas aligned with brand campaigns and experiential marketing.",

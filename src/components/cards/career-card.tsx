@@ -4,11 +4,11 @@ import { cn } from "@/lib/utils";
 
 interface CareerCardProps {
   isScanning?: boolean;
-  onOpenDrawer: () => void;
+  onSeeProfile: () => void;
   isSkeleton?: boolean;
 }
 
-export function CareerCard({ isScanning, onOpenDrawer, isSkeleton }: CareerCardProps) {
+export function CareerCard({ isScanning, onSeeProfile, isSkeleton }: CareerCardProps) {
   const experiences = [
     { company: "Maulidan Games", role: "Intern Game Programmer", period: "Sep – Dec 2021" },
     { company: "Monster Group", role: "Game Designer", period: "Feb – Dec 2023" },
@@ -103,10 +103,10 @@ export function CareerCard({ isScanning, onOpenDrawer, isSkeleton }: CareerCardP
  
       <div className="space-y-2 mt-auto">
         <button 
-          onClick={onOpenDrawer}
+          onClick={onSeeProfile}
           className="w-full h-10 border border-vibrant-indigo/35 bg-vibrant-indigo/5 text-frost-white hover:text-[#070913] flex items-center justify-between px-5 cursor-pointer rounded-none group/btn uppercase font-bebas tracking-widest active:scale-[0.99] btn-tactical btn-tactical-indigo"
         >
-          <span className="text-xs font-bold font-bebas">Launch Career History</span>
+          <span className="text-xs font-bold font-bebas">See Detail Profile</span>
           <span className="chevron-marker group-hover/btn:translate-x-1 transition-transform" style={{ borderLeftColor: 'currentColor' }} />
         </button>
         <div className="text-[8px] text-muted-slate/40 font-mono tracking-widest text-center">

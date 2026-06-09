@@ -64,7 +64,7 @@ export function ProfileCard({ isScanning, isSkeleton }: ProfileCardProps) {
             <img 
               src={profileImg} 
               alt="Raka Arya Pratama" 
-              className="w-full h-full object-cover grayscale contrast-[1.1] brightness-[0.95] group-hover:scale-105 group-hover:grayscale-0 transition-all duration-500 z-10" 
+              className="w-full h-full object-cover contrast-[1.05] brightness-[0.95] group-hover:scale-105 transition-all duration-500 z-10" 
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#070913]/30 via-transparent to-transparent pointer-events-none z-20" />
             

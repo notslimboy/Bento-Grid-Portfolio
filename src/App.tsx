@@ -16,6 +16,8 @@ import { ProfilesCard } from "@/components/cards/profiles-card";
 import { ProjectCard } from "@/components/cards/project-card";
 import { InterestsCard } from "@/components/cards/interests-card";
 import { ModelViewerCard } from "@/components/cards/model-viewer-card";
+import { TestimonialsCard } from "@/components/cards/testimonials-card";
+import { ConnectCard } from "@/components/cards/connect-card";
 
 // Impor komponen modal detail proyek
 import { ProjectDetailModal } from "@/components/project-detail-modal";
@@ -25,6 +27,7 @@ import { projectsData } from "@/data/projects";
 import type { Project } from "@/data/projects";
 import { galleryData } from "@/data/gallery";
 import { GalleryCard } from "@/components/cards/gallery-card";
+import { AboutPage } from "@/components/about-page";
 
 // Detect Lighthouse bot to bypass boot-screen and skeleton loading delays
 const isLighthouse = typeof navigator !== "undefined" && (
@@ -200,6 +203,17 @@ export default function App() {
                 <span className={cn("absolute bottom-0 left-0 h-0.5 bg-accent transition-all duration-200", activeTab === "home" ? "w-full" : "w-0 group-hover:w-full")} />
               </a>
               <a 
+                href="#about" 
+                onClick={(e) => { e.preventDefault(); setActiveTab("about"); }}
+                className={cn(
+                  "transition-colors duration-200 relative py-1 group",
+                  activeTab === "about" ? "text-accent" : "hover:text-accent"
+                )}
+              >
+                About
+                <span className={cn("absolute bottom-0 left-0 h-0.5 bg-accent transition-all duration-200", activeTab === "about" ? "w-full" : "w-0 group-hover:w-full")} />
+              </a>
+              <a 
                 href="#projects" 
                 onClick={(e) => { e.preventDefault(); setActiveTab("projects"); }}
                 className={cn(
@@ -250,11 +264,27 @@ export default function App() {
                       className="flex flex-col gap-4 w-full"
                     >
                       <ProfileCard isScanning={isScanning} isSkeleton={isSkeletonLoading} />
-                      <CareerCard isScanning={isScanning} onOpenDrawer={() => setIsDrawerOpen(true)} isSkeleton={isSkeletonLoading} />
+                      <CareerCard isScanning={isScanning} onSeeProfile={() => setActiveTab("about")} isSkeleton={isSkeletonLoading} />
                       <ProfilesCard isScanning={isScanning} isSkeleton={isSkeletonLoading} />
                       <ToolkitCard isScanning={isScanning} isSkeleton={isSkeletonLoading} />
                       <InterestsCard isScanning={isScanning} isSkeleton={isSkeletonLoading} />
                       <ModelViewerCard isScanning={isScanning} isSkeleton={isSkeletonLoading} />
+                      <TestimonialsCard isScanning={isScanning} isSkeleton={isSkeletonLoading} />
+                      <ConnectCard isScanning={isScanning} isSkeleton={isSkeletonLoading} />
+                    </motion.div>
+                  )}
+
+                  {activeTab === "about" && (
+                    <motion.div
+                      key="about-tab"
+                      id="about"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.2 }}
+                      className="w-full"
+                    >
+                      <AboutPage />
                     </motion.div>
                   )}
 
@@ -290,6 +320,11 @@ export default function App() {
                             />
                           ))
                         )}
+                      </div>
+
+                      {/* Connect CTA Card at the bottom of mobile Projects tab */}
+                      <div className="mt-6 w-full">
+                        <ConnectCard isScanning={isScanning} isSkeleton={isSkeletonLoading} />
                       </div>
                     </motion.div>
                   )}
@@ -329,6 +364,10 @@ export default function App() {
                     </motion.div>
                   )}
                 </AnimatePresence>
+              </div>
+            ) : activeTab === "about" ? (
+              <div id="about" className="w-full max-w-7xl mx-auto flex flex-col space-y-6 animate-in fade-in duration-300">
+                <AboutPage />
               </div>
             ) : activeTab === "gallery" ? (
               <div id="gallery" className="w-full max-w-7xl mx-auto flex flex-col space-y-6 animate-in fade-in duration-300">
@@ -383,6 +422,11 @@ export default function App() {
                     ))
                   )}
                 </div>
+
+                {/* Connect CTA Card at the bottom of Projects page */}
+                <motion.div variants={gridItemVariants} className="mt-8">
+                  <ConnectCard isScanning={isScanning} isSkeleton={isSkeletonLoading} />
+                </motion.div>
               </div>
             ) : (
               <BentoGrid id="home" className="w-full lg:items-start">
@@ -398,7 +442,7 @@ export default function App() {
 
                   {/* Career History Card */}
                   <motion.div variants={gridItemVariants}>
-                    <CareerCard isScanning={isScanning} onOpenDrawer={() => setIsDrawerOpen(true)} isSkeleton={isSkeletonLoading} />
+                    <CareerCard isScanning={isScanning} onSeeProfile={() => setActiveTab("about")} isSkeleton={isSkeletonLoading} />
                   </motion.div>
 
                   {/* Social Profiles Card */}
@@ -419,6 +463,16 @@ export default function App() {
                   {/* 3D Model Viewer Card */}
                   <motion.div variants={gridItemVariants}>
                     <ModelViewerCard isScanning={isScanning} isSkeleton={isSkeletonLoading} />
+                  </motion.div>
+
+                  {/* Testimonials Card */}
+                  <motion.div variants={gridItemVariants}>
+                    <TestimonialsCard isScanning={isScanning} isSkeleton={isSkeletonLoading} />
+                  </motion.div>
+
+                  {/* Connect CTA Card */}
+                  <motion.div variants={gridItemVariants}>
+                    <ConnectCard isScanning={isScanning} isSkeleton={isSkeletonLoading} />
                   </motion.div>
                 </BentoColumn>
 
@@ -458,6 +512,7 @@ export default function App() {
             <span>© {new Date().getFullYear()} Raka Arya Pratama. Game Designer & Creative.</span>
             <div className="flex gap-4">
               <a href="#home" onClick={(e) => { e.preventDefault(); setActiveTab("home"); }} className="hover:text-frost-white transition-colors duration-200">Home</a>
+              <a href="#about" onClick={(e) => { e.preventDefault(); setActiveTab("about"); }} className="hover:text-frost-white transition-colors duration-200">About</a>
               <a href="#projects" onClick={(e) => { e.preventDefault(); setActiveTab("projects"); }} className="hover:text-frost-white transition-colors duration-200">Projects</a>
               <a href="#gallery" onClick={(e) => { e.preventDefault(); setActiveTab("gallery"); }} className="hover:text-frost-white transition-colors duration-200">Gallery</a>
             </div>
