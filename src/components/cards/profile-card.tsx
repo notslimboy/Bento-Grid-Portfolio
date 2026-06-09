@@ -6,10 +6,9 @@ import { ScrambleText } from "@/components/scramble-text";
 interface ProfileCardProps {
   isScanning?: boolean;
   isSkeleton?: boolean;
-  customHeight?: number;
 }
 
-export function ProfileCard({ isScanning, isSkeleton, customHeight }: ProfileCardProps) {
+export function ProfileCard({ isScanning, isSkeleton }: ProfileCardProps) {
   if (isSkeleton) {
     return (
       <BentoCard 
@@ -17,7 +16,6 @@ export function ProfileCard({ isScanning, isSkeleton, customHeight }: ProfileCar
         isScanning={isScanning}
         coordinate="DECK-P01"
         className="min-h-[320px] md:min-h-[360px] flex flex-col justify-between"
-        style={customHeight ? { height: `${customHeight}px` } : undefined}
       >
         <div className="flex flex-col gap-4">
           {/* Row 1: Avatar & Status Badge */}
@@ -56,7 +54,6 @@ export function ProfileCard({ isScanning, isSkeleton, customHeight }: ProfileCar
       isScanning={isScanning}
       coordinate="DECK-P01"
       className="min-h-[320px] md:min-h-[360px] flex flex-col justify-between"
-      style={customHeight ? { height: `${customHeight}px` } : undefined}
     >
       <div className="flex flex-col gap-4">
         {/* Row 1: Avatar & Status Badge */}

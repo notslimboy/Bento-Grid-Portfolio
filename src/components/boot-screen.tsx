@@ -24,8 +24,8 @@ export function BootScreen({ onComplete }: BootScreenProps) {
 
   useEffect(() => {
     // Progress bar speed
-    const duration = 1200; // ~1.2s loading
-    const intervalTime = 15;
+    const duration = 400; // ~400ms loading
+    const intervalTime = 100;
     const step = 100 / (duration / intervalTime);
 
     const timer = setInterval(() => {
@@ -45,7 +45,7 @@ export function BootScreen({ onComplete }: BootScreenProps) {
     if (progress >= 100) {
       const finishTimer = setTimeout(() => {
         onComplete();
-      }, 300); // Wait 300ms before fading out completely
+      }, 100); // Wait 100ms before fading out completely
       return () => clearTimeout(finishTimer);
     }
 
