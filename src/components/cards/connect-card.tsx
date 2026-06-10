@@ -54,11 +54,11 @@ export function ConnectCard({ isScanning, isSkeleton }: ConnectCardProps) {
 
         <a
           href="mailto:raka.arya34@gmail.com"
-          className="px-8 py-3.5 border border-vibrant-indigo/35 bg-vibrant-indigo/10 hover:text-[#070913] rounded-none flex items-center gap-3 cursor-pointer group text-xl font-bebas tracking-widest text-frost-white uppercase overflow-hidden relative btn-tactical btn-tactical-indigo"
+          className="px-8 py-3.5 border border-vibrant-indigo/35 bg-vibrant-indigo/10 hover:text-[#070913] rounded-none flex items-center gap-3 cursor-pointer group/btn text-xl font-bebas tracking-widest text-frost-white uppercase overflow-hidden relative btn-tactical btn-tactical-indigo"
         >
           <span className="w-2 h-5 bg-accent" />
           <span className="-mt-[2px] leading-none">Say Hello</span>
-          <ArrowUpRight className="w-5 h-5 text-muted-slate group-hover:text-[#070913] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-150" />
+          <ArrowUpRight className="w-5 h-5 text-frost-white group-hover/btn:text-[#070913] group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform duration-150" />
         </a>
       </div>
     </BentoCard>

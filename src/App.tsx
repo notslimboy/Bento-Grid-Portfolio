@@ -240,12 +240,12 @@ export default function App() {
             {/* Action Button */}
             <a 
               href="mailto:raka.arya34@gmail.com" 
-              className="px-5 py-2 border border-vibrant-indigo/35 bg-vibrant-indigo/10 hover:text-[#070913] rounded-none flex items-center gap-2 cursor-pointer group text-[11px] font-bebas tracking-widest text-frost-white uppercase overflow-hidden relative btn-tactical btn-tactical-indigo"
+              className="px-5 py-2 border border-vibrant-indigo/35 bg-vibrant-indigo/10 hover:text-[#070913] rounded-none flex items-center gap-2 cursor-pointer group/btn text-[11px] font-bebas tracking-widest text-frost-white uppercase overflow-hidden relative btn-tactical btn-tactical-indigo"
             >
-              <span className="w-1.5 h-3 bg-accent" />
-              <span>Let's Connect</span>
-              <ArrowUpRight className="w-3.5 h-3.5 text-muted-slate group-hover:text-[#070913] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-150" />
-            </a>
+               <span className="w-1.5 h-3 bg-accent" />
+               <span>Let's Connect</span>
+               <ArrowUpRight className="w-3.5 h-3.5 text-frost-white group-hover/btn:text-[#070913] group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform duration-150" />
+             </a>
           </header>
 
           {/* Main Bento Grid */}

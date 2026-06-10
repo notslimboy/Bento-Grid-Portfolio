@@ -167,7 +167,7 @@ export function AboutPage() {
   }));
 
   return (
-    <div className="min-h-screen bg-[#070913] text-frost-white pb-24 md:pb-12 pt-6 px-4 md:px-8 max-w-7xl mx-auto space-y-16">
+    <div className="w-full space-y-12 md:space-y-16">
       {/* SECTION 1: PROFILEKU (Hero Layout) */}
       <section className="relative rounded-none border border-vibrant-indigo/15 bg-slate-indigo/50 p-6 md:p-10 overflow-hidden hud-grid-overlay">
         {/* Holographic sweep & scanlines */}
@@ -443,6 +443,10 @@ export function AboutPage() {
       <section className="w-full pt-4">
         <ConnectCard />
       </section>
+
+      {/* Mobile-only Footer for About Page */}
+      <footer className="max-w-7xl w-full mx-auto mt-12 pt-6 border-t border-vibrant-indigo/5 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-muted-slate md:hidden">
+      </footer>
     </div>
   );
 }
