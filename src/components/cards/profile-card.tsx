@@ -3,6 +3,8 @@ import profileImg from "@/assets/profile.png";
 import { Download } from "lucide-react";
 import { ScrambleText } from "@/components/scramble-text";
 
+const base = import.meta.env.BASE_URL;
+
 interface ProfileCardProps {
   isScanning?: boolean;
   isSkeleton?: boolean;
@@ -111,7 +113,7 @@ export function ProfileCard({ isScanning, isSkeleton }: ProfileCardProps) {
           <span>Get in Touch</span>
         </a>
         <a 
-          href="/CV-Raka-Arya-Pratama-ATS.pdf" 
+          href={`${base}CV-Raka-Arya-Pratama-ATS.pdf`} 
           download="CV Raka Arya Pratama ATS.pdf"
           className="px-5 py-2 border border-vibrant-indigo/40 bg-vibrant-indigo/5 text-vibrant-indigo text-xs font-bold tracking-widest font-bebas hover:text-[#070913] rounded-none uppercase flex items-center gap-2 btn-tactical btn-tactical-indigo"
         >

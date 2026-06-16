@@ -19,13 +19,14 @@ The project has been refactored from a monolithic app into the following clean, 
   - `profiles-card.tsx`: Renders a grid-row containing 5 distinct social media buttons with strict dimension constraints.
   - `project-card.tsx`: Renders dynamic project details and slideshows on the right column.
   - `gallery-card.tsx`: Renders individual gallery video cards in a `aspect-[9/16]` portrait format. Videos auto-play, loop, and display in full color (no grayscale). Includes a halftone overlay, gradient bottom fade, and a pulse "STREAMING" indicator when a video is present.
+- `src/components/about-page.tsx`: Full-page "About" layout. Consists of 5 custom sections: Profile Hero (with colored avatar, socials, CV/Email buttons), Career History (rendering experience timeline), Skills Loadout, Endorsements (testimonial slider), and Connect Card.
 - `src/components/project-slider.tsx`: Manages the slideshow inside each project card. Supports three slide media types: `color` gradient (fallback), `imageUrl`, and `videoUrl`. Has smart single-slide behavior (see Section 4).
 - `src/components/project-detail-modal.tsx`: Manages the holographic 3D modal overlay.
-- `src/components/career-drawer.tsx`: Manages the side drawer detailing career achievements.
 - `src/components/boot-screen.tsx`: Handles the Sci-Fi loading telemetries on initial page visit.
 - `src/components/scramble-text.tsx`: A text animation component that scrambles characters before resolving to the target text. Supports `triggerOn="scroll"` to fire only when the element enters the viewport.
 - `public/projects/`: Contains image (`.jpg`, `.png`, `.gif`) and video (`.mp4`) files for project slides. Referenced using root-relative paths like `/projects/filename.ext`.
 - `public/gallery/`: Contains `.mp4` video files for the gallery tab. Referenced using root-relative paths like `/gallery/filename.mp4`.
+- `_originals_backup/`: Contains original backup media kept outside `public/` so it does not ship in production builds/deployments.
 
 ---
 
@@ -45,9 +46,13 @@ The application is structured as a two-column Bento Grid when in the **Home** ta
 | +--------------------------+ | +--------------------------+ |
 | |       CareerCard         | | |       ProjectCard 2      | |
 | +--------------------------+ | +--------------------------+ |
-| |       ToolkitCard        | | |       ProjectCard 3      | |
+| |       ProfilesCard       | | |       ProjectCard 3      | |
 | +--------------------------+ | +--------------------------+ |
-| |       ProfilesCard       | | |       ProjectCard 4      | |
+| |       ToolkitCard        | | |       ProjectCard 4      | |
+| +--------------------------+ | +--------------------------+ |
+| | Interests / 3D / Reviews | | |       ProjectCard N      | |
+| +--------------------------+ | +--------------------------+ |
+| |       ConnectCard        | | |                          | |
 | +--------------------------+ | +--------------------------+ |
 +------------------------------+------------------------------+
 |                          FOOTER                             |
@@ -59,7 +64,7 @@ The **Projects** and **Gallery** tabs replace the right column area (or the whol
 ### Left Column Rules (Info Column):
 - **Fixed Width:** The column is locked on desktop resolutions using `lg:w-[340px] xl:w-[380px] shrink-0`.
 - **Vertical Alignment:** Due to the narrow column width, all cards in the left column must stack vertically (`flex-col`). Avoid adding horizontal multi-column layouts inside left cards to prevent text truncation issues.
-- **Card Order:** The card sequence must strictly remain: **Profile** → **Career History** → **Toolkit** → **Profiles**.
+- **Card Order:** The current sequence is **Profile** → **Career History** → **Profiles** → **Toolkit** → **Interests** → **Model Viewer** → **Testimonials** → **Connect**.
 
 ### Right Column Rules (Projects Column):
 - **Dynamic Grid:** Renders dynamic cards by mapping over `projectsData` inside a `grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6` element.
@@ -70,6 +75,16 @@ The **Projects** and **Gallery** tabs replace the right column area (or the whol
 - **Portrait Aspect Ratio:** Each `GalleryCard` uses `aspect-[9/16]` to match a vertical mobile video format.
 - **Data Source:** `galleryData` from `src/data/gallery.ts`. Each item has `id`, `title`, `subtitle`, `coordinate`, and `videoUrl`.
 - **Video Display:** Videos display in full color by default (no grayscale filters). On hover, the card slightly scales up the video (`group-hover:scale-102`).
+
+### About Tab Rules:
+- **Full Width Layout:** The `about` tab renders the `<AboutPage />` component, which replaces the bento columns with a unified, full-page vertical stack.
+- **Section Stack Sequence:** Must strictly render the 5 modular sections in vertical succession:
+  1. **Profile Hero:** Displays Raka's coloured avatar (no grayscale), active status, direct social links (LinkedIn, Discord, Itch.io, Email), and download buttons.
+  2. **Career History (Timeline):** Displays full career checkpoints via the `<Timeline />` component.
+  3. **Skills Loadout:** Formatted as a 3-column classification grid.
+  4. **Endorsements:** Renders an interactive, standalone testimonial carousel with custom slider controls.
+  5. **Connect Card:** Reuses the `<ConnectCard />` component, styled to span the full page width matching the testimonials container.
+- **Base URL Resolution:** Uses `import.meta.env.BASE_URL` (aliased as `base` locally) to dynamically prepend the correct path for all relative visual/video media assets, ensuring correct links inside subfolder deployments (e.g. GitHub Pages).
 
 ---
 
@@ -144,6 +159,8 @@ Clicking a project card triggers a custom holographic scale-up modal that origin
 - **Fonts:** `font-bebas` for headings/uppercase display text. `font-mono` for HUD/metadata text. Base body uses Inter or similar sans-serif.
 - **Stagger Animation:** Stagger children variants are used on page entry to smoothly spring-slide each card into view from bottom-up after loading screen fades.
 - **Gallery Video Display:** Videos in the gallery render in full natural color by default, with a subtle halftone overlay and gradient bottom fade for legibility of text overlays.
+- **Avatar Color Rendering:** The pilot profile image (`profileImg`) is rendered in full color by default without any grayscale filter/transition in both the ProfileCard and AboutPage.
+- **Arrow CTA Named Groups:** Action buttons use nested Tailwind group classes (e.g. `group/btn` on the anchor and `group-hover/btn` on the arrow icon) to prevent animations from firing prematurely when hovering unrelated regions of the parent bento cards.
 
 ---
 

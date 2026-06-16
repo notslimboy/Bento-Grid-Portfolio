@@ -33,7 +33,7 @@ import { ScrambleText } from "@/components/scramble-text";
  */
 
 interface ProjectCardProps {
-  project: Project;
+  project?: Project;
   isScanning?: boolean;
   onClick: (e: React.MouseEvent<HTMLDivElement>) => void;
   isSkeleton?: boolean;
@@ -69,7 +69,7 @@ export function ProjectCard({ project, isScanning, onClick, isSkeleton }: Projec
   const primaryLink = project?.links?.[0];
   const dynamicCoord = project ? `LOG-P${project.id.slice(0, 2).toUpperCase()}` : "LOG-PXX";
 
-  if (isSkeleton) {
+  if (isSkeleton || !project) {
     return (
       <BentoCard 
         isScanning={isScanning}

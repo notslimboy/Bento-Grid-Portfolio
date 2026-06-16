@@ -1,10 +1,10 @@
-import * as React from "react";
+import type { CSSProperties, DetailedHTMLProps, HTMLAttributes } from "react";
 
 declare global {
   namespace React {
     namespace JSX {
       interface IntrinsicElements {
-        'model-viewer': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement> & {
+        'model-viewer': DetailedHTMLProps<HTMLAttributes<HTMLElement> & {
           src?: string;
           alt?: string;
           ar?: boolean;
@@ -19,7 +19,7 @@ declare global {
           'field-of-view'?: string;
           autoplay?: boolean;
           loading?: string;
-          style?: React.CSSProperties;
+          style?: CSSProperties;
         }, HTMLElement>;
       }
     }

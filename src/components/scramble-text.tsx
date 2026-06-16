@@ -17,6 +17,19 @@ const isLighthouse = typeof navigator !== "undefined" && (
   /Speed Insights/i.test(navigator.userAgent)
 );
 
+function createTextState(text: string, shouldScramble: boolean) {
+  return text.split("").map((char) => {
+    if (char === " " || char === "—") {
+      return { char, isDecrypted: true };
+    }
+    if (shouldScramble) {
+      const randomChar = GLYPHS[Math.floor(Math.random() * GLYPHS.length)];
+      return { char: randomChar, isDecrypted: false };
+    }
+    return { char, isDecrypted: true };
+  });
+}
+
 export function ScrambleText({
   text,
   className,
@@ -25,29 +38,16 @@ export function ScrambleText({
   speed = 20,
   trigger,
 }: ScrambleTextProps) {
-  if (isLighthouse) {
-    return <span className={className}>{text}</span>;
-  }
-
   const [scrambleState, setScrambleState] = useState<{ char: string; isDecrypted: boolean }[]>(() => {
-    const shouldStartScrambled = triggerOn === "mount" || triggerOn === "both" || triggerOn === "scroll";
-    return text.split("").map((char) => {
-      if (char === " " || char === "—") {
-        return { char, isDecrypted: true };
-      }
-      if (shouldStartScrambled) {
-        const randomChar = GLYPHS[Math.floor(Math.random() * GLYPHS.length)];
-        return { char: randomChar, isDecrypted: false };
-      }
-      return { char, isDecrypted: true };
-    });
+    const shouldStartScrambled = !isLighthouse && (triggerOn === "mount" || triggerOn === "both" || triggerOn === "scroll");
+    return createTextState(text, shouldStartScrambled);
   });
   const isAnimating = useRef(false);
-  const intervalId = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const intervalId = useRef<ReturnType<typeof setInterval> | null>(null);
   const elementRef = useRef<HTMLSpanElement | null>(null);
 
   const startScramble = useCallback(() => {
-    if (isAnimating.current) return;
+    if (isLighthouse || isAnimating.current) return;
     isAnimating.current = true;
 
     let iteration = 0;

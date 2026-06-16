@@ -7,9 +7,15 @@ interface ModelViewerCardProps {
   isSkeleton?: boolean;
 }
 
+type ModelViewerElement = HTMLElement & {
+  cameraOrbit: string;
+  cameraTarget: string;
+  fieldOfView: string;
+};
+
 export function ModelViewerCard({ isScanning, isSkeleton }: ModelViewerCardProps) {
   const [autoRotate, setAutoRotate] = useState(false);
-  const modelViewerRef = useRef<any>(null);
+  const modelViewerRef = useRef<ModelViewerElement | null>(null);
 
   const handleResetCamera = () => {
     if (modelViewerRef.current) {

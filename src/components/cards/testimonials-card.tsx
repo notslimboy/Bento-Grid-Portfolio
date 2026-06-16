@@ -12,7 +12,7 @@ interface TestimonialsCardProps {
 export function TestimonialsCard({ isScanning, isSkeleton }: TestimonialsCardProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
-  const autoPlayRef = useRef<any>(null);
+  const autoPlayRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const handleNext = () => {
     setCurrentIndex((prev) => (prev + 1) % testimonialsData.length);

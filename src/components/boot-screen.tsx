@@ -20,7 +20,10 @@ const bootLogs = [
 
 export function BootScreen({ onComplete }: BootScreenProps) {
   const [progress, setProgress] = useState(0);
-  const [logIndex, setLogIndex] = useState(0);
+  const logIndex = Math.min(
+    Math.floor((progress / 100) * bootLogs.length),
+    bootLogs.length - 1
+  );
 
   useEffect(() => {
     // Progress bar speed
@@ -49,15 +52,7 @@ export function BootScreen({ onComplete }: BootScreenProps) {
       return () => clearTimeout(finishTimer);
     }
 
-    // Update terminal logs based on progress percentage
-    const targetLogIndex = Math.min(
-      Math.floor((progress / 100) * bootLogs.length),
-      bootLogs.length - 1
-    );
-    if (targetLogIndex !== logIndex) {
-      setLogIndex(targetLogIndex);
-    }
-  }, [progress, logIndex, onComplete]);
+  }, [progress, onComplete]);
 
   return (
     <motion.div

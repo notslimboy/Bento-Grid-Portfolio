@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { BentoGrid, BentoColumn } from "@/components/bento-grid";
 import { cn } from "@/lib/utils";
-import { CareerDrawer } from "@/components/career-drawer";
 import { motion, AnimatePresence, type Variants } from "framer-motion";
 import { BootScreen } from "@/components/boot-screen";
 import { ArrowUpRight } from "lucide-react";
@@ -67,7 +66,6 @@ export default function App() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [origin, setOrigin] = useState({ x: 0, y: 0 });
   const [isScanning] = useState(false);
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(!isLighthouse);
   const [isSkeletonLoading, setIsSkeletonLoading] = useState(!isLighthouse);
   const [activeTab, setActiveTab] = useState<string>("home");
@@ -308,7 +306,7 @@ export default function App() {
                       <div className="grid grid-cols-1 gap-4 w-full">
                         {isSkeletonLoading ? (
                           projectsData.map((_, index) => (
-                            <ProjectCard key={index} project={undefined as any} isScanning={isScanning} onClick={() => {}} isSkeleton={true} />
+                            <ProjectCard key={index} isScanning={isScanning} onClick={() => {}} isSkeleton={true} />
                           ))
                         ) : (
                           projectsData.map((project) => (
@@ -349,7 +347,7 @@ export default function App() {
                       <div className="grid grid-cols-1 gap-4 w-full">
                         {isSkeletonLoading ? (
                           galleryData.map((_, index) => (
-                            <GalleryCard key={index} item={undefined as any} isScanning={isScanning} isSkeleton={true} />
+                            <GalleryCard key={index} isScanning={isScanning} isSkeleton={true} />
                           ))
                         ) : (
                           galleryData.map((item) => (
@@ -407,7 +405,7 @@ export default function App() {
                   {isSkeletonLoading ? (
                     projectsData.map((_, index) => (
                       <motion.div key={index} variants={gridItemVariants}>
-                        <ProjectCard project={undefined as any} isScanning={isScanning} onClick={() => {}} isSkeleton={true} />
+                        <ProjectCard isScanning={isScanning} onClick={() => {}} isSkeleton={true} />
                       </motion.div>
                     ))
                   ) : (
@@ -484,7 +482,7 @@ export default function App() {
                         key={index} 
                         variants={gridItemVariants}
                       >
-                        <ProjectCard project={undefined as any} isScanning={isScanning} onClick={() => {}} isSkeleton={true} />
+                        <ProjectCard isScanning={isScanning} onClick={() => {}} isSkeleton={true} />
                       </motion.div>
                     ))
                   ) : (
@@ -526,9 +524,6 @@ export default function App() {
         origin={origin} 
         onClose={() => setSelectedProject(null)} 
       />
-
-      {/* Career Drawer Overlay */}
-      <CareerDrawer isOpen={isDrawerOpen} onClose={() => setIsDrawerOpen(false)} />
 
       {/* Floating Navigation Dock untuk mobile */}
       <FloatingDock activeTab={activeTab} setActiveTab={setActiveTab} />

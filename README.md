@@ -65,7 +65,7 @@ To edit your introduction paragraph, name header, Available for Hire badge, avat
 ### 5. Editing Career Timeline
 To modify the short summary list of your experiences:
 - **File:** [src/components/cards/career-card.tsx](file:///Users/notslimboy/Portfolio%20Webiste%20Bento%20Grid/src/components/cards/career-card.tsx)
-  *(Note: To edit the detailed achievements drawer contents that pop out, edit `src/components/career-drawer.tsx`)*
+  *(Note: The detailed career profile now lives in the About tab, inside `src/components/about-page.tsx`. The old career drawer has been removed.)*
 
 ### 6. Changing Toolkit Badge Items
 To add or remove skills badges (like Unity, Roblox Studio, etc.):
@@ -74,6 +74,14 @@ To add or remove skills badges (like Unity, Roblox Studio, etc.):
 ### 7. Customizing Social Media Profiles
 To change urls or SVG paths of social icons (LinkedIn, Itch.io, Discord, Steam, Email):
 - **File:** [src/components/cards/profiles-card.tsx](file:///Users/notslimboy/Portfolio%20Webiste%20Bento%20Grid/src/components/cards/profiles-card.tsx)
+
+### 8. Customizing the About Page
+To adjust details on the full "About" tab page (such as hero description, timeline media layout, skills loadout cards, testimonial quotes, or connect section layout):
+- **File:** [src/components/about-page.tsx](file:///Users/notslimboy/Portfolio%20Webiste%20Bento%20Grid/src/components/about-page.tsx)
+
+### 9. Asset Backups
+Original uncompressed asset backups are stored outside the deployable `public/` folder:
+- **Folder:** `_originals_backup/`
 
 ---
 
