@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#070913" />
+    <title>Page not found | Raka Arya Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        color-scheme: dark;
+        font-family: "Inter", sans-serif;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        min-height: 100dvh;
+        margin: 0;
+        overflow: hidden;
+        color: #eef2ff;
+        background:
+          linear-gradient(rgba(99, 102, 241, .055) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(99, 102, 241, .055) 1px, transparent 1px),
+          #070913;
+        background-size: 28px 28px;
+      }
+
+      .glitch-band {
+        position: fixed;
+        z-index: 20;
+        top: var(--glitch-y, 48%);
+        left: -4%;
+        width: 108%;
+        height: var(--glitch-height, 8px);
+        pointer-events: none;
+        opacity: 0;
+        background: linear-gradient(90deg, transparent 0 8%, rgba(34, 211, 238, .8) 18%, rgba(253, 164, 175, .7) 50%, transparent 86%);
+        mix-blend-mode: screen;
+        transform: translateX(var(--glitch-band-x, 0));
+      }
+
+      main {
+        display: grid;
+        place-items: center;
+        min-height: 100dvh;
+        padding: 24px;
+        transition: filter 70ms steps(2, end), transform 70ms steps(2, end);
+      }
+
+      .panel {
+        position: relative;
+        isolation: isolate;
+        width: min(100%, 560px);
+        padding: clamp(32px, 7vw, 64px);
+        border: 1px solid rgba(99, 102, 241, .42);
+        background: rgba(14, 17, 34, .94);
+        box-shadow: 0 0 42px rgba(99, 102, 241, .14), inset 0 0 30px rgba(99, 102, 241, .06);
+        animation: signal-drop .42s steps(2, end) both;
+      }
+
+      .panel::before {
+        position: absolute;
+        z-index: -1;
+        inset: 0;
+        content: "";
+        pointer-events: none;
+        background: repeating-linear-gradient(
+          0deg,
+          rgba(34, 211, 238, .055) 0,
+          rgba(34, 211, 238, .055) 1px,
+          transparent 1px,
+          transparent 4px
+        );
+      }
+
+      .corner {
+        position: absolute;
+        width: 22px;
+        height: 22px;
+        border-color: #6366f1;
+        border-style: solid;
+      }
+
+      .top-left { top: 12px; left: 12px; border-width: 2px 0 0 2px; }
+      .top-right { top: 12px; right: 12px; border-width: 2px 2px 0 0; }
+      .bottom-left { bottom: 12px; left: 12px; border-width: 0 0 2px 2px; }
+      .bottom-right { right: 12px; bottom: 12px; border-width: 0 2px 2px 0; }
+
+      .status {
+        margin: 0 0 20px;
+        color: #fda4af;
+        font-family: "Space Mono", monospace;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: .15em;
+        text-transform: uppercase;
+        animation: status-flicker 1.4s steps(2, end) infinite;
+      }
+
+      h1 {
+        position: relative;
+        margin: 0;
+        font-family: "Bebas Neue", sans-serif;
+        font-size: clamp(42px, 9vw, 72px);
+        font-weight: 400;
+        letter-spacing: .035em;
+        line-height: .94;
+      }
+
+      h1::before,
+      h1::after {
+        position: absolute;
+        inset: 0;
+        content: attr(data-text);
+        pointer-events: none;
+      }
+
+      h1::before {
+        color: #22d3ee;
+        clip-path: inset(0 0 58% 0);
+        animation: glitch-cyan 2.8s steps(2, end) infinite;
+      }
+
+      h1::after {
+        color: #fda4af;
+        clip-path: inset(62% 0 0 0);
+        animation: glitch-pink 2.8s steps(2, end) infinite;
+      }
+
+      p {
+        max-width: 44ch;
+        margin: 20px 0 0;
+        color: #aab6d3;
+        font-family: "Inter", sans-serif;
+        font-size: 16px;
+        line-height: 1.6;
+      }
+
+      a {
+        display: inline-block;
+        margin-top: 30px;
+        padding: 12px 18px;
+        border: 1px solid rgba(34, 211, 238, .75);
+        color: #22d3ee;
+        background: rgba(6, 182, 212, .08);
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+        letter-spacing: .1em;
+        text-decoration: none;
+        text-transform: uppercase;
+      }
+
+      a:hover { background: rgba(6, 182, 212, .18); }
+      a:focus-visible { outline: 2px solid #eef2ff; outline-offset: 4px; }
+
+      body.is-glitch main {
+        filter: contrast(1.18) saturate(1.28);
+        transform: translate3d(var(--glitch-x, 0), var(--glitch-offset-y, 0), 0);
+      }
+
+      body.is-glitch .panel::before { opacity: .35; }
+      body.is-glitch .glitch-band { opacity: .92; animation: glitch-band-flicker 180ms steps(2, end) both; }
+
+      @keyframes signal-drop {
+        0% { opacity: 0; filter: brightness(2) contrast(1.6); transform: scaleY(.06); }
+        45% { opacity: .75; transform: scaleY(1.02) translateX(4px); }
+        70% { transform: translateX(-3px); }
+        100% { opacity: 1; filter: none; transform: none; }
+      }
+
+      @keyframes glitch-cyan {
+        0%, 87%, 100% { transform: translate(0); opacity: 0; }
+        88% { transform: translate(-4px, 1px); opacity: .75; }
+        90% { transform: translate(5px, -1px); opacity: .95; }
+        92% { transform: translate(-2px); opacity: .55; }
+      }
+
+      @keyframes glitch-pink {
+        0%, 87%, 100% { transform: translate(0); opacity: 0; }
+        89% { transform: translate(4px, -1px); opacity: .65; }
+        91% { transform: translate(-5px, 1px); opacity: .9; }
+        93% { transform: translate(2px); opacity: .45; }
+      }
+
+      @keyframes status-flicker {
+        0%, 84%, 100% { opacity: 1; }
+        86%, 90% { opacity: .35; }
+        88% { opacity: .85; }
+      }
+
+      @keyframes glitch-band-flicker {
+        0%, 100% { opacity: 0; }
+        45% { opacity: .85; }
+        60% { opacity: .2; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after { animation: none !important; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="glitch-band" aria-hidden="true"></div>
+    <main>
+      <section class="panel" aria-labelledby="missing-title">
+        <span class="corner top-left"></span>
+        <span class="corner top-right"></span>
+        <span class="corner bottom-left"></span>
+        <span class="corner bottom-right"></span>
+        <p class="status">Mission log: unmapped route // 404</p>
+        <h1 id="missing-title" data-text="This route slipped off the map.">This route slipped off the map.</h1>
+        <p>The destination you are looking for is not in this sector. Return to base and pick up the trail from there.</p>
+        <a href="/">Return to base</a>
+      </section>
+    </main>
+    <script>
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      const triggerGlitch = () => {
+        if (reducedMotion.matches) return;
+
+        const root = document.body;
+        root.style.setProperty('--glitch-x', `${Math.round((Math.random() - .5) * 16)}px`);
+        root.style.setProperty('--glitch-offset-y', `${Math.round((Math.random() - .5) * 5)}px`);
+        root.style.setProperty('--glitch-band-x', `${Math.round((Math.random() - .5) * 42)}px`);
+        root.style.setProperty('--glitch-y', `${14 + Math.round(Math.random() * 72)}%`);
+        root.style.setProperty('--glitch-height', `${3 + Math.round(Math.random() * 16)}px`);
+        root.classList.add('is-glitch');
+
+        window.setTimeout(() => root.classList.remove('is-glitch'), 180);
+      };
+
+      const scheduleGlitch = () => {
+        if (reducedMotion.matches) return;
+        window.setTimeout(() => {
+          triggerGlitch();
+          scheduleGlitch();
+        }, 2200 + Math.random() * 5200);
+      };
+
+      scheduleGlitch();
+    </script>
+  </body>
+</html>
