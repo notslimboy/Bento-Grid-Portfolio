@@ -1,8 +1,9 @@
 
 import { BentoCard } from "@/components/bento-grid";
 import { VideoOff } from "lucide-react";
-import type { GalleryItem } from "@/data/gallery";
+import type { GalleryItem } from "@/types/portfolio";
 import { ScrambleText } from "@/components/scramble-text";
+import { LazyVideo } from "@/components/lazy-video";
 
 interface GalleryCardProps {
   item?: GalleryItem;
@@ -11,7 +12,8 @@ interface GalleryCardProps {
 }
 
 export function GalleryCard({ item, isScanning, isSkeleton }: GalleryCardProps) {
-  const hasVideo = !!item?.videoUrl;
+  const videoUrl = item?.videoUrl;
+  const hasVideo = Boolean(videoUrl);
 
   if (isSkeleton) {
     return (
@@ -44,19 +46,16 @@ export function GalleryCard({ item, isScanning, isSkeleton }: GalleryCardProps) 
     >
       {/* Video / Placeholder Area */}
       <div className="absolute inset-0 z-0">
-        {hasVideo ? (
+        {videoUrl ? (
           <div className="w-full h-full relative">
-            <video
-              src={item.videoUrl}
+            <LazyVideo
+              src={videoUrl}
               autoPlay
               loop
               muted
               playsInline
-              className="w-full h-full object-cover brightness-95 group-hover:scale-102 transition-all duration-700"
+              className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-700"
             />
-            {/* Halftone Overlay for print/stipple effect */}
-            <div className="halftone-overlay opacity-25 z-10" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#070913]/90 via-[#070913]/40 to-transparent opacity-90 z-20" />
           </div>
         ) : (
           <div className="w-full h-full bg-[#080b15] flex flex-col items-center justify-center relative p-6 border border-dashed border-vibrant-indigo/15">

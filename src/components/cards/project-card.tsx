@@ -10,7 +10,7 @@ import {
   Play, 
   ArrowUpRight 
 } from "lucide-react";
-import type { Project } from "@/data/projects";
+import type { Project } from "@/types/portfolio";
 import { ScrambleText } from "@/components/scramble-text";
 
 /**

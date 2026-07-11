@@ -10,7 +10,7 @@ interface BentoGridProps {
 export function BentoGrid({ id, className, children }: BentoGridProps) {
   return (
     <div id={id} className={cn(
-          "flex flex-col lg:flex-row gap-4 md:gap-6 max-w-7xl mx-auto",
+          "flex flex-col xl:flex-row gap-4 md:gap-6 max-w-7xl mx-auto",
           className
         )}>
 
@@ -31,8 +31,8 @@ export function BentoColumn({ className, children, side, id }: BentoColumnProps)
     <div
       id={id}
       className={cn(
-        side === "left" 
-          ? "flex flex-col gap-4 md:gap-6 lg:w-[340px] xl:w-[380px] shrink-0" 
+        side === "left"
+          ? "flex flex-col gap-4 md:gap-6 xl:w-[380px] shrink-0"
           : "grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 flex-1 min-w-0",
         className
       )}

@@ -1,10 +1,6 @@
-export interface GalleryItem {
-  id: string;
-  title: string;
-  subtitle: string;
-  videoUrl?: string; // Tautan video asli (.mp4) bisa kamu masukkan di sini nanti
-  coordinate: string;
-}
+import type { GalleryItem } from "@/types/portfolio";
+
+export type { GalleryItem } from "@/types/portfolio";
 
 const base = import.meta.env.BASE_URL;
 

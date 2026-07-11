@@ -1,38 +1,24 @@
 import { Home, User, Briefcase, Image } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
+import { navigationItems } from "@/data/site";
+import type { AppTab } from "@/types/portfolio";
 
 interface FloatingDockProps {
   className?: string;
-  activeTab: string;
-  setActiveTab: (tab: string) => void;
+  activeTab: AppTab;
+  setActiveTab: (tab: AppTab) => void;
 }
 
 export function FloatingDock({ className, activeTab, setActiveTab }: FloatingDockProps) {
-  const navigationItems = [
-    {
-      id: "home",
-      label: "Home",
-      icon: Home,
-    },
-    {
-      id: "about",
-      label: "About",
-      icon: User,
-    },
-    {
-      id: "projects",
-      label: "Projects",
-      icon: Briefcase,
-    },
-    {
-      id: "gallery",
-      label: "Gallery",
-      icon: Image,
-    },
-  ];
+  const navigationIcons = {
+    home: Home,
+    about: User,
+    projects: Briefcase,
+    gallery: Image,
+  };
 
-  const handleTabClick = (id: string) => {
+  const handleTabClick = (id: AppTab) => {
     setActiveTab(id);
     // Scroll ke atas secara instan/halus saat berpindah halaman/tab di mobile
     window.scrollTo({
@@ -44,7 +30,7 @@ export function FloatingDock({ className, activeTab, setActiveTab }: FloatingDoc
   return (
     <div
       className={cn(
-        "fixed bottom-4 left-1/2 -translate-x-1/2 z-40 flex items-center md:hidden",
+        "fixed bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 z-40 flex items-center xl:hidden",
         className
       )}
     >
@@ -60,14 +46,14 @@ export function FloatingDock({ className, activeTab, setActiveTab }: FloatingDoc
         <div className="absolute bottom-1 right-3 w-0.5 h-0.5 bg-accent/60" />
 
         {navigationItems.map((item) => {
-          const Icon = item.icon;
+          const Icon = navigationIcons[item.id];
           const isActive = activeTab === item.id;
 
           return (
             <button
               key={item.id}
               onClick={() => handleTabClick(item.id)}
-              className="relative flex items-center justify-center w-12 h-10 rounded-none transition-all duration-300 cursor-pointer focus:outline-none"
+              className="relative flex items-center justify-center w-12 h-10 md:w-14 md:h-11 rounded-none transition-all duration-300 cursor-pointer focus:outline-none"
               title={item.label}
               aria-label={item.label}
             >
@@ -86,7 +72,7 @@ export function FloatingDock({ className, activeTab, setActiveTab }: FloatingDoc
                 strokeLinecap="square"
                 strokeLinejoin="miter"
                 className={cn(
-                  "w-[18px] h-[18px] transition-all duration-300 relative z-10",
+                  "w-[18px] h-[18px] md:w-5 md:h-5 transition-all duration-300 relative z-10",
                   isActive
                     ? "text-accent scale-110 drop-shadow-[0_0_8px_rgba(99,102,241,0.8)]"
                     : "text-muted-slate hover:text-frost-white hover:scale-105"

@@ -1,4 +1,6 @@
-import type { SlideItem } from "@/components/project-slider";
+import type { Project } from "@/types/portfolio";
+
+export type { Project } from "@/types/portfolio";
 
 const base = import.meta.env.BASE_URL;
 
@@ -51,25 +53,6 @@ const base = import.meta.env.BASE_URL;
  * 3. Change the data fields to match your new project.
  * 4. The new project will automatically appear on the right side of the Bento Grid!
  */
-
-export interface Project {
-  id: string;
-  title: string;
-  category: string;
-  timeline: string;
-  roles: string[];
-  isHidden?: boolean;
-  publisher?: string;
- detailedDescription: string;
-  features: string[];
-  techStack: string[];
-  slides: SlideItem[];
-  links: {
-    label: string;
-    url: string;
-    icon: 'book' | 'play' | 'external' | 'game';
-  }[];
-}
 
 export const projectsData: Project[] = [
   // ==========================================

@@ -1,0 +1,64 @@
+@layer base {
+  :root {
+    --background: 231 45% 5%;       /* #070913 (Deep Space Indigo) */
+    --foreground: 210 40% 98%;     /* #F8FAFC (Frost White) */
+    --card: 230 41% 10%;           /* #0e1122 (Tactical Indigo Slate) */
+    --card-foreground: 210 40% 98%;
+    --popover: 231 45% 5%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 239 84% 67%;        /* #6366F1 (Vibrant Indigo) */
+    --primary-foreground: 210 40% 98%;
+    --secondary: 230 41% 12%;      /* Elevated slate */
+    --secondary-foreground: 210 40% 98%;
+    --muted: 230 41% 12%;
+    --muted-foreground: 215 20% 65%; /* #94A3B8 (Muted Slate) */
+    --accent: 188 90% 43%;         /* #06B6D4 (Cyber Cyan) */
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 239 84% 67% / 0.15;  /* border-indigo-500/15 */
+    --input: 230 41% 12%;
+    --ring: 239 84% 67%;
+    --radius: 0.25rem;             /* Sharp corners (rounded-sm) */
+  }
+
+  body {
+    background-color: #070913;
+    color: #F8FAFC;
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    @apply bg-background text-foreground;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 0.05em;
+  }
+
+  * {
+    @apply border-border/15 outline-ring/50;
+  }
+}
+
+/* Custom font helper classes */
+.font-valorant {
+  font-family: 'Valorant', sans-serif;
+  letter-spacing: 0.06em;
+}
+
+.font-bebas {
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
+
+/* Fix: Bebas Neue glyphs sit high in the em-box due to ascender metrics.
+   Push text spans down to visually align with icons in flex containers. */
+span.font-bebas,
+.font-bebas > span:not([class*="bg-"]):not([class*="chevron-"]):not([class*="w-"]):not([class*="h-"]):not([class*="animate-"]) {
+  transform: translateY(0.1em);
+}
+
+.font-mono {
+  font-family: 'Space Mono', monospace;
+}

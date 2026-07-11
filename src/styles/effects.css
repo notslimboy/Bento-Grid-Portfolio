@@ -1,0 +1,203 @@
+/* Space HUD / Hologram & Radar Scanning effects */
+@keyframes radar-scan {
+  0% {
+    top: -10%;
+  }
+  50% {
+    top: 110%;
+  }
+  100% {
+    top: -10%;
+  }
+}
+
+.radar-sweep-line {
+  position: fixed;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 255, 255, 0),
+    rgba(0, 255, 255, 0.8) 50%,
+    rgba(0, 255, 255, 0)
+  );
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.6), 0 0 40px rgba(0, 255, 255, 0.4);
+  z-index: 100;
+  pointer-events: none;
+  animation: radar-scan 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* Hologram grid lines overlay */
+.hud-grid-overlay {
+  background-size: 40px 40px;
+  background-image:
+    linear-gradient(to right, rgba(99, 102, 241, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(99, 102, 241, 0.03) 1px, transparent 1px);
+}
+
+/* Scanning active border pulse for Bento Cards */
+.bento-card-scan-active {
+  animation: scan-pulse 1.5s ease-in-out infinite alternate;
+  border-color: rgba(6, 182, 212, 0.5) !important;
+}
+
+@keyframes scan-pulse {
+  0% {
+    box-shadow: 0 0 5px rgba(6, 182, 212, 0.2), inset 0 0 5px rgba(6, 182, 212, 0.1);
+  }
+  100% {
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.6), inset 0 0 15px rgba(6, 182, 212, 0.3);
+  }
+}
+
+/* Nebula cloud backdrop */
+.nebula-glow {
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(99, 102, 241, 0.12) 0%,
+    rgba(139, 92, 246, 0.08) 30%,
+    rgba(11, 15, 25, 0) 70%
+  );
+  filter: blur(40px);
+}
+
+/* Cyberpunk terminal text glow */
+.hud-text-glow {
+  text-shadow: 0 0 8px rgba(99, 102, 241, 0.6);
+}
+
+.hud-text-glow-cyan {
+  text-shadow: 0 0 8px rgba(6, 182, 212, 0.8);
+}
+
+/* Hologram Boot effect */
+@keyframes hologram-sweep {
+  0% {
+    top: -5%;
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    top: 105%;
+    opacity: 0;
+  }
+}
+
+.hologram-sweep-line {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(
+    to right,
+    rgba(6, 182, 212, 0) 0%,
+    rgba(6, 182, 212, 0.8) 20%,
+    #06B6D4 50%,
+    rgba(6, 182, 212, 0.8) 80%,
+    rgba(6, 182, 212, 0) 100%
+  );
+  box-shadow: 0 0 10px rgba(6, 182, 212, 0.8), 0 0 20px rgba(6, 182, 212, 0.4);
+  z-index: 40;
+  pointer-events: none;
+  animation: hologram-sweep 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.hologram-scanlines {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(6, 182, 212, 0.04) 0px,
+    rgba(6, 182, 212, 0.04) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  pointer-events: none;
+  z-index: 25;
+}
+
+/* ===== SPACE JOURNEY CAREER DRAWER ===== */
+
+/* Orbital flight path glow */
+.orbital-path {
+  filter: drop-shadow(0 0 6px rgba(99, 102, 241, 0.5))
+          drop-shadow(0 0 12px rgba(99, 102, 241, 0.2));
+}
+
+/* Rocket propulsion particles */
+@keyframes rocket-exhaust {
+  0% {
+    opacity: 1;
+    transform: translateX(-2px) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-20px) scale(0.3);
+  }
+}
+
+.rocket-particle {
+  position: absolute;
+  width: 4px;
+  height: 2px;
+  border-radius: 1px;
+  background: linear-gradient(to left, rgba(99, 102, 241, 0.9), rgba(6, 182, 212, 0));
+  animation: rocket-exhaust 0.6s ease-out forwards;
+}
+
+/* Planet / waypoint glow pulse */
+@keyframes waypoint-pulse {
+  0%, 100% {
+    box-shadow: 0 0 4px rgba(99, 102, 241, 0.3), 0 0 8px rgba(99, 102, 241, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 10px rgba(99, 102, 241, 0.6), 0 0 20px rgba(99, 102, 241, 0.3);
+  }
+}
+
+.waypoint-active {
+  animation: waypoint-pulse 2s ease-in-out infinite;
+}
+
+/* Terminal typing cursor blink */
+@keyframes terminal-cursor-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.typing-cursor {
+  display: inline-block;
+  width: 7px;
+  height: 14px;
+  background: rgba(99, 102, 241, 0.8);
+  margin-left: 2px;
+  animation: terminal-cursor-blink 0.8s step-end infinite;
+  vertical-align: text-bottom;
+}
+
+/* HUD terminal text typing glow */
+.hud-terminal-typing {
+  text-shadow: 0 0 4px rgba(99, 102, 241, 0.5);
+  font-family: 'Space Grotesk', monospace;
+}
+
+/* Earth glow */
+.earth-glow {
+  box-shadow: 0 0 12px rgba(34, 197, 94, 0.4), 0 0 24px rgba(59, 130, 246, 0.3);
+}
+
+/* Moon glow */
+.moon-glow {
+  box-shadow: 0 0 12px rgba(6, 182, 212, 0.4), 0 0 24px rgba(248, 250, 252, 0.2);
+}
+
+/* Station glow */
+.station-glow {
+  box-shadow: 0 0 10px rgba(139, 92, 246, 0.4), 0 0 18px rgba(99, 102, 241, 0.2);
+}

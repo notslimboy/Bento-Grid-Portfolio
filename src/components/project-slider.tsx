@@ -1,18 +1,13 @@
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { Sparkles, ArrowRight } from "lucide-react";
+import { ProjectMedia } from "@/components/project-media";
+import type { ProjectSlide } from "@/types/portfolio";
 
-export interface SlideItem {
-  id: number;
-  title: string;
-  subtitle: string;
-  color: string; // Tailwind color class or hex for gradient fallback
-  imageUrl?: string; // Optional image URL
-  videoUrl?: string; // Optional direct video URL (.mp4, etc.)
-}
+export type { ProjectSlide as SlideItem } from "@/types/portfolio";
 
 interface ProjectSliderProps {
-  slides: SlideItem[];
+  slides: ProjectSlide[];
   className?: string;
 }
 
@@ -55,53 +50,7 @@ export function ProjectSlider({ slides, className }: ProjectSliderProps) {
               )}
             >
               {/* Background Layer */}
-              {slide.videoUrl ? (
-                <div className="absolute inset-0 overflow-hidden">
-                  <video
-                    src={slide.videoUrl}
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  {/* Overlay for legibility */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-midnight via-midnight/45 to-transparent opacity-85 z-0" />
-                </div>
-              ) : slide.imageUrl ? (
-                <div 
-                  className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
-                  style={{ backgroundImage: `url(${slide.imageUrl})` }}
-                >
-                  {/* Overlay for legibility */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-midnight via-midnight/30 to-transparent opacity-80" />
-                </div>
-              ) : (
-                <div 
-                  className={cn(
-                    "absolute inset-0 bg-gradient-to-br transition-all duration-500",
-                    slide.color
-                  )}
-                >
-                  {/* Grid Dots Pattern on Placeholders */}
-                  <div className="absolute inset-0 opacity-20 bg-[linear-gradient(to_right,#6366f108_1px,transparent_1px),linear-gradient(to_bottom,#6366f108_1px,transparent_1px)] bg-[size:16px_16px]" />
-                  
-                  {/* Glowing Orbit Rings */}
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 rounded-full border border-vibrant-indigo/10 animate-[spin_20s_linear_infinite]" />
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-full border border-dashed border-electric-purple/10 animate-[spin_10s_linear_infinite_reverse]" />
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full border border-vibrant-indigo/25 flex items-center justify-center">
-                    <div className="w-1.5 h-1.5 rounded-full bg-vibrant-indigo animate-ping" />
-                  </div>
-                  
-                  {/* Sci-Fi Corner Crosshairs */}
-                  <div className="absolute top-3 left-3 w-3 h-3 border-t border-l border-vibrant-indigo/30" />
-                  <div className="absolute top-3 right-3 w-3 h-3 border-t border-r border-vibrant-indigo/30" />
-                  <div className="absolute bottom-3 left-3 w-3 h-3 border-b border-l border-vibrant-indigo/30" />
-                  <div className="absolute bottom-3 right-3 w-3 h-3 border-b border-r border-vibrant-indigo/30" />
-                  
-                  <div className="absolute inset-0 bg-radial-gradient from-transparent to-midnight/60" />
-                </div>
-              )}
+              <ProjectMedia slide={slide} variant="slider" isActive={isActive} />
 
               {/* Slide Content Header (Z-indexed) */}
               <div className={cn("relative z-10 flex items-center", slides.length > 1 ? "justify-between" : "justify-end")}>

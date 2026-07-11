@@ -1,8 +1,9 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { X, BookOpen, Play, Gamepad2, ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
-import type { Project } from "@/data/projects";
+import type { Project } from "@/types/portfolio";
 import { ProjectSlider } from "@/components/project-slider";
+import { ProjectMedia } from "@/components/project-media";
 
 interface ProjectDetailModalProps {
   selectedProject: Project | null;
@@ -94,47 +95,59 @@ export function ProjectDetailModal({ selectedProject, origin, onClose }: Project
               boxShadow: { repeat: Infinity, duration: 3, ease: "easeInOut" },
               borderColor: { repeat: Infinity, duration: 3, ease: "easeInOut" }
             }}
-            className="relative max-w-5xl w-full max-h-[90vh] z-10 flex flex-col items-stretch border rounded-sm bg-[#0e1122]/95 hud-grid-overlay overflow-hidden"
+            className="fixed inset-x-4 top-4 bottom-4 mx-auto w-auto max-w-5xl z-10 flex flex-col items-stretch border-0 rounded-sm bg-[#0e1122]/95 hud-grid-overlay overflow-hidden md:inset-x-6 md:top-6 md:bottom-6 lg:static lg:w-full lg:max-h-[90vh] lg:border"
           >
-            {/* Holographic Projection Scanlines */}
-            <div className="hologram-scanlines" />
-
-            {/* Holographic sweeping laser scanline */}
-            <div className="hologram-sweep-line" />
-
-            {/* Tech Blueprint Corner Brackets */}
-            <div className="absolute top-4 left-4 w-4 h-4 border-t-2 border-l-2 border-vibrant-indigo/40 pointer-events-none z-30" />
-            <div className="absolute top-4 right-4 w-4 h-4 border-t-2 border-r-2 border-vibrant-indigo/40 pointer-events-none z-30" />
-            <div className="absolute bottom-4 left-4 w-4 h-4 border-b-2 border-l-2 border-vibrant-indigo/40 pointer-events-none z-30" />
-            <div className="absolute bottom-4 right-4 w-4 h-4 border-b-2 border-r-2 border-vibrant-indigo/40 pointer-events-none z-30" />
-            
-            {/* Telemetry Labels */}
-            <div className="absolute top-4 left-10 text-[8px] font-mono text-muted-slate/40 tracking-widest pointer-events-none z-30">
-              SYS.LOG // ENCRYPTED_CONNECTION_SECURE
+            {/* HUD background remains fixed to the modal shell while content scrolls above it. */}
+            <div className="absolute inset-0 z-0 pointer-events-none" aria-hidden="true">
+              <div className="hologram-scanlines" />
+              <div className="hologram-sweep-line" />
             </div>
-            <div className="absolute bottom-4 left-10 text-[8px] font-mono text-muted-slate/40 tracking-widest pointer-events-none z-30">
-              SCHEMA_MAPPED // LEVEL 3 SYSTEM DIAGNOSTIC
+
+            {/* Desktop modal-frame chrome */}
+            <div className="absolute inset-0 z-20 pointer-events-none hidden lg:block" aria-hidden="true">
+              <div className="absolute top-4 left-4 w-4 h-4 border-t-2 border-l-2 border-vibrant-indigo/40" />
+              <div className="absolute top-4 right-4 w-4 h-4 border-t-2 border-r-2 border-vibrant-indigo/40" />
+              <div className="absolute bottom-4 left-4 w-4 h-4 border-b-2 border-l-2 border-vibrant-indigo/40" />
+              <div className="absolute bottom-4 right-4 w-4 h-4 border-b-2 border-r-2 border-vibrant-indigo/40" />
+
+              <div className="absolute top-4 left-10 text-[8px] font-mono text-muted-slate/40 tracking-widest">
+                SYS.LOG // ENCRYPTED_CONNECTION_SECURE
+              </div>
+              <div className="absolute bottom-4 left-10 text-[8px] font-mono text-muted-slate/40 tracking-widest">
+                SCHEMA_MAPPED // LEVEL 3 SYSTEM DIAGNOSTIC
+              </div>
             </div>
 
             {/* Close Button */}
             <button 
               onClick={onClose} 
-              className="absolute top-4 right-4 p-2 text-muted-slate hover:text-vibrant-indigo transition-colors cursor-pointer z-50 active:scale-95"
+              className="absolute top-3 right-2 p-2 text-muted-slate hover:text-vibrant-indigo transition-colors cursor-pointer z-50 active:scale-95 lg:top-4"
               style={{ touchAction: 'manipulation' }}
               aria-label="Close modal"
             >
               <X className="w-5 h-5" />
             </button>
 
-            {/* Modal Card Panel */}
-            <div className="w-full max-h-[90vh] overflow-y-auto md:overflow-hidden p-5 pt-16 pb-8 md:p-8 md:pt-14 md:pb-14 flex flex-col md:grid md:grid-cols-12 gap-5 md:gap-8 rounded-sm">
+            {/* Mobile and tablet: the HUD is part of the modal document, above and below its content. */}
+            <div className="relative z-10 w-full min-h-0 flex-1 overflow-y-auto overscroll-contain lg:max-h-[90vh] lg:flex-none">
+              <div className="flex min-h-full flex-col">
+                <div className="relative h-16 shrink-0 lg:hidden" aria-hidden="true">
+                  <div className="absolute top-3 left-4 w-4 h-4 border-t-2 border-l-2 border-vibrant-indigo/40" />
+                  <div className="absolute top-3 right-4 w-4 h-4 border-t-2 border-r-2 border-vibrant-indigo/40" />
+                  <div className="absolute top-3 left-10 text-[8px] font-mono text-muted-slate/40 tracking-widest">
+                    SYS.LOG // ENCRYPTED_CONNECTION_SECURE
+                  </div>
+                </div>
+
+                {/* Modal Card Panel */}
+                <div className="w-full p-5 pt-4 pb-4 md:p-8 md:pt-6 md:pb-6 flex flex-col md:grid md:grid-cols-12 gap-5 md:gap-8 rounded-sm">
               
               {/* Left Side: Info */}
               <motion.div 
                 variants={containerVariants}
                 initial="hidden"
                 animate="show"
-                className="md:col-span-5 flex flex-col justify-start md:justify-between space-y-4 md:space-y-6 pb-4 md:pb-6 order-2 md:order-1 md:max-h-[calc(90vh-8rem)] md:overflow-y-auto md:pr-3 scrollbar-thin scrollbar-thumb-vibrant-indigo/20 scrollbar-track-transparent"
+                className="md:col-span-5 flex flex-col justify-start md:justify-between space-y-4 md:space-y-6 pb-4 md:pb-6 order-2 md:order-1 lg:max-h-[calc(90vh-8rem)] lg:overflow-y-auto lg:pr-3 scrollbar-thin scrollbar-thumb-vibrant-indigo/20 scrollbar-track-transparent"
               >
                 <div className="space-y-4">
                   {/* Header Tag, Roles, and Timeline */}
@@ -237,7 +250,7 @@ export function ProjectDetailModal({ selectedProject, origin, onClose }: Project
                 variants={containerVariants}
                 initial="hidden"
                 animate="show"
-                className="md:col-span-7 flex flex-col justify-between pb-6 order-1 md:order-2 md:max-h-[calc(90vh-8rem)] md:overflow-y-auto md:pr-3 scrollbar-thin scrollbar-thumb-vibrant-indigo/20 scrollbar-track-transparent"
+                className="md:col-span-7 flex flex-col justify-between pb-6 order-1 md:order-2 lg:max-h-[calc(90vh-8rem)] lg:overflow-y-auto lg:pr-3 scrollbar-thin scrollbar-thumb-vibrant-indigo/20 scrollbar-track-transparent"
               >
                 {/* Mobile Slider View (S, M, L screens) */}
                 <div className="block md:hidden w-full aspect-video rounded-none overflow-hidden border border-vibrant-indigo/10 bg-slate-indigo/30 relative mb-3 shrink-0">
@@ -253,42 +266,7 @@ export function ProjectDetailModal({ selectedProject, origin, onClose }: Project
                       className="aspect-video w-full relative rounded-none overflow-hidden border border-vibrant-indigo/10 bg-slate-indigo/30 group animate-in fade-in slide-in-from-bottom duration-500"
                       style={{ animationDelay: `${idx * 150}ms` }}
                     >
-                      {slide.videoUrl ? (
-                        <div className="w-full h-full relative">
-                          <video
-                            src={slide.videoUrl}
-                            autoPlay
-                            loop
-                            muted
-                            playsInline
-                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-102"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-midnight/70 via-transparent to-transparent opacity-80 z-10" />
-                        </div>
-                      ) : slide.imageUrl ? (
-                        <div className="w-full h-full relative">
-                          <img
-                            src={slide.imageUrl}
-                            alt={slide.title}
-                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-102"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-midnight/70 via-transparent to-transparent opacity-80 z-10" />
-                        </div>
-                      ) : (
-                        <div className={cn("w-full h-full bg-gradient-to-br transition-all duration-500", slide.color)}>
-                          <div className="absolute inset-0 opacity-20 bg-[linear-gradient(to_right,#6366f108_1px,transparent_1px),linear-gradient(to_bottom,#6366f108_1px,transparent_1px)] bg-[size:16px_16px]" />
-                          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 rounded-full border border-vibrant-indigo/10 animate-[spin_20s_linear_infinite]" />
-                          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-full border border-dashed border-electric-purple/10 animate-[spin_10s_linear_infinite_reverse]" />
-                          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full border border-vibrant-indigo/25 flex items-center justify-center">
-                            <div className="w-1.5 h-1.5 rounded-full bg-vibrant-indigo animate-ping" />
-                          </div>
-                          <div className="absolute top-3 left-3 w-3 h-3 border-t border-l border-vibrant-indigo/30" />
-                          <div className="absolute top-3 right-3 w-3 h-3 border-t border-r border-vibrant-indigo/30" />
-                          <div className="absolute bottom-3 left-3 w-3 h-3 border-b border-l border-vibrant-indigo/30" />
-                          <div className="absolute bottom-3 right-3 w-3 h-3 border-b border-r border-vibrant-indigo/30" />
-                          <div className="absolute inset-0 bg-radial-gradient from-transparent to-midnight/50" />
-                        </div>
-                      )}
+                      <ProjectMedia slide={slide} variant="stack" />
 
                       {/* Content Overlay on Media Card */}
                       <div className="absolute bottom-4 left-4 right-4 z-20 space-y-0.5 pointer-events-none">
@@ -303,6 +281,16 @@ export function ProjectDetailModal({ selectedProject, origin, onClose }: Project
                   ))}
                 </div>
               </motion.div>
+                </div>
+
+                <div className="relative h-14 shrink-0 lg:hidden" aria-hidden="true">
+                  <div className="absolute bottom-3 left-4 w-4 h-4 border-b-2 border-l-2 border-vibrant-indigo/40" />
+                  <div className="absolute bottom-3 right-4 w-4 h-4 border-b-2 border-r-2 border-vibrant-indigo/40" />
+                  <div className="absolute bottom-3 left-10 text-[8px] font-mono text-muted-slate/40 tracking-widest">
+                    SCHEMA_MAPPED // LEVEL 3 SYSTEM DIAGNOSTIC
+                  </div>
+                </div>
+              </div>
             </div>
           </motion.div>
         </motion.div>

@@ -2,46 +2,7 @@ import { useState, useRef } from "react";
 import { BentoCard } from "@/components/bento-grid";
 import { Gamepad, ChevronLeft, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-
-const base = import.meta.env.BASE_URL;
-
-const games = [
-  {
-    name: "League of Legends",
-    genre: "MOBA // Riot Games",
-    cover: `${base}games/lol.jpg`,
-    platform: "PC // Active Player",
-    description: "Competed in high-elo ranked matches. Essential reference for competitive game loops, balancing, and progression systems."
-  },
-  {
-    name: "Valorant",
-    genre: "Tactical FPS // Riot Games",
-    cover: `${base}games/valorant.jpeg`,
-    platform: "PC // Tactician",
-    description: "First-person tactical shooter with unique character abilities. Studied for map design, weapon feedback, and character balance."
-  },
-  {
-    name: "NFS Series",
-    genre: "Racing // EA Games",
-    cover: `${base}games/-nfs-mw-3.jpg`,
-    platform: "PC & Console // Driver",
-    description: "Grew up grinding NFS: Most Wanted & Carbon. Studied for open-world design, progression systems, and high-adrenaline pacing."
-  },
-  {
-    name: "Cult of the Lamb",
-    genre: "Roguelike Action // Devolver Digital",
-    cover: `${base}games/cult-of-the-lamb.jpg`,
-    platform: "PC & Console // Reference",
-    description: "A dark yet cute mashup of action roguelike and colony simulator. Highly inspiring for combining disparate genres and game loops."
-  },
-  {
-    name: "Uncharted Series",
-    genre: "Action-Adventure // Naughty Dog",
-    cover: `${base}games/uncharted.jpeg`,
-    platform: "PlayStation // Narrative",
-    description: "Cinematic narrative adventure. A masterclass in pacing, set-piece level design, camera work, and environmental storytelling."
-  }
-];
+import { interestGames } from "@/data/site";
 
 interface InterestsCardProps {
   isScanning?: boolean;
@@ -66,16 +27,16 @@ export function InterestsCard({ isScanning, isSkeleton }: InterestsCardProps) {
   };
 
   const handleNext = () => {
-    const next = (currentIndex + 1) % games.length;
+    const next = (currentIndex + 1) % interestGames.length;
     triggerGlitchThen(next);
   };
 
   const handlePrev = () => {
-    const prev = (currentIndex - 1 + games.length) % games.length;
+    const prev = (currentIndex - 1 + interestGames.length) % interestGames.length;
     triggerGlitchThen(prev);
   };
 
-  const currentGame = games[displayIndex];
+  const currentGame = interestGames[displayIndex];
 
   if (isSkeleton) {
     return (
@@ -85,7 +46,7 @@ export function InterestsCard({ isScanning, isSkeleton }: InterestsCardProps) {
           <Gamepad className="w-4 h-4 text-vibrant-indigo/25" />
         </div>
         <div
-          className="relative w-full h-40 bg-vibrant-indigo/15 my-4 flex items-center justify-center transition-all duration-300 shrink-0"
+          className="relative w-full h-40 md:h-64 xl:h-40 bg-vibrant-indigo/15 my-4 flex items-center justify-center transition-all duration-300 shrink-0"
           style={{ clipPath: "polygon(16px 0%, 100% 0%, calc(100% - 16px) 100%, 0% 100%)" }}
         >
           <div
@@ -127,7 +88,7 @@ export function InterestsCard({ isScanning, isSkeleton }: InterestsCardProps) {
 
       {/* Image Cover with Glitch Effect */}
       <div
-        className="relative w-full h-40 bg-vibrant-indigo/25 my-4 flex items-center justify-center group/cover transition-all duration-300 shrink-0"
+        className="relative w-full h-40 md:h-64 xl:h-40 bg-vibrant-indigo/25 my-4 flex items-center justify-center group/cover transition-all duration-300 shrink-0"
         style={{ clipPath: "polygon(16px 0%, 100% 0%, calc(100% - 16px) 100%, 0% 100%)" }}
       >
         <div
@@ -162,7 +123,7 @@ export function InterestsCard({ isScanning, isSkeleton }: InterestsCardProps) {
                 ? { duration: 0.32, times: [0, 0.15, 0.3, 0.45, 0.65, 0.82, 1], ease: "linear" }
                 : { duration: 0.3, ease: "easeOut" }
             }
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover md:object-contain xl:object-cover"
           />
 
           {/* Scanline noise overlay during glitch */}
@@ -250,7 +211,7 @@ export function InterestsCard({ isScanning, isSkeleton }: InterestsCardProps) {
       {/* Footer */}
       <div className="flex items-center justify-between text-[9px] text-muted-slate/50 font-mono tracking-wider mt-4 pt-2.5 border-t border-vibrant-indigo/5">
         <span>{currentGame.platform}</span>
-        <span>{displayIndex + 1} / {games.length}</span>
+        <span>{displayIndex + 1} / {interestGames.length}</span>
       </div>
     </BentoCard>
   );

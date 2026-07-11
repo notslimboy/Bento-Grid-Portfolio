@@ -1,22 +1,11 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Terminal } from "lucide-react";
+import { bootLogs } from "@/data/site";
 
 interface BootScreenProps {
   onComplete: () => void;
 }
-
-const bootLogs = [
-  "HUD: STANDBY // INIT DATA_STREAM",
-  "SYS: BOOTING TACTICAL_INTERFACE v9.04",
-  "RADAR: CONNECTING TO DEEP_SPACE_TRANSCEIVER...",
-  "TELEMETRY: DECRYPTING STAR_MAP_SECTOR_7...",
-  "ORBIT: RESOLVING FLIGHT_PATHWAY_VECTORS...",
-  "HUD: ESTABLISHING SECURE_LINK TO TARGET_DECK...",
-  "COGNITIVE: SYNCHRONIZING PILOT_CORE_LOGS...",
-  "HUD: TACTICAL HUD ONLINE. SYSTEM READY.",
-  "SYS: ACTIVE // SYSTEM STABLE"
-];
 
 export function BootScreen({ onComplete }: BootScreenProps) {
   const [progress, setProgress] = useState(0);
