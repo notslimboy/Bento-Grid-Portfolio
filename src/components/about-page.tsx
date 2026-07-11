@@ -8,12 +8,101 @@ import { testimonialsData } from "@/data/testimonials";
 
 const base = import.meta.env.BASE_URL;
 
+interface CareerProjectCardProps {
+  index: number;
+  title: string;
+  subtitle: string;
+  watermark: string;
+  imageSrc?: string;
+  imageAlt?: string;
+  videoSrc?: string;
+  tone?: string;
+}
+
+function CareerProjectCard({
+  index,
+  title,
+  subtitle,
+  watermark,
+  imageSrc,
+  imageAlt,
+  videoSrc,
+  tone = "from-vibrant-indigo/20 via-[#16152b] to-midnight",
+}: CareerProjectCardProps) {
+  return (
+    <article className="group/media relative min-h-[10.75rem] overflow-hidden border border-vibrant-indigo/25 bg-midnight p-3 transition-all duration-300 hover:border-accent/65 hover:shadow-[0_0_18px_rgba(6,182,212,0.14)]">
+      {imageSrc && (
+        <img
+          src={imageSrc}
+          alt={imageAlt ?? title}
+          className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover/media:scale-105"
+        />
+      )}
+      {videoSrc && (
+        <video
+          src={videoSrc}
+          autoPlay
+          loop
+          muted
+          playsInline
+          aria-label={title}
+          className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover/media:scale-105"
+        />
+      )}
+      {!imageSrc && !videoSrc && (
+        <div className={`absolute inset-0 bg-gradient-to-br ${tone}`} />
+      )}
+
+      <div className="absolute inset-0 bg-gradient-to-t from-midnight via-midnight/70 to-midnight/15" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(99,102,241,0.08)_1px,transparent_1px),linear-gradient(to_bottom,rgba(99,102,241,0.08)_1px,transparent_1px)] bg-[size:14px_14px] opacity-0 transition-opacity duration-300 group-hover/media:opacity-40" />
+      <div className="pointer-events-none absolute -bottom-10 -right-2 font-bebas text-7xl tracking-tighter text-frost-white/10 select-none">
+        {watermark}
+      </div>
+
+      <div className="relative z-10 flex min-h-[7.75rem] flex-col justify-between">
+        <span className="w-fit border border-accent/20 bg-midnight/75 px-2 py-1 text-[8px] font-mono uppercase tracking-wider text-accent backdrop-blur-sm">
+          Project // {String(index).padStart(2, "0")}
+        </span>
+        <div className="pt-4">
+          <h5 className="font-bebas text-xl leading-none tracking-widest text-frost-white uppercase transition-colors duration-300 group-hover/media:text-accent">
+            {title}
+          </h5>
+          <p className="mt-1 text-[9px] font-mono uppercase tracking-wider text-muted-slate">
+            {subtitle}
+          </p>
+        </div>
+      </div>
+    </article>
+  );
+}
+
 const careerTimelineData = [
   {
-    title: "Jul 2024 – Present",
+    title: "Nov 2025 – Present",
+    company: "Not Boring Company",
+    role: "Game Designer",
+    missions: [
+      "Developing Meowquest, an adventure game with Netmarble as its publisher.",
+      "Designing gameplay systems, progression, and player experiences for Meowquest.",
+      "Contributing to the ongoing development of Gun, Girls, Glory, a tactical action project."
+    ],
+    media: (
+      <div className="grid grid-cols-1 gap-3 mt-4 pt-4 border-t border-vibrant-indigo/10">
+        <CareerProjectCard
+          index={1}
+          title="Meowquest"
+          subtitle="Adventure Game · Netmarble"
+          watermark="MQ"
+          imageSrc={`${base}projects/meowquest-pitch.jpg`}
+          imageAlt="Meowquest pitch artwork"
+        />
+      </div>
+    )
+  },
+  {
+    title: "Jul 2024 – Mar 2026",
     company: "Imaji DigiStudio",
     role: "Game Designer | Creative",
-    waypointLabel: "Moon Destination",
     missions: [
       "Created Game Design Documents (GDD), balanced gameplay systems, and developed pitch decks for projects including Chocolatos X-Quest, Momogi Roblox: Jelajah Nusantara, Gery Boboiboy, BTS TinyTan, and Imaji Gamespot.",
       "Designed UI/UX for games and apps, focusing on clarity, engagement, and smooth user experience.",
@@ -22,27 +111,43 @@ const careerTimelineData = [
       "Ideated and produced Faux OOH concepts in collaboration with brands for immersive promotional activations."
     ],
     media: (
-      <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 mt-4 pt-4 border-t border-vibrant-indigo/10">
-        <div className="relative border border-vibrant-indigo/20 rounded-none overflow-hidden aspect-video group/media">
-          <div className="absolute top-1.5 left-1.5 bg-black/75 px-1.5 py-0.5 text-[8px] font-mono text-accent uppercase tracking-wider z-20">X-Quest</div>
-          <img src={`${base}projects/XQuest-Logo.png`} alt="Chocolatos X-Quest" className="w-full h-full object-cover group-hover/media:scale-105 transition-all duration-300" />
-        </div>
-        <div className="relative border border-vibrant-indigo/20 rounded-none overflow-hidden aspect-video group/media">
-          <div className="absolute top-1.5 left-1.5 bg-black/75 px-1.5 py-0.5 text-[8px] font-mono text-accent uppercase tracking-wider z-20">Momogi RBLX</div>
-          <video src={`${base}projects/Momogi-Roblox.mp4`} autoPlay loop muted playsInline className="w-full h-full object-cover grayscale group-hover/media:grayscale-0 transition-all duration-300" />
-        </div>
-        <div className="relative border border-vibrant-indigo/20 rounded-none overflow-hidden aspect-video group/media">
-          <div className="absolute top-1.5 left-1.5 bg-black/75 px-1.5 py-0.5 text-[8px] font-mono text-accent uppercase tracking-wider z-20">Gery Boboiboy</div>
-          <video src={`${base}projects/Gery-Pasta-Boboiboy.mp4`} autoPlay loop muted playsInline className="w-full h-full object-cover grayscale group-hover/media:grayscale-0 transition-all duration-300" />
-        </div>
-        <div className="relative border border-vibrant-indigo/20 rounded-none overflow-hidden aspect-video group/media">
-          <div className="absolute top-1.5 left-1.5 bg-black/75 px-1.5 py-0.5 text-[8px] font-mono text-accent uppercase tracking-wider z-20">BTS TinyTan</div>
-          <video src={`${base}projects/Chocolatos-TinyTan.mp4`} autoPlay loop muted playsInline className="w-full h-full object-cover grayscale group-hover/media:grayscale-0 transition-all duration-300" />
-        </div>
-        <div className="relative border border-vibrant-indigo/20 rounded-none overflow-hidden aspect-video group/media">
-          <div className="absolute top-1.5 left-1.5 bg-black/75 px-1.5 py-0.5 text-[8px] font-mono text-accent uppercase tracking-wider z-20">Gamespot</div>
-          <video src={`${base}projects/Tap-Tap.mp4`} autoPlay loop muted playsInline className="w-full h-full object-cover grayscale group-hover/media:grayscale-0 transition-all duration-300" />
-        </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4 pt-4 border-t border-vibrant-indigo/10">
+        <CareerProjectCard
+          index={1}
+          title="Chocolatos X-Quest"
+          subtitle="Featured Attraction · Garudafood"
+          watermark="XQ"
+          imageSrc={`${base}projects/XQuest-Logo.png`}
+          imageAlt="Chocolatos X-Quest logo"
+        />
+        <CareerProjectCard
+          index={2}
+          title="Momogi Roblox"
+          subtitle="Brand Campaign · Jelajah Nusantara"
+          watermark="MR"
+          videoSrc={`${base}projects/Momogi-Roblox.mp4`}
+        />
+        <CareerProjectCard
+          index={3}
+          title="Gery Pasta Boboiboy"
+          subtitle="AR Game Campaign"
+          watermark="GB"
+          videoSrc={`${base}projects/Gery-Pasta-Boboiboy.mp4`}
+        />
+        <CareerProjectCard
+          index={4}
+          title="Chocolatos TinyTan"
+          subtitle="Brand Campaign · Digital Collection"
+          watermark="TT"
+          videoSrc={`${base}projects/Chocolatos-TinyTan.mp4`}
+        />
+        <CareerProjectCard
+          index={5}
+          title="Imaji Game Spot"
+          subtitle="LED Interactive Game · Tarik Tap-tap"
+          watermark="IG"
+          videoSrc={`${base}projects/Tap-Tap.mp4`}
+        />
       </div>
     )
   },
@@ -50,7 +155,6 @@ const careerTimelineData = [
     title: "Aug 2021 – Jul 2024",
     company: "Miraimimpi",
     role: "Game Designer",
-    waypointLabel: "Orbit Waypoint Beta",
     missions: [
       "Designed gameplay loops, mechanics, character abilities, and level layouts for Kocheng: Battle of Boings (BoB), followed by hands-on playtesting and iteration.",
       "Balanced core gameplay systems and authored comprehensive Game Design Documents (GDD) to guide development.",
@@ -59,10 +163,13 @@ const careerTimelineData = [
     ],
     media: (
       <div className="grid grid-cols-1 mt-4 pt-4 border-t border-vibrant-indigo/10">
-        <div className="relative border border-vibrant-indigo/20 rounded-none overflow-hidden max-w-sm aspect-video group/media">
-          <div className="absolute top-1 left-1 bg-black/70 px-1 py-0.5 text-[8px] font-mono text-accent uppercase tracking-wider z-20">Kocheng: BoB</div>
-          <video src={`${base}projects/Kocheng.mp4`} autoPlay loop muted playsInline className="w-full h-full object-cover grayscale group-hover/media:grayscale-0 transition-all duration-300" />
-        </div>
+        <CareerProjectCard
+          index={1}
+          title="Kocheng: Battle of Boings"
+          subtitle="PVP Arcade Game"
+          watermark="KB"
+          videoSrc={`${base}projects/Kocheng.mp4`}
+        />
       </div>
     )
   },
@@ -70,18 +177,28 @@ const careerTimelineData = [
     title: "Feb 2023 – Dec 2023",
     company: "Monster Group",
     role: "Game Designer",
-    waypointLabel: "Orbit Waypoint Alpha",
     missions: [
       "Refined existing game concepts and authored Game Design Documents (GDD) to align with updated vision and mechanics.",
       "Balanced gameplay systems, progression models, and combat calculators for Mahabrats.",
       "Wrote narrative design documents and balanced virtual economy flows."
-    ]
+    ],
+    media: (
+      <div className="grid grid-cols-1 mt-4 pt-4 border-t border-vibrant-indigo/10">
+        <CareerProjectCard
+          index={1}
+          title="18 Days of War Mahabarats"
+          subtitle="NFT Game · Mashida Token · Unity"
+          watermark="18"
+          imageSrc={`${base}projects/18-days-of-war-mahabarats.jpg`}
+          imageAlt="18 Days of War Mahabarats project"
+        />
+      </div>
+    )
   },
   {
     title: "Sep 2021 – Dec 2021",
     company: "Maulidan Games",
     role: "Intern Game Programmer",
-    waypointLabel: "Earth Sector",
     missions: [
       "Programmed gameplay mechanics and systems for Legends of Learning educational game.",
       "Developed simulations and object interactions for the Water Physics project in Unity.",
@@ -89,14 +206,22 @@ const careerTimelineData = [
     ],
     media: (
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4 pt-4 border-t border-vibrant-indigo/10">
-        <div className="relative border border-vibrant-indigo/20 rounded-none overflow-hidden aspect-video group/media">
-          <div className="absolute top-1 left-1 bg-black/70 px-1 py-0.5 text-[8px] font-mono text-accent uppercase tracking-wider z-20">Science School</div>
-          <img src={`${base}projects/ScienceSchool.jpg`} alt="Legends of Learning" className="w-full h-full object-cover grayscale group-hover/media:grayscale-0 transition-all duration-300" />
-        </div>
-        <div className="relative border border-vibrant-indigo/20 rounded-none overflow-hidden aspect-video group/media">
-          <div className="absolute top-1 left-1 bg-black/70 px-1 py-0.5 text-[8px] font-mono text-accent uppercase tracking-wider z-20">Water Physics</div>
-          <img src={`${base}projects/Water-Bouyancy.jpg`} alt="Water Physics" className="w-full h-full object-cover grayscale group-hover/media:grayscale-0 transition-all duration-300" />
-        </div>
+        <CareerProjectCard
+          index={1}
+          title="Legends of Learning"
+          subtitle="Educational Game · Science School"
+          watermark="LL"
+          imageSrc={`${base}projects/ScienceSchool.jpg`}
+          imageAlt="Legends of Learning science school project"
+        />
+        <CareerProjectCard
+          index={2}
+          title="Water Physics"
+          subtitle="Unity Simulation · Object Interaction"
+          watermark="WP"
+          imageSrc={`${base}projects/Water-Bouyancy.jpg`}
+          imageAlt="Water Physics project"
+        />
       </div>
     )
   }
@@ -113,6 +238,7 @@ const skillsData = {
   programming: [
     "Unity (C#)",
     "Luau (Roblox Studio)",
+    "Web Programming",
     "Version Control (Git)",
     "Scripting & Logic"
   ],
@@ -150,9 +276,6 @@ export function AboutPage() {
             [{job.role}]
           </p>
         </div>
-        <span className="inline-block px-2.5 py-0.5 rounded-none bg-vibrant-indigo/10 border border-vibrant-indigo/30 text-[9px] font-mono font-bold tracking-widest text-accent uppercase">
-          {job.waypointLabel}
-        </span>
         <ul className="space-y-2.5 mt-4 pt-3 border-t border-vibrant-indigo/10">
           {job.missions.map((mission, idx) => (
             <li key={idx} className="flex items-start gap-2.5 text-xs text-muted-slate font-sans leading-relaxed">
@@ -242,8 +365,9 @@ export function AboutPage() {
                   </svg>
                 </a>
                 <a
-                  href="#"
-                  onClick={(e) => { e.preventDefault(); }}
+                  href="https://discord.com/users/352425793227456512"
+                  target="_blank"
+                  rel="noreferrer"
                   className="w-9 h-9 rounded-none bg-vibrant-indigo/5 border border-vibrant-indigo/25 flex items-center justify-center cursor-pointer hover:border-accent hover:bg-[#12162a] transition-all duration-150 group"
                   title="Discord"
                 >

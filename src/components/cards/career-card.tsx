@@ -13,13 +13,14 @@ export function CareerCard({ isScanning, onSeeProfile, isSkeleton }: CareerCardP
     { company: "Maulidan Games", role: "Intern Game Programmer", period: "Sep – Dec 2021" },
     { company: "Monster Group", role: "Game Designer", period: "Feb – Dec 2023" },
     { company: "Miraimimpi", role: "Game Designer", period: "Aug 2021 – Jul 2024" },
-    { company: "Imaji DigiStudio", role: "Game Designer | Creative", period: "Jul 2024 – Present" },
+    { company: "Imaji DigiStudio", role: "Game Designer | Creative", period: "Jul 2024 – Mar 2026" },
+    { company: "Not Boring Company", role: "Game Designer", period: "Nov 2025 – Present" },
   ];
 
   if (isSkeleton) {
     return (
       <BentoCard 
-        className="p-5 flex flex-col justify-between h-full min-h-[360px]" 
+        className="p-5 flex flex-col justify-between h-full min-h-[420px]"
         isScanning={isScanning}
         coordinate="HUD-C02"
       >
@@ -29,11 +30,11 @@ export function CareerCard({ isScanning, onSeeProfile, isSkeleton }: CareerCardP
         </div>
         
         <div className="flex flex-col space-y-4 my-5">
-          {[1, 2, 3, 4].map((_, idx) => (
+          {[1, 2, 3, 4, 5].map((_, idx) => (
             <div key={idx} className="flex items-start gap-3">
               <div className="flex flex-col items-center shrink-0 mt-1">
                 <div className="w-1.5 h-1.5 rotate-45 shrink-0 bg-vibrant-indigo/20 border border-vibrant-indigo/15 shimmer opacity-25" />
-                {idx < 3 && <div className="w-[1px] h-6 bg-vibrant-indigo/10 border-dashed border-l" />}
+                {idx < 4 && <div className="w-[1px] h-6 bg-vibrant-indigo/10 border-dashed border-l" />}
               </div>
               <div className="flex-grow space-y-1.5">
                 <div className="flex items-center justify-between">
@@ -56,7 +57,7 @@ export function CareerCard({ isScanning, onSeeProfile, isSkeleton }: CareerCardP
 
   return (
     <BentoCard 
-      className="p-5 flex flex-col justify-between h-full min-h-[360px]" 
+      className="p-5 flex flex-col justify-between h-full min-h-[420px]"
       isScanning={isScanning}
       coordinate="HUD-C02"
     >
@@ -71,18 +72,18 @@ export function CareerCard({ isScanning, onSeeProfile, isSkeleton }: CareerCardP
             <div className="flex flex-col items-center shrink-0 mt-1">
               <div className={cn(
                 "w-1.5 h-1.5 rotate-45 shrink-0 border transition-all duration-300",
-                idx === 3 
+                idx === experiences.length - 1
                   ? "bg-accent border-accent shadow-[0_0_8px_rgba(6,182,212,0.8)]" 
                   : "bg-transparent border-vibrant-indigo/40 group-hover/item:border-accent"
               )} />
-              {idx < 3 && <div className="w-[1px] h-6 bg-vibrant-indigo/15 border-dashed border-l" />}
+              {idx < experiences.length - 1 && <div className="w-[1px] h-6 bg-vibrant-indigo/15 border-dashed border-l" />}
             </div>
             
             <div className="flex-1 min-w-0">
               <div className="flex items-center justify-between gap-2">
                 <span className={cn(
                   "text-sm font-semibold tracking-wide font-sans",
-                  idx === 3 ? "text-frost-white font-bold" : "text-frost-white/70"
+                  idx === experiences.length - 1 ? "text-frost-white font-bold" : "text-frost-white/70"
                 )}>
                   {item.company}
                 </span>
@@ -92,7 +93,7 @@ export function CareerCard({ isScanning, onSeeProfile, isSkeleton }: CareerCardP
               </div>
               <span className={cn(
                 "text-[10px] font-mono block mt-0.5 uppercase tracking-widest",
-                idx === 3 ? "text-accent" : "text-vibrant-indigo/50"
+                idx === experiences.length - 1 ? "text-accent" : "text-vibrant-indigo/50"
               )}>
                 [{item.role}]
               </span>
@@ -110,7 +111,7 @@ export function CareerCard({ isScanning, onSeeProfile, isSkeleton }: CareerCardP
           <span className="chevron-marker group-hover/btn:translate-x-1 transition-transform" style={{ borderLeftColor: 'currentColor' }} />
         </button>
         <div className="text-[8px] text-muted-slate/40 font-mono tracking-widest text-center">
-          LOGS ACTIVE: 4 INDEXED // SEP 2021 – PRESENT
+          LOGS ACTIVE: 5 INDEXED // SEP 2021 – PRESENT
         </div>
       </div>
     </BentoCard>

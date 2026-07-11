@@ -74,8 +74,9 @@ export function ProfilesCard({ isScanning, isSkeleton }: ProfilesCardProps) {
 
         {/* Discord */}
         <a 
-          href="#" 
-          onClick={(e) => { e.preventDefault(); }} 
+          href="https://discord.com/users/352425793227456512"
+          target="_blank"
+          rel="noreferrer"
           className="w-10 h-10 rounded-none bg-vibrant-indigo/5 border border-vibrant-indigo/25 flex items-center justify-center cursor-pointer hover:border-accent hover:bg-[#12162a] transition-all duration-150 group shrink-0" 
           title="Discord"
         >

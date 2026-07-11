@@ -145,6 +145,11 @@ export function ProjectDetailModal({ selectedProject, origin, onClose }: Project
                     <span className="px-2.5 py-1 rounded-none bg-vibrant-indigo/10 border border-vibrant-indigo/35 text-[10px] font-mono tracking-widest text-vibrant-indigo uppercase">
                       LOG_ID: {selectedProject.id.toUpperCase()}_PRJ
                     </span>
+                    {selectedProject.publisher && (
+                      <span className="px-2.5 py-1 rounded-none bg-accent/10 border border-accent/35 text-[10px] font-mono font-bold tracking-widest text-accent uppercase">
+                        Publisher: {selectedProject.publisher}
+                      </span>
+                    )}
                     {selectedProject.roles.map((r) => (
                       <span key={r} className="px-2 py-0.5 rounded-none bg-vibrant-indigo/10 border border-vibrant-indigo/25 text-[10px] font-semibold text-frost-white uppercase tracking-wider font-mono">
                         {r}

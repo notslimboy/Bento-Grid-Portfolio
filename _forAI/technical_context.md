@@ -180,7 +180,7 @@ Clicking a project card triggers a custom holographic scale-up modal that origin
 | `legendlearning`   | Video+Image | `Science-School.mp4`, `ScienceSchool.jpg`, `.png`         | ✅ Yes  |
 | `meowquest`        | Gradient    | (no asset — uses color placeholder)                        | ✅ Yes  |
 | `gungirlsglory`    | Gradient    | (no asset — uses color placeholder)                        | ✅ Yes  |
-| `shanticatering`   | Gradient    | (no asset — uses color placeholder)                        | ✅ Yes  |
+| `shanticatering`   | Image       | `shanti-cashier-menu.png`, `shanti-cashier-dashboard.png`, `shanti-cashier-customers.png`, `shanti-cashier-receivables.png` | ✅ Yes  |
 
 ### Gallery (`public/gallery/`) — ordered as displayed
 | Order | File                  | Title              |

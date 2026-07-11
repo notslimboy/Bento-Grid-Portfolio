@@ -22,7 +22,7 @@ import { ConnectCard } from "@/components/cards/connect-card";
 import { ProjectDetailModal } from "@/components/project-detail-modal";
 
 // Impor data statis proyek (mudah diedit manual)
-import { projectsData } from "@/data/projects";
+import { visibleProjectsData } from "@/data/projects";
 import type { Project } from "@/data/projects";
 import { galleryData } from "@/data/gallery";
 import { GalleryCard } from "@/components/cards/gallery-card";
@@ -305,11 +305,11 @@ export default function App() {
 
                       <div className="grid grid-cols-1 gap-4 w-full">
                         {isSkeletonLoading ? (
-                          projectsData.map((_, index) => (
+                          visibleProjectsData.map((_, index) => (
                             <ProjectCard key={index} isScanning={isScanning} onClick={() => {}} isSkeleton={true} />
                           ))
                         ) : (
-                          projectsData.map((project) => (
+                          visibleProjectsData.map((project) => (
                             <ProjectCard 
                               key={project.id}
                               project={project} 
@@ -403,13 +403,13 @@ export default function App() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6 w-full">
                   {isSkeletonLoading ? (
-                    projectsData.map((_, index) => (
+                    visibleProjectsData.map((_, index) => (
                       <motion.div key={index} variants={gridItemVariants}>
                         <ProjectCard isScanning={isScanning} onClick={() => {}} isSkeleton={true} />
                       </motion.div>
                     ))
                   ) : (
-                    projectsData.map((project) => (
+                    visibleProjectsData.map((project) => (
                       <motion.div key={project.id} variants={gridItemVariants}>
                         <ProjectCard 
                           project={project} 
@@ -477,7 +477,7 @@ export default function App() {
                 {/* ==================== RIGHT COLUMN (Modular Projects) ==================== */}
                 <BentoColumn side="right">
                   {isSkeletonLoading ? (
-                    projectsData.map((_, index) => (
+                    visibleProjectsData.map((_, index) => (
                       <motion.div 
                         key={index} 
                         variants={gridItemVariants}
@@ -486,7 +486,7 @@ export default function App() {
                       </motion.div>
                     ))
                   ) : (
-                    projectsData.map((project) => (
+                    visibleProjectsData.map((project) => (
                       <motion.div 
                         key={project.id} 
                         variants={gridItemVariants} 

@@ -99,7 +99,7 @@ export function ProfileCard({ isScanning, isSkeleton }: ProfileCardProps) {
           <ScrambleText text="RAKA — ARYA" delay={150} />
         </h1>
         <p className="text-xs md:text-sm text-frost-white/90 font-sans leading-relaxed tracking-wide">
-          A Game Designer and Creative Designer at <span className="text-accent font-medium">Imaji DigiStudio</span>. I craft engaging gameplay systems and develop creative concepts for brand campaigns—both in and out of the game.
+          A Game Designer at <span className="text-accent font-medium">Not Boring Company</span>. I craft engaging gameplay systems and develop creative concepts for brand campaigns—both in and out of the game.
         </p>
       </div>
 

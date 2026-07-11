@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: "/Bento-Grid-Portfolio/",
+  base: "/",
   plugins: [react()],
   resolve: {
     alias: {

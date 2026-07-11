@@ -58,7 +58,9 @@ export interface Project {
   category: string;
   timeline: string;
   roles: string[];
-  detailedDescription: string;
+  isHidden?: boolean;
+  publisher?: string;
+ detailedDescription: string;
   features: string[];
   techStack: string[];
   slides: SlideItem[];
@@ -79,21 +81,23 @@ export const projectsData: Project[] = [
     category: "Adventure Game",
     timeline: "4 Months (2024)",
     roles: ["Game Designer", "Systems Designer"],
-    detailedDescription: "Meowquest is an engaging adventure game designed with rich platforming elements and interactive mechanics. Players navigate a beautifully stylized world, solving dynamic environmental puzzles and engaging with unique gameplay loops centered around cat companions.",
+    publisher: "Netmarble",
+    detailedDescription: "Published by Netmarble, Meowquest is a cute roguelite where every choice shapes the kind of cat you become. Shape your cat's abilities as you go, making meaningful choices at every step. Capybara Go! meets Slay the Spire—a cute, relaxing adventure where every run evolves in surprising ways, and your choices shape what your cat becomes.",
     features: [
       "Designed core gameplay loops and exploration mechanics.",
       "Implemented a comprehensive quest system for structured player progression.",
       "Developed interactive companion AI behaviors to assist players.",
       "Crafted level designs that blend challenges with immersive world storytelling."
     ],
-    techStack: ["Unity", "C#", "AI Behavior Tree", "Physics Engine"],
+    techStack: ["Unity", "C#", "Game Design"],
     slides: [
-      { id: 1, title: "Cat Adventure World", subtitle: "Meowquest Main Campaign", color: "from-slate-indigo to-midnight/80" },
-      { id: 2, title: "Quest System Design", subtitle: "Progression Mechanics", color: "from-vibrant-indigo/10 to-electric-purple/10" },
-      { id: 3, title: "Character Collection", subtitle: "Unlockable Companions", color: "from-slate-indigo/30 to-vibrant-indigo/20" }
+      { id: 1, title: "Meowquest", subtitle: "Main Pitch", color: "", imageUrl: `${base}projects/meowquest-pitch.jpg` },
+      { id: 2, title: "Gladiator Road", subtitle: "Roman Adventure World", color: "", imageUrl: `${base}projects/meowquest-gladiator-road.jpg` },
+      { id: 3, title: "East Land Road", subtitle: "Eastern Adventure World", color: "", imageUrl: `${base}projects/meowquest-east-land-road.jpg` },
+      { id: 4, title: "Snowy Land Road", subtitle: "Winter Adventure World", color: "", imageUrl: `${base}projects/meowquest-snowy-land-road.jpg` }
     ],
     links: [
-      { label: "Play Game", url: "#", icon: "game" }
+      { label: "Watch Video", url: "https://youtu.be/dEdBgP-mgeg", icon: "play" }
     ]
   },
 
@@ -103,6 +107,7 @@ export const projectsData: Project[] = [
   {
     id: "gungirlsglory",
     title: "Gun, Girls, Glory",
+    isHidden: true,
     category: "Tactical Action",
     timeline: "3 Months (2025)",
     roles: ["Game Designer", "Lead Programmer"],
@@ -335,7 +340,31 @@ export const projectsData: Project[] = [
   },
 
   // ==========================================
-  // [10] LEGEND OF LEARNING: SCIENCE SCHOOL
+  // [10] 18 DAYS OF WAR MAHABARATS
+  // ==========================================
+  {
+    id: "18-days-of-war-mahabarats",
+    title: "18 Days of War Mahabarats",
+    category: "NFT Game",
+    timeline: "2023",
+    roles: ["Game Designer"],
+    detailedDescription: "An NFT strategy game where players destroy the opponent's tower or base by deploying and removing units with Silver. Players balance defense and attack strategies while evaluating the effectiveness of every unit to defeat the enemy.",
+    features: [
+      "Designed strategic unit deployment and removal systems using Silver.",
+      "Balanced offense and defense choices across the core gameplay loop.",
+      "Created game design documentation for unit strategy and combat systems."
+    ],
+    techStack: ["NFT Game", "Mashida Token", "Unity"],
+    slides: [
+      { id: 1, title: "18 Days of War", subtitle: "Mahabarats NFT Game", color: "", imageUrl: `${base}projects/18-days-of-war-mahabarats.jpg` }
+    ],
+    links: [
+      { label: "See Project", url: "https://18daysofwar.mashida.io/", icon: "external" }
+    ]
+  },
+
+  // ==========================================
+  // [11] LEGEND OF LEARNING: SCIENCE SCHOOL
   // ==========================================
   {
     id: "legendlearning",
@@ -366,25 +395,24 @@ export const projectsData: Project[] = [
   {
     id: "shanticatering",
     title: "Shanti Catering Cashier Apps",
-    category: "Web Application",
-    timeline: "2 Months (2025)",
+    category: "Cashier PWA",
+    timeline: "PWA Development",
     roles: ["Fullstack Developer", "UI/UX Designer"],
-    detailedDescription: "Shanti Catering Cashier Apps is a specialized point-of-sale and transaction management system designed for food catering services. The platform features dynamic cart management, automated invoice generation, live stock inventory updates, and analytical dashboard widgets.",
+    detailedDescription: "A cashier PWA for Shanti Catering's daily catering operation. Admins turn incoming WhatsApp orders into structured transactions, then print receipts for fulfillment. Supabase stores menu, order, customer, payment, and receivables data in one place.",
     features: [
-      "Developed responsive cart mechanics and instant checkout pipelines.",
-      "Integrated automated PDF invoice generators and email notifications.",
-      "Designed real-time stock alert thresholds for ingredient management.",
-      "Created analytical sales summaries and dashboard visualization modules."
+      "Converted WhatsApp orders into print-ready cashier transactions for daily fulfillment.",
+      "Built a sales dashboard and reconciliation tools for unpaid balances and deposits.",
+      "Created a searchable customer database with address tags, delivery fees, and deposit details.",
+      "Used Supabase as the backend for menus, orders, customers, payments, and receivables."
     ],
-    techStack: ["React", "TypeScript", "Tailwind CSS", "Supabase"],
+    techStack: ["React", "TypeScript", "Tailwind CSS", "Supabase", "PWA"],
     slides: [
-      { id: 1, title: "Cashier Transaction Portal", subtitle: "Point-of-Sale System", color: "from-vibrant-indigo/20 to-[#070913]" },
-      { id: 2, title: "Inventory Alerts Dashboard", subtitle: "Stock Management Panel", color: "from-accent/10 to-[#070913]" },
-      { id: 3, title: "Analytical Sales Visuals", subtitle: "Transactions Dashboard", color: "from-[#1a1c38] to-[#070913]" }
+      { id: 1, title: "Cashier Menu & Order Entry", subtitle: "Daily Catering Cashier", color: "", imageUrl: `${base}projects/shanti-cashier-menu.jpg` },
+      { id: 2, title: "Sales Dashboard", subtitle: "Transactions & Revenue", color: "", imageUrl: `${base}projects/shanti-cashier-dashboard.jpg` },
+      { id: 3, title: "Customer Database", subtitle: "Delivery & Address Tags", color: "", imageUrl: `${base}projects/shanti-cashier-customers.jpg` },
+      { id: 4, title: "Receivables Reconciliation", subtitle: "Debt & Deposit Tracking", color: "", imageUrl: `${base}projects/shanti-cashier-receivables.jpg` }
     ],
-    links: [
-      { label: "Visit App", url: "#", icon: "external" }
-    ]
+    links: []
   }
 
   /*
@@ -420,3 +448,5 @@ export const projectsData: Project[] = [
   }
   */
 ];
+
+export const visibleProjectsData = projectsData.filter((project) => !project.isHidden);
