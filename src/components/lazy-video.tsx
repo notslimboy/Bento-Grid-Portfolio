@@ -34,7 +34,7 @@ export function LazyVideo({ src, isActive = true, poster, autoPlay, ...props }: 
           setHasEnteredViewport(true);
         }
       },
-      { rootMargin: "320px 0px" },
+      { rootMargin: "0px" },
     );
 
     observer.observe(video);
@@ -63,7 +63,7 @@ export function LazyVideo({ src, isActive = true, poster, autoPlay, ...props }: 
       ref={videoRef}
       {...props}
       autoPlay={Boolean(autoPlay && shouldLoad)}
-      poster={shouldLoad ? (poster ?? getVideoPosterUrl(src)) : undefined}
+      poster={poster ?? getVideoPosterUrl(src)}
       preload="none"
       src={shouldLoad ? src : undefined}
     />

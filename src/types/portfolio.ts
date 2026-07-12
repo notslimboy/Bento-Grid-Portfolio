@@ -74,6 +74,7 @@ export interface InterestGame {
   name: string;
   genre: string;
   cover: string;
+  coverAvif?: string;
   platform: string;
   description: string;
 }

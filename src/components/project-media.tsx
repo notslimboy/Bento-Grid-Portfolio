@@ -79,10 +79,14 @@ export function ProjectMedia({ slide, variant, isActive = true }: ProjectMediaPr
 
   if (slide.imageUrl) {
     return isSlider ? (
-      <div
-        className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
-        style={{ backgroundImage: `url(${slide.imageUrl})` }}
-      >
+      <div className="absolute inset-0 overflow-hidden">
+        <img
+          src={slide.imageUrl}
+          alt=""
+          loading="lazy"
+          decoding="async"
+          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+        />
         <div className="absolute inset-0 bg-gradient-to-t from-midnight via-midnight/30 to-transparent opacity-80" />
       </div>
     ) : (

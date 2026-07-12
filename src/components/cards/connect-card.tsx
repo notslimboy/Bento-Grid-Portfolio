@@ -38,9 +38,9 @@ export function ConnectCard({ isScanning, isSkeleton }: ConnectCardProps) {
 
       {/* Row 2: Headline */}
       <div className="my-3 relative z-10">
-        <h3 className="text-xl font-heading font-bold text-frost-white tracking-wide group-hover/connect:text-accent transition-colors duration-300">
+        <h2 className="text-xl font-heading font-bold text-frost-white tracking-wide group-hover/connect:text-accent transition-colors duration-300">
           LET'S CONNECT
-        </h3>
+        </h2>
         <p className="text-[11px] text-muted-slate font-sans leading-relaxed mt-1">
           Ready to collaborate or discuss game systems? Reach out to initiate contact.
         </p>

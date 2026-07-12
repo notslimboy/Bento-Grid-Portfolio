@@ -3,4 +3,5 @@
   src: url('/src/assets/fonts/Valorant.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }

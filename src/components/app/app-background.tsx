@@ -3,7 +3,7 @@ export function AppBackground() {
     <>
       <div className="grain-overlay" />
 
-      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden opacity-30 select-none">
+      <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden opacity-30 select-none">
         <svg className="absolute -right-32 -bottom-32 w-[600px] h-[600px] text-vibrant-indigo/15 animate-[spin_180s_linear_infinite]" viewBox="0 0 100 100">
           <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" strokeWidth="0.2" strokeDasharray="2,2" />
           <ellipse cx="50" cy="50" rx="45" ry="15" fill="none" stroke="currentColor" strokeWidth="0.15" />

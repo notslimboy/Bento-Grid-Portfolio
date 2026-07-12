@@ -8,9 +8,10 @@ interface FloatingDockProps {
   className?: string;
   activeTab: AppTab;
   setActiveTab: (tab: AppTab) => void;
+  onTabIntent?: (tab: AppTab) => void;
 }
 
-export function FloatingDock({ className, activeTab, setActiveTab }: FloatingDockProps) {
+export function FloatingDock({ className, activeTab, setActiveTab, onTabIntent }: FloatingDockProps) {
   const navigationIcons = {
     home: Home,
     about: User,
@@ -53,6 +54,8 @@ export function FloatingDock({ className, activeTab, setActiveTab }: FloatingDoc
             <button
               key={item.id}
               onClick={() => handleTabClick(item.id)}
+              onPointerEnter={() => onTabIntent?.(item.id)}
+              onFocus={() => onTabIntent?.(item.id)}
               className="relative flex items-center justify-center w-12 h-10 md:w-14 md:h-11 rounded-none transition-all duration-300 cursor-pointer focus:outline-none"
               title={item.label}
               aria-label={item.label}
