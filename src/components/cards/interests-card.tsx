@@ -96,10 +96,8 @@ export function InterestsCard({ isScanning, isSkeleton }: InterestsCardProps) {
           style={{ clipPath: "polygon(16px 0%, 100% 0%, calc(100% - 16px) 100%, 0% 100%)" }}
         >
           {/* Main image — glitches on exit */}
-          <motion.img
+          <motion.div
             key={currentGame.name}
-            src={currentGame.cover}
-            alt={currentGame.name}
             animate={
               isGlitching
                 ? {
@@ -123,8 +121,18 @@ export function InterestsCard({ isScanning, isSkeleton }: InterestsCardProps) {
                 ? { duration: 0.32, times: [0, 0.15, 0.3, 0.45, 0.65, 0.82, 1], ease: "linear" }
                 : { duration: 0.3, ease: "easeOut" }
             }
-            className="w-full h-full object-cover md:object-contain xl:object-cover"
-          />
+            className="h-full w-full"
+          >
+            <picture>
+              {currentGame.coverAvif && <source srcSet={currentGame.coverAvif} type="image/avif" />}
+              <img
+                src={currentGame.cover}
+                alt={currentGame.name}
+                className="h-full w-full object-cover md:object-contain xl:object-cover"
+                decoding="async"
+              />
+            </picture>
+          </motion.div>
 
           {/* Scanline noise overlay during glitch */}
           <AnimatePresence>

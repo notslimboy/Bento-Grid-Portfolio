@@ -41,6 +41,7 @@ export const interestGames: InterestGame[] = [
     name: "League of Legends",
     genre: "MOBA // Riot Games",
     cover: `${base}games/lol.jpg`,
+    coverAvif: `${base}games/lol.avif`,
     platform: "PC // Active Player",
     description: "Competed in high-elo ranked matches. Essential reference for competitive game loops, balancing, and progression systems.",
   },

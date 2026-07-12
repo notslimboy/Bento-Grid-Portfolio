@@ -6,9 +6,10 @@ import type { AppTab } from "@/types/portfolio";
 interface SiteHeaderProps {
   activeTab: AppTab;
   onTabChange: (tab: AppTab) => void;
+  onTabIntent?: (tab: AppTab) => void;
 }
 
-export function SiteHeader({ activeTab, onTabChange }: SiteHeaderProps) {
+export function SiteHeader({ activeTab, onTabChange, onTabIntent }: SiteHeaderProps) {
   return (
     <header className="hidden xl:flex max-w-7xl w-full mx-auto mb-10 pb-4 items-center justify-between relative z-10">
       <nav className="flex items-center gap-8 text-[12px] lg:text-[13px] font-bebas tracking-widest text-muted-slate uppercase">
@@ -20,6 +21,8 @@ export function SiteHeader({ activeTab, onTabChange }: SiteHeaderProps) {
               event.preventDefault();
               onTabChange(item.id);
             }}
+            onMouseEnter={() => onTabIntent?.(item.id)}
+            onFocus={() => onTabIntent?.(item.id)}
             className={cn(
               "transition-colors duration-200 relative py-1 group",
               activeTab === item.id ? "text-accent" : "hover:text-accent",

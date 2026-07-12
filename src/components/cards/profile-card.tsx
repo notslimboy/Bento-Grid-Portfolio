@@ -1,5 +1,6 @@
 import { BentoCard } from "@/components/bento-grid";
 import profileImg from "@/assets/profile.png";
+import profileAvif from "@/assets/profile.avif";
 import { Download } from "lucide-react";
 import { ScrambleText } from "@/components/scramble-text";
 
@@ -63,11 +64,16 @@ export function ProfileCard({ isScanning, isSkeleton }: ProfileCardProps) {
           <div className="w-24 h-24 rounded-none bg-[#0e1122] border-2 border-vibrant-indigo/35 flex items-center justify-center relative overflow-hidden group/avatar transition-all duration-300 shadow-[0_0_15px_rgba(99,102,241,0.08)] mt-2">
             {/* Halftone stipple overlay for tactical vibe */}
             <div className="halftone-overlay" />
-            <img 
-              src={profileImg} 
-              alt="Raka Arya Pratama" 
-              className="w-full h-full object-cover contrast-[1.05] brightness-[0.95] group-hover:scale-105 transition-all duration-500 z-10" 
-            />
+            <picture className="block h-full w-full">
+              <source srcSet={profileAvif} type="image/avif" />
+              <img
+                src={profileImg}
+                alt="Raka Arya Pratama"
+                width="256"
+                height="256"
+                className="h-full w-full object-cover contrast-[1.05] brightness-[0.95] group-hover:scale-105 transition-all duration-500 z-10"
+              />
+            </picture>
             <div className="absolute inset-0 bg-gradient-to-t from-[#070913]/30 via-transparent to-transparent pointer-events-none z-20" />
             
             {/* Tactical corner brackets inside avatar */}

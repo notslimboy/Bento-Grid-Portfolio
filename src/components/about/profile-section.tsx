@@ -1,5 +1,6 @@
 import { Download } from "lucide-react";
 import profileImg from "@/assets/profile.png";
+import profileAvif from "@/assets/profile.avif";
 import { ScrambleText } from "@/components/scramble-text";
 import { aboutProfile } from "@/data/about";
 
@@ -17,11 +18,16 @@ export function ProfileSection() {
       <div className="relative z-10 flex flex-col lg:flex-row gap-8 lg:gap-12 items-center lg:items-start">
         <div className="w-36 h-36 md:w-44 md:h-44 rounded-none bg-[#0e1122] border-2 border-vibrant-indigo/35 flex items-center justify-center relative overflow-hidden group/avatar transition-all duration-300 shadow-[0_0_20px_rgba(99,102,241,0.1)] shrink-0">
           <div className="halftone-overlay" />
-          <img
-            src={profileImg}
-            alt="Raka Arya Pratama"
-            className="w-full h-full object-cover contrast-[1.05] brightness-[0.95] group-hover:scale-105 transition-all duration-500 z-10"
-          />
+          <picture className="block h-full w-full">
+            <source srcSet={profileAvif} type="image/avif" />
+            <img
+              src={profileImg}
+              alt="Raka Arya Pratama"
+              width="256"
+              height="256"
+              className="h-full w-full object-cover contrast-[1.05] brightness-[0.95] group-hover:scale-105 transition-all duration-500 z-10"
+            />
+          </picture>
           <div className="absolute inset-0 bg-gradient-to-t from-[#070913]/30 via-transparent to-transparent pointer-events-none z-20" />
           <div className="absolute top-0 left-0 w-2 h-2 border-t-2 border-l-2 border-accent z-20" />
           <div className="absolute bottom-0 right-0 w-2 h-2 border-b-2 border-r-2 border-accent z-20" />

@@ -1,9 +1,12 @@
+import { lazy, Suspense } from "react";
 import { AnimatePresence, motion, type Variants } from "framer-motion";
-import { AboutPage } from "@/components/about-page";
-import { GalleryView } from "@/components/app/gallery-view";
 import { HomeView } from "@/components/app/home-view";
-import { ProjectsView } from "@/components/app/projects-view";
+import { loadAboutPage, loadGalleryView, loadProjectsView } from "@/components/app/app-tab-preload";
 import type { AppTab, Project } from "@/types/portfolio";
+
+const AboutPage = lazy(() => loadAboutPage().then((module) => ({ default: module.AboutPage })));
+const GalleryView = lazy(() => loadGalleryView().then((module) => ({ default: module.GalleryView })));
+const ProjectsView = lazy(() => loadProjectsView().then((module) => ({ default: module.ProjectsView })));
 
 interface AppTabContentProps {
   activeTab: AppTab;
@@ -22,6 +25,14 @@ const mobileTabMotion = {
   exit: { opacity: 0, y: -10 },
   transition: mobileTabTransition,
 };
+
+function DeferredTab({ children }: { children: React.ReactNode }) {
+  return (
+    <Suspense fallback={<div className="min-h-[450px] w-full" aria-busy="true" />}>
+      {children}
+    </Suspense>
+  );
+}
 
 export function AppTabContent({
   activeTab,
@@ -51,30 +62,34 @@ export function AppTabContent({
 
           {activeTab === "about" && (
             <motion.div key="about-tab" id="about" {...mobileTabMotion} className="w-full">
-              <AboutPage />
+              <DeferredTab><AboutPage /></DeferredTab>
             </motion.div>
           )}
 
           {activeTab === "projects" && (
             <motion.div key="projects-tab" id="projects" {...mobileTabMotion} className="flex flex-col space-y-4 w-full">
-              <ProjectsView
-                isMobile={true}
-                isScanning={isScanning}
-                isSkeletonLoading={isSkeletonLoading}
-                itemVariants={itemVariants}
-                onOpenProject={onOpenProject}
-              />
+              <DeferredTab>
+                <ProjectsView
+                  isMobile={true}
+                  isScanning={isScanning}
+                  isSkeletonLoading={isSkeletonLoading}
+                  itemVariants={itemVariants}
+                  onOpenProject={onOpenProject}
+                />
+              </DeferredTab>
             </motion.div>
           )}
 
           {activeTab === "gallery" && (
             <motion.div key="gallery-tab" id="gallery" {...mobileTabMotion} className="flex flex-col space-y-4 w-full">
-              <GalleryView
-                isMobile={true}
-                isScanning={isScanning}
-                isSkeletonLoading={isSkeletonLoading}
-                itemVariants={itemVariants}
-              />
+              <DeferredTab>
+                <GalleryView
+                  isMobile={true}
+                  isScanning={isScanning}
+                  isSkeletonLoading={isSkeletonLoading}
+                  itemVariants={itemVariants}
+                />
+              </DeferredTab>
             </motion.div>
           )}
         </AnimatePresence>
@@ -85,31 +100,35 @@ export function AppTabContent({
   if (activeTab === "about") {
     return (
       <div id="about" className="w-full max-w-7xl mx-auto flex flex-col space-y-6 animate-in fade-in duration-300">
-        <AboutPage />
+        <DeferredTab><AboutPage /></DeferredTab>
       </div>
     );
   }
 
   if (activeTab === "gallery") {
     return (
-      <GalleryView
-        isMobile={false}
-        isScanning={isScanning}
-        isSkeletonLoading={isSkeletonLoading}
-        itemVariants={itemVariants}
-      />
+      <DeferredTab>
+        <GalleryView
+          isMobile={false}
+          isScanning={isScanning}
+          isSkeletonLoading={isSkeletonLoading}
+          itemVariants={itemVariants}
+        />
+      </DeferredTab>
     );
   }
 
   if (activeTab === "projects") {
     return (
-      <ProjectsView
-        isMobile={false}
-        isScanning={isScanning}
-        isSkeletonLoading={isSkeletonLoading}
-        itemVariants={itemVariants}
-        onOpenProject={onOpenProject}
-      />
+      <DeferredTab>
+        <ProjectsView
+          isMobile={false}
+          isScanning={isScanning}
+          isSkeletonLoading={isSkeletonLoading}
+          itemVariants={itemVariants}
+          onOpenProject={onOpenProject}
+        />
+      </DeferredTab>
     );
   }
 

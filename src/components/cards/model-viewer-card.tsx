@@ -1,6 +1,6 @@
-import { useState, useRef } from "react";
+import { useCallback, useRef, useState } from "react";
 import { BentoCard } from "@/components/bento-grid";
-import { RotateCw, RefreshCw, Box } from "lucide-react";
+import { RotateCw, RefreshCw, Box, LoaderCircle } from "lucide-react";
 
 interface ModelViewerCardProps {
   isScanning?: boolean;
@@ -11,11 +11,45 @@ type ModelViewerElement = HTMLElement & {
   cameraOrbit: string;
   cameraTarget: string;
   fieldOfView: string;
+  loaded?: boolean;
 };
 
 export function ModelViewerCard({ isScanning, isSkeleton }: ModelViewerCardProps) {
   const [autoRotate, setAutoRotate] = useState(false);
+  const [isModelLoading, setIsModelLoading] = useState(false);
+  const [isModelRequested, setIsModelRequested] = useState(false);
+  const [isModelReady, setIsModelReady] = useState(false);
+  const [modelLoadError, setModelLoadError] = useState(false);
   const modelViewerRef = useRef<ModelViewerElement | null>(null);
+  const removeModelListenersRef = useRef<(() => void) | null>(null);
+
+  const handleModelViewerRef = useCallback((viewer: ModelViewerElement | null) => {
+    removeModelListenersRef.current?.();
+    removeModelListenersRef.current = null;
+    modelViewerRef.current = viewer;
+
+    if (!viewer) return;
+
+    const handleModelLoaded = () => {
+      setIsModelLoading(false);
+      setIsModelReady(true);
+    };
+    const handleModelError = () => {
+      setIsModelLoading(false);
+      setModelLoadError(true);
+    };
+
+    // model-viewer emits native CustomEvents. Attach during the ref callback
+    // so a cached GLB cannot finish before a React effect subscribes.
+    viewer.addEventListener("load", handleModelLoaded);
+    viewer.addEventListener("error", handleModelError);
+    removeModelListenersRef.current = () => {
+      viewer.removeEventListener("load", handleModelLoaded);
+      viewer.removeEventListener("error", handleModelError);
+    };
+
+    if (viewer.loaded) handleModelLoaded();
+  }, []);
 
   const handleResetCamera = () => {
     if (modelViewerRef.current) {
@@ -25,13 +59,20 @@ export function ModelViewerCard({ isScanning, isSkeleton }: ModelViewerCardProps
     }
   };
 
-  const isLighthouse = typeof navigator !== "undefined" && (
-    /Lighthouse/i.test(navigator.userAgent) ||
-    /Chrome-Lighthouse/i.test(navigator.userAgent) ||
-    /Speed Insights/i.test(navigator.userAgent)
-  );
+  const handleLoadModel = async () => {
+    if (isModelLoading || isModelReady) return;
 
-  const modelPath = isLighthouse ? "" : `${import.meta.env.BASE_URL}games/arcane_fractured_jinx.glb`;
+    setModelLoadError(false);
+    setIsModelLoading(true);
+
+    try {
+      await import("@google/model-viewer");
+      setIsModelRequested(true);
+    } catch {
+      setModelLoadError(true);
+      setIsModelLoading(false);
+    }
+  };
 
   if (isSkeleton) {
     return (
@@ -91,23 +132,49 @@ export function ModelViewerCard({ isScanning, isSkeleton }: ModelViewerCardProps
         <div className="hud-grid-overlay-dense absolute inset-0 pointer-events-none opacity-40" />
         <div className="hologram-scanlines absolute inset-0 pointer-events-none opacity-20" />
         
-        {/* actual model-viewer */}
-        <model-viewer
-          ref={modelViewerRef}
-          src={modelPath}
-          alt="Arcane Fractured Jinx 3D Model"
-          camera-controls
-          auto-rotate={autoRotate}
-          shadow-intensity="1.5"
-          interaction-prompt="none"
-          auto-rotate-delay="1000"
-          camera-target="-3.46m 175m -32.28m"
-          camera-orbit="7.248deg 83.78deg 1369m"
-          field-of-view="19.45deg"
-          autoplay
-          style={{ width: "100%", height: "100%", outline: "none", display: "block" }}
-          loading="eager"
-        />
+        {!isModelReady && !isModelLoading && (
+          <div className="relative z-10 flex h-full w-full flex-col items-center justify-center gap-3 px-6 text-center">
+            <Box className="h-7 w-7 text-vibrant-indigo/70" />
+            <div className="space-y-1">
+              <p className="font-bebas text-base tracking-widest text-frost-white">3D ASSET ON DEMAND</p>
+              <p className="font-mono text-[9px] uppercase tracking-wider text-muted-slate/75">Load the interactive Jinx mesh when you are ready.</p>
+            </div>
+            <button
+              type="button"
+              onClick={handleLoadModel}
+              className="btn-tactical btn-tactical-cyan border border-accent/45 bg-accent/5 px-3 py-1.5 font-bebas text-xs tracking-widest text-accent transition-colors hover:text-[#070913]"
+            >
+              LOAD 3D MODEL
+            </button>
+            {modelLoadError && <p className="font-mono text-[9px] text-rose-300">MODEL LINK FAILED — RETRY AVAILABLE</p>}
+          </div>
+        )}
+
+        {isModelLoading && (
+          <div className="absolute inset-0 z-20 flex flex-col items-center justify-center gap-3 bg-[#070913] font-mono text-[10px] uppercase tracking-widest text-accent">
+            <LoaderCircle className="h-5 w-5 animate-spin" />
+            Loading Jinx asset...
+          </div>
+        )}
+
+        {isModelRequested && (
+          <model-viewer
+            ref={handleModelViewerRef}
+            src={`${import.meta.env.BASE_URL}games/arcane_fractured_jinx.glb`}
+            alt="Arcane Fractured Jinx 3D Model"
+            camera-controls
+            auto-rotate={autoRotate}
+            shadow-intensity="1.5"
+            interaction-prompt="none"
+            auto-rotate-delay="1000"
+            camera-target="-3.46m 175m -32.28m"
+            camera-orbit="7.248deg 83.78deg 1369m"
+            field-of-view="19.45deg"
+            autoplay
+            style={{ width: "100%", height: "100%", outline: "none", display: "block" }}
+            loading="eager"
+          />
+        )}
 
         {/* Tactical corners */}
         <div className="absolute top-2 left-2 w-1.5 h-1.5 border-t border-l border-vibrant-indigo/30 pointer-events-none" />
@@ -125,20 +192,22 @@ export function ModelViewerCard({ isScanning, isSkeleton }: ModelViewerCardProps
           {/* Toggle Auto Rotate */}
           <button
             onClick={() => setAutoRotate(!autoRotate)}
+            disabled={!isModelReady}
             className={`px-2.5 py-1 border text-[9px] font-bold tracking-widest font-bebas uppercase flex items-center gap-1 cursor-pointer transition-all ${
-              autoRotate 
+              autoRotate && isModelReady
                 ? "border-accent bg-accent/10 text-accent hover:bg-accent/20" 
                 : "border-vibrant-indigo/30 bg-vibrant-indigo/5 text-vibrant-indigo hover:border-vibrant-indigo/50 hover:bg-vibrant-indigo/10"
             }`}
             title="Toggle Auto Rotation"
           >
-            <RotateCw className={`w-2.5 h-2.5 ${autoRotate ? "animate-[spin_4s_linear_infinite]" : ""}`} />
+            <RotateCw className={`w-2.5 h-2.5 ${autoRotate && isModelReady ? "animate-[spin_4s_linear_infinite]" : ""}`} />
             <span>Auto Rotate</span>
           </button>
           
           {/* Reset Camera */}
           <button
             onClick={handleResetCamera}
+            disabled={!isModelReady}
             className="px-2.5 py-1 border border-vibrant-indigo/30 bg-vibrant-indigo/5 text-vibrant-indigo hover:border-vibrant-indigo/50 hover:bg-vibrant-indigo/10 text-[9px] font-bold tracking-widest font-bebas uppercase flex items-center gap-1 cursor-pointer transition-all"
             title="Reset Camera View"
           >

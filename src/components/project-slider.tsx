@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { Sparkles, ArrowRight } from "lucide-react";
 import { ProjectMedia } from "@/components/project-media";
@@ -13,22 +13,42 @@ interface ProjectSliderProps {
 
 export function ProjectSlider({ slides, className }: ProjectSliderProps) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [previousIndex, setPreviousIndex] = useState<number | null>(null);
+  const [isVideoEnabled, setIsVideoEnabled] = useState(() => (
+    typeof window !== "undefined" && !window.matchMedia("(hover: hover)").matches
+  ));
+
+  useEffect(() => {
+    if (previousIndex === null) return;
+
+    const timer = window.setTimeout(() => setPreviousIndex(null), 500);
+    return () => window.clearTimeout(timer);
+  }, [previousIndex]);
+
+  const setSlide = (nextIndex: number) => {
+    if (nextIndex === activeIndex) return;
+    setPreviousIndex(activeIndex);
+    setActiveIndex(nextIndex);
+  };
 
   const handleNext = (e: React.MouseEvent) => {
     // Prevent cycling slide when clicking directly on dot indicators
     if ((e.target as HTMLElement).closest(".slide-dot")) {
       return;
     }
-    setActiveIndex((prev) => (prev + 1) % slides.length);
+    setIsVideoEnabled(true);
+    setSlide((activeIndex + 1) % slides.length);
   };
 
   const goToSlide = (index: number) => {
-    setActiveIndex(index);
+    setIsVideoEnabled(true);
+    setSlide(index);
   };
 
   return (
     <div
       onClick={slides.length > 1 ? handleNext : undefined}
+      onPointerEnter={() => setIsVideoEnabled(true)}
       className={cn(
         "relative w-full h-full overflow-hidden rounded-none border border-vibrant-indigo/5 bg-slate-indigo/20 group select-none",
         slides.length > 1 ? "cursor-pointer" : "cursor-default",
@@ -38,6 +58,8 @@ export function ProjectSlider({ slides, className }: ProjectSliderProps) {
       {/* Slides Container */}
       <div className="relative w-full h-full">
         {slides.map((slide, index) => {
+          if (index !== activeIndex && index !== previousIndex) return null;
+
           const isActive = index === activeIndex;
           return (
             <div
@@ -50,7 +72,11 @@ export function ProjectSlider({ slides, className }: ProjectSliderProps) {
               )}
             >
               {/* Background Layer */}
-              <ProjectMedia slide={slide} variant="slider" isActive={isActive} />
+              <ProjectMedia
+                slide={slide}
+                variant="slider"
+                isActive={isVideoEnabled && (isActive || index === previousIndex)}
+              />
 
               {/* Slide Content Header (Z-indexed) */}
               <div className={cn("relative z-10 flex items-center", slides.length > 1 ? "justify-between" : "justify-end")}>
@@ -98,14 +124,18 @@ export function ProjectSlider({ slides, className }: ProjectSliderProps) {
                   e.stopPropagation();
                   goToSlide(index);
                 }}
-                className={cn(
-                  "slide-dot h-1.5 rounded-full transition-all duration-300",
-                  isActive 
-                    ? "w-4 bg-vibrant-indigo" 
-                    : "w-1.5 bg-muted-slate/40 hover:bg-muted-slate/60"
-                )}
+                className="slide-dot flex h-6 w-6 items-center justify-center"
                 aria-label={`Go to slide ${index + 1}`}
-              />
+              >
+                <span
+                  className={cn(
+                    "h-1.5 rounded-full transition-all duration-300",
+                    isActive
+                      ? "w-4 bg-vibrant-indigo"
+                      : "w-1.5 bg-muted-slate/40 hover:bg-muted-slate/60",
+                  )}
+                />
+              </button>
             );
           })}
         </div>

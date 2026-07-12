@@ -1,16 +1,21 @@
-import type { ReactNode } from "react";
+import { lazy, Suspense, type ReactNode } from "react";
 import { motion, type Variants } from "framer-motion";
 import { BentoColumn, BentoGrid } from "@/components/bento-grid";
 import { CareerCard } from "@/components/cards/career-card";
 import { ConnectCard } from "@/components/cards/connect-card";
 import { InterestsCard } from "@/components/cards/interests-card";
-import { ModelViewerCard } from "@/components/cards/model-viewer-card";
 import { ProfileCard } from "@/components/cards/profile-card";
 import { ProfilesCard } from "@/components/cards/profiles-card";
 import { TestimonialsCard } from "@/components/cards/testimonials-card";
 import { ToolkitCard } from "@/components/cards/toolkit-card";
-import { ProjectList } from "@/components/app/project-list";
 import type { AppTab, Project } from "@/types/portfolio";
+
+const ModelViewerCard = lazy(() => import("@/components/cards/model-viewer-card").then((module) => ({
+  default: module.ModelViewerCard,
+})));
+const ProjectList = lazy(() => import("@/components/app/project-list").then((module) => ({
+  default: module.ProjectList,
+})));
 
 interface HomeViewProps {
   isMobile: boolean;
@@ -43,7 +48,11 @@ function HomeInfoCards({
       {renderItem(<ProfilesCard isScanning={isScanning} isSkeleton={isSkeletonLoading} />)}
       {renderItem(<ToolkitCard isScanning={isScanning} isSkeleton={isSkeletonLoading} />)}
       {showEntertainmentCards && renderItem(<InterestsCard isScanning={isScanning} isSkeleton={isSkeletonLoading} />)}
-      {showEntertainmentCards && renderItem(<ModelViewerCard isScanning={isScanning} isSkeleton={isSkeletonLoading} />)}
+      {showEntertainmentCards && renderItem(
+        <Suspense fallback={<div className="min-h-[520px]" />}>
+          <ModelViewerCard isScanning={isScanning} isSkeleton={isSkeletonLoading} />
+        </Suspense>,
+      )}
       {renderItem(<TestimonialsCard isScanning={isScanning} isSkeleton={isSkeletonLoading} />)}
       {renderItem(<ConnectCard isScanning={isScanning} isSkeleton={isSkeletonLoading} />)}
     </>
@@ -83,13 +92,15 @@ export function HomeView({
       </BentoColumn>
 
       <BentoColumn side="right">
-        <ProjectList
-          isScanning={isScanning}
-          isSkeletonLoading={isSkeletonLoading}
-          onOpenProject={onOpenProject}
-          itemVariants={itemVariants}
-          itemClassName="h-full"
-        />
+        <Suspense fallback={<div className="min-h-[260px]" />}>
+          <ProjectList
+            isScanning={isScanning}
+            isSkeletonLoading={isSkeletonLoading}
+            onOpenProject={onOpenProject}
+            itemVariants={itemVariants}
+            itemClassName="h-full"
+          />
+        </Suspense>
       </BentoColumn>
     </BentoGrid>
   );

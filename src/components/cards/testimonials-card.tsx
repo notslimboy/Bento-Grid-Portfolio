@@ -115,9 +115,9 @@ export function TestimonialsCard({ isScanning, isSkeleton }: TestimonialsCardPro
               exit={{ opacity: 0 }}
               transition={{ duration: 0.15 }}
             >
-              <h4 className="text-sm font-bebas font-bold text-accent tracking-wider uppercase leading-none">
+              <p className="text-sm font-bebas font-bold text-accent tracking-wider uppercase leading-none">
                 {currentTestimonial.name}
-              </h4>
+              </p>
               <span className="text-[9px] font-mono text-muted-slate/80 block mt-0.5 uppercase tracking-wide">
                 {currentTestimonial.role} // {currentTestimonial.company}
               </span>
