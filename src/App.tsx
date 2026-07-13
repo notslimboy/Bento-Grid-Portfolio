@@ -1,7 +1,5 @@
 import { useEffect, useState, lazy, Suspense } from "react";
 import { motion } from "framer-motion";
-import Lenis from "lenis";
-import "lenis/dist/lenis.css";
 import { AppBackground, HeaderHudLine } from "@/components/app/app-background";
 import { gridContainerVariants, gridItemVariants } from "@/components/app/app-animations";
 import { AppTabContent } from "@/components/app/app-tab-content";
@@ -23,20 +21,6 @@ export default function App() {
   const [activeTab, setActiveTab] = useState<AppTab>(defaultTab);
   const isMobile = useMobile();
   const { selectedProject, origin, openProject, closeProject } = useProjectModal();
-
-  useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
-    const lenis = new Lenis({
-      autoRaf: true,
-      anchors: true,
-      duration: 1.05,
-      smoothWheel: true,
-      stopInertiaOnNavigate: true,
-    });
-
-    return () => lenis.destroy();
-  }, []);
 
   useEffect(() => {
     window.scrollTo(0, 0);
